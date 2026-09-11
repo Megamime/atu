@@ -1,0 +1,1388 @@
+<!DOCTYPE html><html lang="tr"><head><meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no"/><meta name="theme-color" content="#050507"/><meta name="apple-mobile-web-app-capable" content="yes"/><meta name="mobile-web-app-capable" content="yes"/><meta name="format-detection" content="telephone=no"/><meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"/><meta name="apple-mobile-web-app-title" content="Reika"/><link rel="manifest" href="manifest.json"/><link rel="icon" href="icon-192.png"/><link rel="apple-touch-icon" href="icon-192.png"/><title>Reika</title><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet"/><style>:root{--black:#050507;--black2:#09090e;--black3:#0e0e16;--black4:#14141f;--black5:#1a1a28;--line:#1e1e2e;--line2:#27273a;--purple:#dc2626;--purple2:#ef4444;--purple3:#f87171;--purple4:#fca5a5;--purpleG:rgba(220,38,38,0.12);--purpleGS:rgba(220,38,38,0.05);--text:#e8e4f5;--text2:#9490b8;--text3:#4e4a6a;--gold:#c9a227;--gold2:rgba(201,162,39,0.15);--pin:#fb7185;--pinG:rgba(251,113,133,0.15);--fav:#f472b6;--favG:rgba(244,114,182,0.15);--green:#34d399;--nav-h:70px;--r:12px;}[data-theme="light"]{--black:#f7f5fb;--black2:#ffffff;--black3:#f0edf7;--black4:#ffffff;--black5:#ece7f6;--line:#e3ddf0;--line2:#d6cdec;--purple:#dc2626;--purple2:#dc2626;--purple3:#b91c1c;--purple4:#991b1b;--purpleG:rgba(220,38,38,0.08);--purpleGS:rgba(220,38,38,0.04);--text:#211c33;--text2:#5d5578;--text3:#8981a3;--gold:#a97e0a;--gold2:rgba(169,126,10,0.12);--pin:#e11d48;--pinG:rgba(225,29,72,0.1);--fav:#db2777;--favG:rgba(219,39,119,0.1);--green:#0d9668;}*{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent;}html,body{height:100%;height:-webkit-fill-available;overflow:hidden;background:var(--black);color:var(--text);font-family:'Outfit',sans-serif;-webkit-font-smoothing:antialiased;}#app{height:100dvh;min-height:-webkit-fill-available;display:flex;flex-direction:column;overflow-y:auto;-webkit-overflow-scrolling:touch;position:relative;scrollbar-width:thin;scrollbar-color:var(--line2) transparent;}.aurora{position:fixed;inset:0;pointer-events:none;z-index:0;overflow:hidden;}.orb{position:absolute;border-radius:50%;filter:blur(90px);animation:drift ease-in-out infinite alternate;}.orb1{width:400px;height:400px;top:-130px;left:-110px;background:radial-gradient(ellipse,rgba(220,38,38,0.13) 0%,transparent 70%);animation-duration:22s;}.orb2{width:280px;height:280px;bottom:-90px;right:-70px;background:radial-gradient(ellipse,rgba(239,68,68,0.07) 0%,transparent 70%);animation-duration:28s;animation-direction:alternate-reverse;}.orb3{width:220px;height:220px;top:38%;left:55%;background:radial-gradient(ellipse,rgba(248,113,113,0.05) 0%,transparent 70%);animation-duration:34s;}@keyframes drift{from{transform:translate(0,0) scale(1);}to{transform:translate(28px,18px) scale(1.07);}}.header{position:relative;z-index:5;display:flex;align-items:center;justify-content:space-between;padding:16px 16px 12px;}[data-theme="light"] .header,[data-theme="light"] .search-wrap,[data-theme="light"] .nav{background:rgba(247,245,251,0.93);}.logo{display:flex;align-items:center;gap:8px;font-family:'Playfair Display',serif;font-size:19px;font-weight:700;color:var(--text);user-select:none;cursor:default;}.logo-mark{width:28px;height:28px;background:var(--purple);border-radius:7px;display:flex;align-items:center;justify-content:center;color:#fff;box-shadow:0 0 14px rgba(220,38,38,0.45);transition:transform .3s;}.logo-mark:active{transform:rotate(20deg) scale(1.1);}.hdr-right{display:flex;align-items:center;gap:7px;}.hdr-btn{width:31px;height:31px;border-radius:50%;border:none;background:transparent;color:var(--text2);display:flex;align-items:center;justify-content:center;cursor:pointer;transition:all .18s;}.hdr-btn:active{transform:scale(.88);color:var(--purple3);}.streak-badge{display:flex;align-items:center;gap:4px;background:var(--purpleG);border:1px solid rgba(220,38,38,.3);border-radius:8px;padding:3px 8px;font-size:11px;font-weight:600;color:var(--purple3);cursor:pointer;}.search-wrap{position:relative;z-index:2;padding:16px 16px 12px;}.search-box{position:relative;}.search-input{width:100%;background:var(--black4);border:1px solid var(--line);border-radius:10px;padding:8px 13px 8px 36px;color:var(--text);font-size:16px;font-family:'Outfit',sans-serif;outline:none;transition:border-color .2s,box-shadow .2s;-webkit-appearance:none;}.search-input::placeholder{color:var(--text3);}.search-input:focus{border-color:var(--purple2);box-shadow:0 0 0 3px rgba(220,38,38,.1);}.s-icon{position:absolute;left:11px;top:50%;transform:translateY(-50%);color:var(--text3);pointer-events:none;}.cat-tabs{position:relative;z-index:10;display:flex;gap:5px;overflow-x:auto;scrollbar-width:none;}.cat-tabs::-webkit-scrollbar{display:none;}.cat-tabs-row{position:relative;z-index:2;display:flex;align-items:center;gap:7px;padding:2px 16px 22px;overflow-x:auto;overflow-y:hidden;scrollbar-width:none;isolation:isolate;}.cat-tabs-row::-webkit-scrollbar{display:none;}.cat-tabs-actions{display:flex;align-items:center;gap:6px;flex-shrink:0;}
+.cat-tab{flex-shrink:0;display:flex;align-items:center;gap:4px;padding:7px 14px;border-radius:10px;border:1px solid var(--line);background:transparent;color:var(--text3);font-size:12px;font-weight:600;font-family:'Outfit',sans-serif;cursor:pointer;transition:all .18s;white-space:nowrap;}.cat-tab.active{background:var(--black5);border-color:var(--purple);color:var(--purple3);}.cat-tab:active{transform:scale(.93);}.content{overflow-x:clip;position:relative;z-index:5;padding:8px 0 160px;}
+#heroSection{padding-top:8px;position:relative;z-index:6;}.content::-webkit-scrollbar{width:3px;}.content::-webkit-scrollbar-thumb{background:var(--line2);border-radius:3px;}.flat-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;padding:0 12px;}.home-sec{margin-bottom:4px;}.sec-header{display:flex;align-items:center;justify-content:space-between;padding:10px 14px 6px;}.sec-header-left{display:flex;align-items:center;gap:6px;}.sec-title{font-family:'Playfair Display',serif;font-size:17px;font-weight:700;color:var(--text);display:flex;align-items:center;gap:6px;}.sec-title svg{color:var(--purple3);opacity:.9;flex-shrink:0;}.sec-count-pill{align-self:baseline;font-size:11.5px;color:var(--text3);font-weight:600;}.sec-see-all{font-size:11px;color:var(--purple3);cursor:pointer;padding:3px 6px;border-radius:6px;transition:background .15s;}.sec-see-all:active{background:var(--purpleG);}.carousel-wrap{position:relative;}.carousel-arrow{display:none;position:absolute;top:35%;z-index:10;width:28px;height:28px;border-radius:50%;background:rgba(20,20,31,0.92);border:1px solid var(--line2);color:var(--text2);align-items:center;justify-content:center;cursor:pointer;backdrop-filter:blur(6px);transition:all .18s;box-shadow:0 2px 8px rgba(0,0,0,.5);}.carousel-arrow:active{background:var(--purpleG);color:var(--purple3);}.carousel-arrow.left{left:4px;}.carousel-arrow.right{right:4px;}.carousel{display:flex;gap:10px;padding:0 16px 14px;overflow-x:auto;scrollbar-width:none;-webkit-overflow-scrolling:touch;scroll-snap-type:x proximity;scroll-padding-left:16px;}
+.hero-rail{display:flex;overflow-x:auto;overflow-y:hidden;scroll-snap-type:x mandatory;scrollbar-width:none;-webkit-overflow-scrolling:touch;margin:0 16px;border-radius:18px;isolation:isolate;}
+.hero-rail::-webkit-scrollbar{display:none;}
+.hero-slide{flex:0 0 100%;scroll-snap-align:start;position:relative;height:440px;overflow:hidden;cursor:pointer;border-radius:18px;box-shadow:inset 0 0 0 1px rgba(255,255,255,.08);}
+.hero-bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 22%;filter:brightness(.55) saturate(.75);}
+.hero-bg-ph{position:absolute;inset:0;background:linear-gradient(160deg,var(--black3),var(--black5));}
+.hero-glow{position:absolute;left:-20%;bottom:-30%;width:75%;aspect-ratio:1;background:radial-gradient(ellipse,rgba(220,38,38,.35),transparent 70%);pointer-events:none;filter:blur(6px);}
+.hero-scrim{position:absolute;inset:0;background:linear-gradient(to bottom,rgba(5,5,7,0) 0%,rgba(5,5,7,.05) 40%,rgba(5,5,7,.92) 100%);}
+.hero-content{position:absolute;left:18px;right:18px;bottom:20px;}
+.hero-eyebrow{display:flex;align-items:center;gap:6px;font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--green);margin-bottom:9px;}
+.hero-eyebrow.fav{color:var(--fav);}
+.hero-title{font-family:'Playfair Display',serif;font-weight:700;font-size:26px;color:#fff;line-height:1.08;text-shadow:0 2px 16px rgba(0,0,0,.6);margin-bottom:9px;}
+.hero-meta{font-size:12.5px;color:rgba(255,255,255,.72);margin-bottom:12px;}
+.hero-progress{height:3px;background:rgba(255,255,255,.18);border-radius:3px;overflow:hidden;margin-bottom:14px;}
+.hero-actions{display:flex;align-items:center;gap:8px;margin-top:0;}
+.hero-cta{flex:1;display:flex;align-items:center;justify-content:center;gap:7px;height:38px;border-radius:12px;background:#fff;color:#141419;font-size:13.5px;font-weight:700;padding:11px 18px;}
+.hero-info-btn{width:40px;height:40px;flex-shrink:0;border-radius:12px;background:rgba(255,255,255,.1);backdrop-filter:blur(10px) saturate(1.4);-webkit-backdrop-filter:blur(10px) saturate(1.4);border:1px solid rgba(255,255,255,.22);display:flex;align-items:center;justify-content:center;color:#fff;}
+.hero-progress-fill{height:100%;background:linear-gradient(90deg,var(--purple),var(--purple3));}
+.hero-dots{display:flex;gap:4px;justify-content:center;padding:9px 0 2px;}
+.hero-dot{width:5px;height:5px;border-radius:50%;background:var(--line2);transition:width .25s,border-radius .25s;position:relative;overflow:hidden;}
+.hero-dot.active{background:rgba(255,255,255,.22);width:16px;border-radius:3px;}
+.hero-dot-fill{position:absolute;inset:0;width:0%;background:var(--purple3);border-radius:inherit;}
+.logo-divider{color:var(--text3);opacity:.4;font-weight:400;font-size:14px;}
+.logo-sub{font-family:'Outfit',sans-serif;font-size:12.5px;font-weight:500;color:var(--text3);margin-left:1px;}
+.list-tabs{display:flex;gap:6px;overflow-x:auto;padding:14px 16px 4px;scrollbar-width:none;}
+.list-tabs::-webkit-scrollbar{display:none;}
+.list-tab-n{font-size:9px;opacity:.7;background:rgba(255,255,255,.12);border-radius:8px;padding:1px 5px;}
+.list-rows{padding:14px 16px 6px;display:flex;flex-direction:column;gap:10px;}
+.lrow-content{display:flex;gap:11px;align-items:center;background:var(--black4);border:1px solid rgba(255,255,255,.1);border-radius:14px;padding:9px;box-shadow:inset 0 1px 1px rgba(255,255,255,.25);transform:translateX(-104px);width:100%;}
+.more-wrap{position:relative;}
+.more-menu{position:absolute;top:calc(100% + 8px);right:0;width:200px;background:var(--black4);border:1px solid var(--line2);border-radius:14px;padding:6px;box-shadow:0 14px 34px rgba(0,0,0,.5);z-index:30;display:none;}
+.more-menu.open{display:block;}
+.more-item{display:flex;align-items:center;gap:10px;padding:10px 10px;border-radius:9px;color:var(--text);font-size:12.5px;font-weight:500;cursor:pointer;}
+.more-item:active{background:var(--black5);}
+.subpage-topbar{display:flex;align-items:center;justify-content:space-between;padding:14px 16px;position:relative;z-index:5;}
+.subpage-topbar-title{font-family:'Playfair Display',serif;font-size:15px;font-weight:700;color:var(--text);}
+.fteam-body{padding:18px 16px 4px;}
+.stat-card-wrap{background:var(--black4);border:1px solid rgba(255,255,255,.1);border-radius:16px;padding:16px;margin-bottom:18px;box-shadow:inset 0 1px 1px rgba(255,255,255,.16);}
+.fteam-row{display:flex;align-items:center;gap:13px;padding:11px 0;border-bottom:1px solid rgba(255,255,255,.06);cursor:pointer;}
+.fteam-row:last-child{border-bottom:none;}
+.fteam-logo-wrap{position:relative;width:46px;height:46px;flex-shrink:0;}
+.fteam-logo{width:46px;height:46px;border-radius:14px;background:rgba(220,38,38,.16);display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:800;color:var(--purple3);overflow:hidden;}
+.fteam-logo img{width:100%;height:100%;object-fit:cover;}
+.fteam-upload-badge{position:absolute;bottom:-3px;right:-3px;width:19px;height:19px;border-radius:50%;background:var(--purple);border:2px solid var(--black3);display:flex;align-items:center;justify-content:center;color:#fff;}
+.fteam-name{flex:1;font-size:13px;font-weight:700;color:var(--text);min-width:0;}
+.fteam-n{font-size:10px;font-weight:700;color:var(--text3);margin-top:2px;}
+.fteam-add-btn{display:flex;align-items:center;justify-content:center;gap:8px;padding:13px;border-radius:15px;background:var(--black4);border:1.5px dashed rgba(220,38,38,.32);color:var(--purple3);font-size:12.5px;font-weight:700;margin-top:6px;cursor:pointer;}
+.overlay-fullpage{align-items:stretch;background:var(--black);}
+.sheet-fullpage{max-width:none;width:100%;height:100dvh;max-height:100dvh;margin:0;border-radius:0;display:flex;flex-direction:column;}
+.sheet-fullpage>.form-body{flex:1;overflow-y:auto;}
+.fullpage-header{display:flex;align-items:center;justify-content:space-between;padding:14px 16px;flex-shrink:0;border-bottom:1px solid var(--line);}
+.fullpage-header-title{font-family:'Playfair Display',serif;font-size:15px;font-weight:700;color:var(--text);}
+.detail-hero{position:relative;padding:0 0 20px;background:var(--black);overflow:hidden;}
+.detail-topbar{position:relative;z-index:1;display:flex;justify-content:space-between;align-items:center;padding:calc(env(safe-area-inset-top,0px) + 12px) 16px 0;}
+.detail-iconbtn{width:34px;height:34px;border-radius:50%;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.12);display:flex;align-items:center;justify-content:center;color:var(--text2);flex-shrink:0;}
+.detail-cover-hero{position:relative;z-index:1;display:flex;gap:16px;align-items:flex-end;padding:18px 18px 0;margin-top:10px;}
+.detail-cover{width:108px;aspect-ratio:2/3;border-radius:14px;flex-shrink:0;background:var(--black5);border:1px solid rgba(248,113,113,.25);display:flex;align-items:center;justify-content:center;color:rgba(255,255,255,.3);box-shadow:0 16px 34px rgba(0,0,0,.55),0 0 0 4px rgba(220,38,38,.08);overflow:hidden;}
+.detail-cover img{width:100%;height:100%;object-fit:cover;}
+.detail-badge{display:inline-flex;align-items:center;gap:4px;padding:3px 9px;border-radius:8px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);font-size:9.5px;font-weight:700;color:var(--text2);}
+.detail-original{font-size:16.5px;color:var(--text2);font-style:italic;margin-top:5px;}
+.detail-meta-row{display:flex;gap:6px;margin-top:12px;flex-wrap:wrap;}
+.detail-meta-chip{display:inline-flex;align-items:center;gap:5px;padding:4px 10px;border-radius:8px;background:rgba(220,38,38,.14);border:1px solid rgba(220,38,38,.28);font-size:10.5px;font-weight:700;color:var(--purple3);}
+.detail-body{padding:18px 16px 4px;}
+.detail-read-btn{display:flex;align-items:center;justify-content:center;gap:8px;height:50px;border-radius:16px;background:linear-gradient(135deg,#9370f5,#dc2626);color:#fff;font-size:15px;font-weight:700;box-shadow:0 12px 28px rgba(220,38,38,.4),inset 0 1px 0 rgba(255,255,255,.25);margin-bottom:14px;cursor:pointer;}
+.detail-read-btn-empty{background:var(--black4);color:var(--text2);box-shadow:none;border:1px dashed var(--line2);}
+.detail-progress-title{display:flex;justify-content:space-between;align-items:baseline;font-size:12px;font-weight:700;color:var(--text2);margin-bottom:10px;}
+.detail-action-row{display:grid;grid-template-columns:repeat(3,1fr);gap:9px;margin-bottom:18px;}
+.detail-action-btn{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;padding:13px 4px;border-radius:15px;background:var(--black4);border:1px solid rgba(255,255,255,.1);color:var(--text2);box-shadow:inset 0 1px 1px rgba(255,255,255,.1);cursor:pointer;}
+.detail-action-btn span{font-size:10.5px;font-weight:700;}
+.detail-action-btn.active{background:rgba(236,72,153,.14);border-color:rgba(236,72,153,.35);color:#f472b6;}
+.detail-action-btn.pinned{background:rgba(220,38,38,.14);border-color:rgba(220,38,38,.32);color:var(--purple3);}
+.detail-title{font-family:'Playfair Display',serif;font-size:32px;font-weight:700;color:var(--text);line-height:1.08;}
+.detail-badges-row{display:flex;gap:6px;margin-bottom:8px;}.carousel::-webkit-scrollbar{display:none;}.series-card{flex:0 0 calc((100% - 20px)/3);scroll-snap-align:start;background:var(--black4);border:2px solid rgba(255,255,255,.16);border-radius:16px;overflow:hidden;cursor:pointer;transition:border-color .2s,transform .18s;animation:cardIn .3s cubic-bezier(.34,1.4,.64,1) both;position:relative;backdrop-filter:blur(16px) saturate(1.8);-webkit-backdrop-filter:blur(16px) saturate(1.8);box-shadow:inset 0 1px 1px rgba(255,255,255,.45),inset 0 -1px 1px rgba(255,255,255,.45),0 12px 26px rgba(0,0,0,.32);}[data-theme="light"] .series-card{border-color:rgba(220,38,38,.14);box-shadow:0 8px 20px rgba(80,60,140,.1);}@keyframes cardIn{from{opacity:0;transform:translateY(8px) scale(.93)}to{opacity:1;transform:translateY(0) scale(1)}}.series-card:active{transform:scale(.94);}.series-card.favorited{border-width:1px;border-color:var(--fav);}.series-card.drag-over{outline:2px dashed var(--purple2);outline-offset:2px;transform:scale(1.03);}.card-cover-wrap{position:relative;}.card-cover{width:100%;aspect-ratio:2/3;object-fit:cover;display:block;background:var(--black3);image-rendering:auto;}.card-cover-ph{width:100%;aspect-ratio:2/3;background:linear-gradient(160deg,var(--black3),var(--black5));display:flex;align-items:center;justify-content:center;color:var(--text3);}.cover-letter{font-family:'Playfair Display',serif;font-weight:700;font-size:38px;color:rgba(255,255,255,.55);text-shadow:0 2px 12px rgba(0,0,0,.3);}[data-theme="light"] .cover-letter{color:rgba(0,0,0,.32);}.card-overlay-badges{position:absolute;top:6px;left:6px;right:6px;display:flex;justify-content:space-between;align-items:flex-start;pointer-events:none;}
+.stale-badge{position:absolute;top:6px;left:6px;display:flex;align-items:center;gap:3px;background:rgba(5,5,7,.75);backdrop-filter:blur(4px);border-radius:5px;padding:2px 6px;font-size:8px;font-weight:600;color:var(--text2);}.pin-badge{background:var(--pin);border-radius:5px;width:18px;height:18px;display:flex;align-items:center;justify-content:center;color:#fff;box-shadow:0 2px 6px rgba(0,0,0,.4);}.fav-badge{background:var(--fav);border-radius:5px;width:18px;height:18px;display:flex;align-items:center;justify-content:center;color:#fff;box-shadow:0 2px 6px rgba(0,0,0,.4);}.card-quick-btn{position:absolute;bottom:0;right:0;width:32px;height:32px;border-radius:10px 0 0 0;background:rgba(9,9,14,0.88);border-top:1px solid var(--line2);border-left:1px solid var(--line2);color:var(--text2);display:flex;align-items:center;justify-content:center;cursor:pointer;z-index:5;backdrop-filter:blur(4px);transition:all .15s;}.card-quick-btn:active{background:var(--purpleG);color:var(--purple3);}.card-progress{position:absolute;left:0;right:0;bottom:0;height:2.5px;background:rgba(0,0,0,.5);}.card-progress-fill{height:100%;background:linear-gradient(90deg,var(--purple),var(--purple3));}.card-body{padding:8px 9px 9px;}.card-cat-badge{display:inline-flex;align-items:center;gap:3px;padding:2.5px 6px;border-radius:5px;font-size:8px;font-weight:700;margin-bottom:5px;}.card-title{font-size:10.5px;font-weight:600;color:var(--text);line-height:1.28;margin-bottom:3px;display:-webkit-box;-webkit-line-clamp:1;-webkit-box-orient:vertical;overflow:hidden;}.card-ch{display:flex;align-items:center;gap:3px;font-size:9px;color:var(--text2);font-weight:500;}.b-reading{background:rgba(220,38,38,.18);color:#f87171;}.b-current{background:rgba(52,211,153,.15);color:#34d399;}.b-current-en{background:rgba(56,189,248,.15);color:#38bdf8;}.b-current-both{background:rgba(248,113,113,.18);color:#f87171;}.b-stockpile{background:rgba(251,191,36,.13);color:#f59e0b;}.b-paused{background:rgba(100,116,139,.18);color:#94a3b8;}.b-dropped{background:rgba(239,68,68,.14);color:#f87171;}.b-completed{background:rgba(59,130,246,.15);color:#60a5fa;}.b-planned{background:rgba(236,72,153,.13);color:#f472b6;}.b-season{background:rgba(248,113,113,.14);color:#fca5a5;}:root{--nav-h:0px;}
+.radial-trigger{position:fixed;bottom:calc(24px + env(safe-area-inset-bottom,0px));left:50%;transform:translateX(-50%);width:56px;height:56px;border-radius:50%;background:linear-gradient(155deg,var(--purple2),var(--purple));box-shadow:0 0 22px rgba(220,38,38,.5),0 4px 18px rgba(0,0,0,.65);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;cursor:pointer;z-index:300;transition:box-shadow .25s;border:2px solid rgba(248,113,113,.3);-webkit-user-select:none;user-select:none;touch-action:none;}
+.radial-trigger.open{box-shadow:0 0 30px rgba(220,38,38,.7),0 4px 22px rgba(0,0,0,.7);}
+.radial-trigger .bar{width:22px;height:2px;background:#fff;border-radius:2px;transition:all .28s cubic-bezier(.4,0,.2,1);transform-origin:center;}
+.radial-trigger.open .bar:nth-child(1){transform:translateY(6px) rotate(45deg);}
+.radial-trigger.open .bar:nth-child(2){opacity:0;transform:scaleX(0);}
+.radial-trigger.open .bar:nth-child(3){transform:translateY(-6px) rotate(-45deg);}
+.radial-backdrop{position:fixed;inset:0;z-index:290;display:none;background:rgba(0,0,0,0);transition:background .25s;}
+.radial-backdrop.open{display:block;background:rgba(0,0,0,.4);}
+.radial-item{position:fixed;display:flex;flex-direction:column;align-items:center;gap:4px;opacity:0;transform:translate(-50%,-27px) scale(0.2);transition:opacity .2s,transform .2s cubic-bezier(.34,1.4,.64,1);pointer-events:none;z-index:295;-webkit-user-select:none;user-select:none;}
+.radial-item.open{opacity:1;transform:translate(-50%,-27px) scale(1);pointer-events:auto;}
+.radial-btn{width:54px;height:54px;border-radius:50%;background:rgba(14,14,22,0.88);backdrop-filter:blur(20px) saturate(1.4);-webkit-backdrop-filter:blur(20px) saturate(1.4);border:1px solid rgba(248,113,113,.25);box-shadow:0 6px 24px rgba(0,0,0,.55),inset 0 1px 0 rgba(255,255,255,.1);display:flex;align-items:center;justify-content:center;color:var(--text2);transition:all .18s;}.radial-btn:active{transform:scale(.88);}.radial-btn.active-page{border-color:rgba(220,38,38,.7);background:rgba(220,38,38,.22);color:var(--purple3);}.radial-btn.hovered{transform:scale(1.18);background:rgba(220,38,38,.28);border-color:rgba(248,113,113,.6);color:var(--purple3);box-shadow:0 0 20px rgba(220,38,38,.45),0 6px 24px rgba(0,0,0,.55);}.radial-label{font-size:10px;font-weight:600;color:#fff;text-shadow:0 1px 6px rgba(0,0,0,.9);letter-spacing:.3px;white-space:nowrap;background:rgba(0,0,0,.55);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);padding:3px 9px;border-radius:6px;transition:all .18s;}.radial-item.hovered .radial-label{background:rgba(220,38,38,.5);}
+.radial-item:nth-child(1).open{transition-delay:.00s;}
+.radial-item:nth-child(2).open{transition-delay:.04s;}
+.radial-item:nth-child(3).open{transition-delay:.08s;}
+.radial-item:nth-child(4).open{transition-delay:.12s;}
+.radial-item:nth-child(5).open{transition-delay:.16s;}.overlay{position:fixed;inset:0;background:rgba(0,0,0,.72);z-index:200;display:flex;align-items:flex-end;animation:fadeIn .18s ease;}@keyframes fadeIn{from{opacity:0}to{opacity:1}}.overlay.hidden{display:none;}.sheet{width:100%;max-height:93dvh;background:var(--black2);border-radius:20px 20px 0 0;border-top:1px solid var(--line2);overflow-y:auto;animation:slideUp .28s cubic-bezier(.32,.94,.6,1);padding-bottom:env(safe-area-inset-bottom,40px);scrollbar-width:thin;scrollbar-color:var(--line) transparent;}@keyframes slideUp{from{transform:translateY(100%)}to{transform:translateY(0)}}.sheet-handle{width:34px;height:3px;background:var(--line2);border-radius:2px;margin:10px auto 0;}.sheet-header{display:flex;align-items:center;justify-content:space-between;padding:13px 17px 11px;border-bottom:1px solid var(--line);}.sheet-title{font-family:'Playfair Display',serif;font-size:15px;font-weight:700;color:var(--text);}.notif-forecast-btn{display:flex;align-items:center;justify-content:center;gap:7px;padding:11px;border-radius:13px;background:var(--black4);border:1px solid rgba(255,255,255,.1);color:var(--text2);font-size:12px;font-weight:700;margin-bottom:20px;cursor:pointer;}.notif-sec{margin-bottom:18px;}.notif-sec-title{font-size:10px;font-weight:700;color:var(--text3);text-transform:uppercase;letter-spacing:.5px;margin-bottom:9px;display:flex;align-items:center;gap:6px;}.notif-item{display:flex;align-items:center;gap:11px;padding:9px 10px;border-radius:13px;background:rgba(255,255,255,.03);margin-bottom:5px;cursor:pointer;}[data-theme="light"] .notif-item{background:rgba(0,0,0,.025);}.notif-cov{width:36px;height:50px;border-radius:8px;background:var(--black5);border:1px solid rgba(255,255,255,.08);flex-shrink:0;object-fit:cover;display:flex;align-items:center;justify-content:center;color:rgba(255,255,255,.25);}.notif-name{flex:1;font-size:12.5px;font-weight:600;color:var(--text);overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}.notif-item-badge{font-size:10px;font-weight:700;color:var(--purple3);background:rgba(220,38,38,.14);border-radius:7px;padding:3px 8px;flex-shrink:0;}.forecast-day{margin-bottom:16px;padding-bottom:16px;border-bottom:1px solid rgba(255,255,255,.07);}.forecast-day:last-child{margin-bottom:0;padding-bottom:0;border-bottom:none;}.forecast-day-head{display:flex;align-items:baseline;gap:8px;margin-bottom:10px;}.forecast-day-label{font-family:'Playfair Display',serif;font-size:14px;font-weight:700;color:var(--text);}.forecast-day-label.today{color:var(--purple3);}.forecast-day-date{font-size:10.5px;color:var(--text3);}.forecast-row{display:flex;align-items:center;gap:10px;padding:6px 0;cursor:pointer;}.forecast-cov{width:30px;height:42px;border-radius:7px;background:var(--black5);border:1px solid rgba(255,255,255,.08);flex-shrink:0;object-fit:cover;display:flex;align-items:center;justify-content:center;color:rgba(255,255,255,.25);}.forecast-name{flex:1;font-size:12px;font-weight:600;color:var(--text);overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}.forecast-badge{font-size:9px;font-weight:700;color:var(--purple3);background:rgba(220,38,38,.14);border-radius:6px;padding:2px 7px;flex-shrink:0;}.forecast-badge.green{color:#34d399;background:rgba(52,211,153,.14);}
+#notifOverlay,#forecastOverlay{background:rgba(5,5,7,.55);}
+.sheet-panel{position:fixed;left:14px;right:14px;top:66px;z-index:301;background:var(--black3);border-radius:20px;border:1px solid rgba(255,255,255,.1);max-height:68vh;display:flex;flex-direction:column;box-shadow:0 26px 60px rgba(0,0,0,.55),inset 0 1px 1px rgba(255,255,255,.08);overflow:hidden;}
+.sheet-panel::after{content:'';position:absolute;top:-7px;right:38px;width:14px;height:14px;background:var(--black3);border-left:1px solid rgba(255,255,255,.1);border-top:1px solid rgba(255,255,255,.1);border-radius:3px 0 0 0;transform:rotate(45deg);}
+.sheet-panel-header{position:relative;display:flex;align-items:center;justify-content:space-between;padding:16px 18px 13px;border-bottom:1px solid rgba(255,255,255,.07);flex-shrink:0;overflow:hidden;}
+.sheet-panel-header::before{content:'';position:absolute;top:-38px;left:30%;width:210px;height:110px;background:radial-gradient(ellipse,rgba(220,38,38,.48),transparent 72%);pointer-events:none;}
+.sheet-panel-title{position:relative;z-index:1;font-family:'Playfair Display',serif;font-size:16.5px;font-weight:700;color:var(--text);display:flex;align-items:center;gap:8px;}
+.sheet-panel-title svg{color:var(--purple3);}
+.sheet-panel-body{padding:15px 14px 20px;overflow-y:auto;}
+.fmeta-modal{width:100%;max-width:280px;background:var(--black4);border:1px solid rgba(255,255,255,.12);border-radius:22px;padding:20px;box-shadow:0 30px 80px rgba(0,0,0,.65),inset 0 1px 1px rgba(255,255,255,.1);position:relative;margin:auto;max-height:88vh;overflow-y:auto;}
+.fmeta-close{position:absolute;top:14px;right:14px;width:26px;height:26px;border-radius:50%;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.1);display:flex;align-items:center;justify-content:center;color:rgba(255,255,255,.65);cursor:pointer;}
+.fmeta-sub{font-size:10.5px;color:var(--text3);margin-top:2px;text-align:center;}
+.genre-filter-clear{display:flex;align-items:center;justify-content:center;gap:7px;padding:11px;border-radius:14px;background:var(--black5);border:1px solid rgba(255,255,255,.1);color:var(--text2);font-size:12px;font-weight:700;margin-top:18px;cursor:pointer;}
+.fmeta-head{text-align:center;margin-bottom:18px;}
+.fmeta-logo-preview{width:52px;height:52px;border-radius:16px;background:rgba(220,38,38,.16);display:flex;align-items:center;justify-content:center;font-size:15px;font-weight:800;color:var(--purple3);margin:0 auto 10px;overflow:hidden;}
+.fmeta-logo-preview img{width:100%;height:100%;object-fit:cover;}
+.backup-card{background:var(--black5);border:1px solid rgba(255,255,255,.1);border-radius:14px;padding:14px;margin-bottom:12px;}
+.backup-card-title{font-size:12px;font-weight:700;color:var(--text2);display:flex;align-items:center;gap:7px;margin-bottom:8px;}
+.backup-card-desc{font-size:11px;color:var(--text3);line-height:1.6;margin-bottom:11px;}
+.backup-btn{display:flex;align-items:center;justify-content:center;gap:7px;padding:11px;border-radius:12px;font-size:12px;font-weight:700;cursor:pointer;border:none;width:100%;font-family:'Outfit',sans-serif;}
+.backup-btn.primary{background:linear-gradient(135deg,#9370f5,#dc2626);color:#fff;box-shadow:0 8px 20px rgba(220,38,38,.35);}
+.backup-btn.secondary{background:var(--black4);border:1px solid var(--line2);color:var(--text2);}
+.backup-banner{display:flex;align-items:flex-start;gap:10px;background:rgba(220,38,38,.1);border:1px solid rgba(220,38,38,.25);border-radius:14px;padding:12px 14px;margin-bottom:16px;}
+.backup-banner.stale{background:rgba(239,68,68,.08);border-color:rgba(239,68,68,.25);}
+.backup-banner-title{font-size:12px;font-weight:700;color:var(--purple3);}
+.backup-banner.stale .backup-banner-title{color:#f87171;}
+.backup-banner-sub{font-size:10.5px;color:var(--text3);margin-top:3px;line-height:1.5;}
+.fmeta-title{font-family:'Playfair Display',serif;font-size:16.5px;font-weight:700;color:var(--text);}
+#profileOverlay,#genreFilterOverlay,#fansubMetaOverlay,#backupOverlay{background:rgba(5,5,7,.55);}.close-btn{width:28px;height:28px;border-radius:7px;background:var(--black4);border:1px solid var(--line);color:var(--text2);cursor:pointer;display:flex;align-items:center;justify-content:center;}.form-body{padding:13px 16px;display:flex;flex-direction:column;gap:13px;}.form-label{font-size:9.5px;font-weight:600;color:var(--text3);text-transform:uppercase;letter-spacing:.9px;margin-bottom:4px;display:block;}.form-input,.form-select,.form-textarea{width:100%;background:var(--black4);border:1px solid var(--line);border-radius:9px;padding:9px 12px;color:var(--text);font-size:16px;font-family:'Outfit',sans-serif;outline:none;transition:border-color .18s,box-shadow .18s;-webkit-appearance:none;}.form-input::placeholder,.form-textarea::placeholder{color:var(--text3);}.form-input:focus,.form-select:focus,.form-textarea:focus{border-color:var(--purple2);box-shadow:0 0 0 3px rgba(220,38,38,.1);}.form-select option{background:var(--black2);color:var(--text);}.form-textarea{resize:none;height:68px;}.form-row{display:grid;grid-template-columns:1fr 1fr;gap:9px;}.cover-preview{width:74px;aspect-ratio:2/3;border-radius:9px;object-fit:cover;border:1px solid var(--line2);background:var(--black3);}.cover-preview-ph{width:74px;aspect-ratio:2/3;border-radius:9px;border:1px dashed var(--line2);background:var(--black3);display:flex;align-items:center;justify-content:center;color:var(--text3);}.cover-row{display:flex;gap:11px;align-items:flex-start;}.cover-inputs{flex:1;display:flex;flex-direction:column;gap:6px;}.file-btn{display:flex;align-items:center;gap:6px;background:var(--black4);border:1px dashed var(--line2);border-radius:8px;padding:7px 11px;color:var(--text3);font-size:11.5px;cursor:pointer;transition:border-color .18s,color .18s;}.file-btn:hover{border-color:var(--purple2);color:var(--purple3);}input[type="file"]{display:none;}.btn-primary{width:100%;padding:12px;border-radius:11px;background:var(--purple);border:none;color:#fff;font-size:13px;font-weight:600;font-family:'Outfit',sans-serif;cursor:pointer;box-shadow:0 4px 16px rgba(220,38,38,.3);transition:transform .15s,opacity .15s;margin-top:2px;display:flex;align-items:center;justify-content:center;gap:7px;}.btn-primary:active{transform:scale(.97);opacity:.9;}.btn-ghost{width:100%;padding:10px;border-radius:11px;background:var(--black5);border:1px solid var(--line2);color:var(--text2);font-size:13px;font-weight:600;font-family:'Outfit',sans-serif;cursor:pointer;margin-top:2px;display:flex;align-items:center;justify-content:center;gap:6px;transition:all .18s;}.btn-ghost:active{background:var(--purpleG);color:var(--purple3);}.btn-danger{width:100%;padding:10px;border-radius:11px;background:rgba(239,68,68,.1);border:1px solid rgba(239,68,68,.3);color:#f87171;font-size:13px;font-weight:600;font-family:'Outfit',sans-serif;cursor:pointer;margin-top:2px;display:flex;align-items:center;justify-content:center;gap:6px;transition:background .18s;}.btn-danger:active{background:rgba(239,68,68,.2);}.btn-row{display:grid;grid-template-columns:1fr 1fr;gap:7px;}.btn-secondary{padding:9px;border-radius:9px;background:var(--black5);border:1px solid var(--line2);color:var(--text2);font-size:12px;font-weight:600;font-family:'Outfit',sans-serif;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:5px;transition:all .18s;}.btn-secondary.fav-active{background:var(--favG);border-color:var(--fav);color:var(--fav);}.btn-secondary.pin-active{background:var(--pinG);border-color:var(--pin);color:var(--pin);}.btn-secondary:active{transform:scale(.95);}.alt-tags-wrap{display:flex;flex-wrap:wrap;gap:5px;}.alt-tag{display:inline-flex;align-items:center;gap:4px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);border-radius:8px;padding:4px 9px;font-size:10.5px;font-weight:600;color:var(--text2);}.alt-tag button{background:none;border:none;color:var(--text3);cursor:pointer;font-size:12px;line-height:1;}.fansub-tag{display:inline-flex;align-items:center;gap:4px;background:var(--purpleG);border:1px solid rgba(220,38,38,.3);border-radius:6px;padding:3px 8px;font-size:11px;color:var(--purple3);}.fansub-tag button{background:none;border:none;color:var(--purple3);cursor:pointer;font-size:12px;line-height:1;opacity:.7;}.fansub-card-row{display:flex;flex-wrap:wrap;gap:8px;}.fansub-card{display:flex;align-items:center;gap:9px;background:var(--black4);border:1px solid var(--line);border-radius:11px;padding:6px 13px 6px 6px;text-decoration:none;cursor:pointer;transition:background .15s,border-color .15s;}.fansub-card:active{background:var(--purpleG);border-color:var(--purple2);}.fansub-card-logo{width:30px;height:30px;border-radius:8px;object-fit:cover;flex-shrink:0;}.fansub-card-logo-ph{width:30px;height:30px;border-radius:8px;background:var(--purpleG);display:flex;align-items:center;justify-content:center;color:var(--purple3);flex-shrink:0;}.fansub-card-name{font-size:12px;font-weight:600;color:var(--text);}.add-row{display:flex;gap:6px;}.add-row .form-input{flex:1;}.add-icon-btn{width:36px;height:36px;border-radius:9px;background:var(--black5);border:1px solid var(--line2);color:var(--purple3);display:flex;align-items:center;justify-content:center;cursor:pointer;flex-shrink:0;}.autocomplete-dropdown{position:absolute;top:calc(100% + 4px);left:0;right:42px;background:var(--black4);border:1px solid var(--line2);border-radius:9px;box-shadow:0 8px 24px rgba(0,0,0,.5);z-index:20;max-height:160px;overflow-y:auto;}.autocomplete-dropdown.hidden{display:none;}.autocomplete-item{padding:9px 12px;font-size:12.5px;color:var(--text2);cursor:pointer;display:flex;align-items:center;gap:7px;transition:background .12s;}.autocomplete-item:hover,.autocomplete-item.active{background:var(--purpleG);color:var(--purple3);}.autocomplete-item:not(:last-child){border-bottom:1px solid var(--line);}.detail-page-backbtn{display:flex;align-items:center;gap:5px;padding:12px 16px;font-size:13px;font-weight:600;color:var(--text2);cursor:pointer;width:fit-content;transition:color .15s;}.detail-page-backbtn:hover{color:var(--purple3);}.detail-cover-wrap{position:relative;width:100%;height:290px;overflow:hidden;}.detail-cover-bg{position:absolute;inset:0;background-size:cover;background-position:center 25%;filter:brightness(.5) saturate(.55);transform:scale(1.03);}.detail-cover-gradient{position:absolute;inset:0;background:linear-gradient(to bottom,rgba(5,5,7,0) 0%,rgba(5,5,7,0.15) 35%,rgba(5,5,7,0.82) 70%,rgba(5,5,7,1) 100%);}.detail-cover-img{position:absolute;right:14px;bottom:0;width:105px;border-radius:11px 11px 0 0;box-shadow:-6px 0 30px rgba(0,0,0,.8),0 0 0 1px rgba(255,255,255,.06);object-fit:cover;aspect-ratio:2/3;cursor:zoom-in;}.detail-cover-ph{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);color:var(--text3);}.detail-cover-info{position:absolute;bottom:14px;left:16px;right:130px;}.detail-cover-title{font-family:'Playfair Display',serif;font-size:20px;font-weight:700;color:#fff;line-height:1.2;margin-bottom:8px;text-shadow:0 2px 12px rgba(0,0,0,.9);}.detail-cover-meta{display:flex;flex-wrap:wrap;gap:5px;align-items:center;}.detail-badges-row{display:flex;gap:6px;margin-bottom:8px;}.detail-pill{display:flex;align-items:center;gap:3px;padding:3px 8px;border-radius:20px;font-size:9.5px;font-weight:600;backdrop-filter:blur(8px);}.detail-body{padding:18px 16px 4px;}.detail-title{font-family:'Playfair Display',serif;font-size:32px;font-weight:700;color:var(--text);line-height:1.08;}.countdown-box{display:flex;align-items:center;justify-content:space-between;}.countdown-label{font-size:9.5px;color:var(--text3);font-weight:700;text-transform:uppercase;letter-spacing:.7px;}.countdown-days{font-size:32px;font-weight:700;color:var(--text);font-family:'Playfair Display',serif;line-height:1;margin-top:4px;}.countdown-sub{font-size:10.5px;color:var(--text3);margin-top:4px;}.countdown-icon{width:46px;height:46px;border-radius:50%;background:rgba(220,38,38,.14);display:flex;align-items:center;justify-content:center;color:var(--purple3);flex-shrink:0;}.detail-sec-title{font-size:9.5px;font-weight:700;color:var(--text3);text-transform:uppercase;letter-spacing:.9px;margin-bottom:6px;display:flex;align-items:center;gap:5px;}.detail-sec-title::after{content:'';flex:1;height:1px;background:var(--line);}.chapter-box{background:var(--black4);border:1px solid var(--line);border-radius:10px;padding:11px;display:flex;flex-direction:column;gap:8px;}.chapter-row{display:flex;align-items:center;justify-content:space-between;}.chapter-lang{font-size:11px;color:var(--text2);display:flex;align-items:center;gap:5px;}.chapter-num{font-size:16px;font-weight:700;color:var(--purple3);font-family:'Playfair Display',serif;}.old-covers-row{display:flex;gap:7px;overflow-x:auto;padding-bottom:4px;}.old-covers-row::-webkit-scrollbar{display:none;}.old-cover-thumb{flex-shrink:0;width:60px;height:84px;border-radius:7px;object-fit:cover;border:1px solid var(--line);}.note-box{background:var(--black4);border:1px solid var(--line);border-left:3px solid var(--purple);border-radius:0 8px 8px 0;padding:9px 12px;font-size:12px;color:var(--text2);font-style:italic;line-height:1.6;}.opinion-box{border-left-color:var(--gold);}.detail-action-row{display:grid;grid-template-columns:repeat(3,1fr);gap:9px;margin-bottom:18px;}.action-chip{display:flex;align-items:center;justify-content:center;gap:5px;padding:10px;border-radius:9px;font-size:12px;font-weight:600;font-family:'Outfit',sans-serif;cursor:pointer;border:1px solid var(--line2);background:var(--black4);color:var(--text2);transition:all .18s;}.action-chip:active{transform:scale(.95);}.chip-pin{border-color:var(--pin);background:var(--pinG);color:var(--pin);}.chip-fav{border-color:var(--fav);background:var(--favG);color:var(--fav);}.quick-sheet{width:100%;background:var(--black2);border-radius:20px 20px 0 0;border-top:1px solid var(--line2);padding:0 0 env(safe-area-inset-bottom,16px);animation:slideUp .25s cubic-bezier(.32,.94,.6,1);}.quick-header{padding:14px 16px 10px;border-bottom:1px solid var(--line);}.quick-title{font-family:'Playfair Display',serif;font-size:14px;color:var(--text);font-weight:700;}.quick-sub{font-size:11px;color:var(--text3);margin-top:2px;}.quick-body{padding:12px 16px 4px;display:flex;flex-direction:column;gap:10px;}.stepper-box{background:var(--black4);border:1px solid var(--line);border-radius:11px;padding:12px 14px;}.stepper-label{font-size:9.5px;font-weight:600;color:var(--text3);text-transform:uppercase;letter-spacing:.7px;margin-bottom:8px;display:flex;align-items:center;gap:5px;}.stepper-row{display:flex;align-items:center;gap:8px;}.stepper-btn{width:38px;height:38px;border-radius:9px;background:var(--black5);border:1px solid var(--line2);color:var(--text);font-size:20px;cursor:pointer;display:flex;align-items:center;justify-content:center;font-weight:300;transition:all .15s;flex-shrink:0;}.stepper-btn:active{background:var(--purpleG);border-color:var(--purple2);color:var(--purple3);}.stepper-input{flex:1;background:var(--black3);border:1px solid var(--line2);border-radius:8px;padding:6px 10px;color:var(--text);font-size:18px;font-weight:700;font-family:'Outfit',sans-serif;text-align:center;outline:none;}.stepper-input:focus{border-color:var(--purple2);}.preset-row{display:flex;gap:6px;margin-top:7px;}.preset-btn{flex:1;padding:7px 4px;border-radius:8px;background:var(--black5);border:1px solid var(--line2);color:var(--text2);font-size:11px;font-weight:600;font-family:'Outfit',sans-serif;cursor:pointer;text-align:center;transition:all .15s;}.preset-btn:active{background:var(--purpleG);border-color:var(--purple2);color:var(--purple3);}.status-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:6px;}.status-chip{display:flex;align-items:center;gap:6px;padding:9px 11px;border-radius:9px;background:var(--black4);border:1px solid var(--line);color:var(--text2);font-size:11.5px;font-weight:500;cursor:pointer;transition:all .18s;}.status-chip.active{background:var(--purpleG);border-color:var(--purple2);color:var(--purple3);}.status-chip:active{transform:scale(.95);}.quick-footer{padding:10px 16px 6px;}.quick-save-btn{width:100%;padding:12px;border-radius:11px;background:var(--purple);border:none;color:#fff;font-size:13px;font-weight:600;font-family:'Outfit',sans-serif;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:7px;box-shadow:0 4px 16px rgba(220,38,38,.3);transition:transform .15s;}.quick-save-btn:active{transform:scale(.97);}.stats-grid{display:grid;grid-template-columns:1fr 1fr;gap:9px;}.stat-card{background:var(--black4);border:1px solid var(--line);border-radius:12px;padding:13px;display:flex;flex-direction:column;gap:5px;animation:cardIn .3s ease both;}.stat-card.hi{border-color:var(--purple);background:var(--purpleGS);}.stat-icon{color:var(--purple2);}.stat-value{font-size:24px;font-weight:700;color:var(--text);font-family:'Playfair Display',serif;}.stat-label{font-size:9px;color:var(--text3);font-weight:600;text-transform:uppercase;letter-spacing:.7px;}.cat-stat-list{display:flex;flex-direction:column;gap:8px;}.cat-stat-row{display:flex;align-items:center;gap:8px;}.cat-stat-name{font-size:11px;color:var(--text2);width:100px;flex-shrink:0;display:flex;align-items:center;gap:4px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}.cat-stat-bar-wrap{flex:1;height:4px;background:var(--black3);border-radius:2px;overflow:hidden;}.cat-stat-bar{height:100%;background:linear-gradient(90deg,var(--purple),var(--purple3));border-radius:2px;transition:width .8s cubic-bezier(.34,1.2,.64,1);}.cat-stat-count{font-size:11px;color:var(--text3);min-width:18px;text-align:right;}.summary-grid{display:grid;grid-template-columns:1fr 1fr;gap:7px;}.summary-card{text-align:center;padding:11px 6px;background:var(--black4);border-radius:9px;border:1px solid var(--line);}.summary-val{font-size:22px;font-weight:700;font-family:'Playfair Display',serif;}.summary-lbl{font-size:9px;color:var(--text3);text-transform:uppercase;letter-spacing:.6px;margin-top:3px;}.empty{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;padding:60px 24px;text-align:center;}.empty-icon{color:var(--text3);opacity:.35;}.empty h3{font-family:'Playfair Display',serif;font-size:15px;color:var(--text2);}.empty p{font-size:12px;color:var(--text3);line-height:1.7;}.toast{position:fixed;bottom:calc(110px + env(safe-area-inset-bottom,0px) + 12px);left:50%;transform:translateX(-50%);max-width:420px;width:calc(100% - 32px);background:var(--black5);border:1px solid var(--line2);border-radius:11px;padding:10px 13px;font-size:12px;font-weight:500;color:var(--text);z-index:999;box-shadow:0 6px 24px rgba(0,0,0,.6);animation:toastIn .25s cubic-bezier(.34,1.4,.64,1);display:flex;align-items:center;gap:8px;}@keyframes toastIn{from{opacity:0;transform:translateX(-50%) translateY(12px)}to{opacity:1;transform:translateX(-50%) translateY(0)}}.toast.hidden{display:none;}.toast-icon{flex-shrink:0;color:var(--purple3);}.confetti-piece{position:fixed;width:8px;height:8px;border-radius:2px;pointer-events:none;z-index:9999;animation:confettiFall linear forwards;}@keyframes confettiFall{0%{opacity:1;transform:translateY(0) rotate(0deg);}100%{opacity:0;transform:translateY(100vh) rotate(720deg);}}.konami-flash{position:fixed;inset:0;background:rgba(220,38,38,0.15);z-index:9998;pointer-events:none;animation:konamiFlash .6s ease forwards;}@keyframes konamiFlash{0%{opacity:0}30%{opacity:1}100%{opacity:0}}.star-row{display:flex;gap:4px;}.star-pick{font-size:22px;cursor:pointer;transition:transform .15s;color:var(--text3);}.star-pick.lit{color:var(--gold);}.star-pick:active{transform:scale(1.3);}.install-banner{margin:0 14px 8px;background:var(--black4);border:1px solid var(--line2);border-radius:11px;padding:10px 12px;display:flex;align-items:center;gap:9px;cursor:pointer;animation:cardIn .35s ease;}.install-banner.hidden{display:none;}.ib-icon{width:32px;height:32px;border-radius:8px;background:var(--purpleG);border:1px solid var(--line2);display:flex;align-items:center;justify-content:center;color:var(--purple3);flex-shrink:0;}.ib-text strong{font-size:12px;color:var(--text);display:block;}.ib-text span{font-size:10.5px;color:var(--text3);}.log-entry{display:flex;align-items:center;gap:8px;padding:7px 0;border-bottom:1px solid var(--line);}.log-entry:last-child{border-bottom:none;}.log-dot{width:7px;height:7px;border-radius:50%;background:var(--purple3);flex-shrink:0;}.log-text{font-size:11.5px;color:var(--text2);flex:1;}.log-time{font-size:10px;color:var(--text3);}.sec-pad{padding:0 14px;}.new-chapter-badge{position:absolute;top:6px;left:6px;background:linear-gradient(135deg,#34d399,#059669);color:#fff;font-size:8px;font-weight:700;padding:2px 6px;border-radius:4px;letter-spacing:.4px;text-transform:uppercase;animation:pulse 1.5s ease-in-out infinite;box-shadow:0 0 8px rgba(52,211,153,.5);}@keyframes pulse{0%,100%{opacity:1;transform:scale(1);}50%{opacity:.85;transform:scale(1.04);}}.countdown-badge{position:absolute;top:6px;left:6px;display:flex;align-items:center;gap:3px;font-size:8px;font-weight:700;padding:2px 6px;border-radius:4px;letter-spacing:.3px;text-transform:uppercase;box-shadow:0 0 8px rgba(0,0,0,.35);}.countdown-badge.new{background:linear-gradient(135deg,#f87171,#dc2626);color:#fff;}.countdown-badge.ret{background:linear-gradient(135deg,#34d399,#059669);color:#fff;}
+.stat-label{color:rgba(255,255,255,.5);}
+#mainContent .cat-stat-name,#mainContent .summary-lbl{color:rgba(255,255,255,.7);}
+#mainContent [style*="background:var(--black4)"],#addOverlay [style*="background:var(--black4)"]{background:rgba(35,22,50,0.5)!important;border-color:rgba(255,255,255,0.1)!important;}
+#addOverlay [style*="color:var(--text3)"]{color:rgba(255,255,255,.45)!important;}
+#addOverlay [style*="color:var(--text2)"]{color:rgba(255,255,255,.7)!important;}
+#mainContent [style*="background:var(--line)"]{background:rgba(255,255,255,.1)!important;}
+.summary-card{background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);}
+
+.genre-chip{padding:8px 15px;border-radius:20px;background:var(--black5);border:1px solid rgba(255,255,255,.1);color:var(--text2);font-size:12px;font-weight:700;cursor:pointer;transition:all .15s;white-space:nowrap;}
+.genre-chip.active{background:rgba(220,38,38,.18);border-color:rgba(220,38,38,.4);color:var(--purple3);box-shadow:0 0 0 3px rgba(220,38,38,.1);}
+.genre-chip-static{padding:5px 11px;border-radius:14px;background:var(--purpleG);border:1px solid rgba(220,38,38,.3);color:var(--purple3);font-size:11px;font-weight:500;display:inline-flex;}
+.genre-preset-grid{display:flex;flex-wrap:wrap;gap:6px;}
+.genre-filter-grid{display:flex;flex-wrap:wrap;gap:9px;}
+.card-genre-badge{font-size:8.5px;color:var(--text3);margin-top:2px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+.cat-tab-filter-btn{flex-shrink:0;width:30px;height:30px;border-radius:7px;border:1px solid var(--line);background:transparent;color:var(--text3);display:flex;align-items:center;justify-content:center;cursor:pointer;transition:all .18s;}
+.cat-tab-filter-btn.active{background:var(--black5);border-color:var(--purple);color:var(--purple3);}
+.lg-note-text.thought{font-style:italic;}
+.lg-tag{display:inline-flex;align-items:center;gap:4px;padding:4px 9px;border-radius:7px;font-size:10.5px;color:rgba(255,255,255,.85);background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.12);}
+.lg-tags-wrap{display:flex;flex-wrap:wrap;gap:6px;}
+.lg-fab{position:fixed;bottom:calc(20px + env(safe-area-inset-bottom,0px));right:18px;width:56px;height:56px;border-radius:28px;display:flex;align-items:center;justify-content:center;color:#fff;z-index:30;cursor:pointer;}
+.lg-old-covers{display:flex;gap:8px;overflow-x:auto;padding-bottom:2px;}
+.lg-old-covers::-webkit-scrollbar{display:none;}
+.lg-old-cover-thumb{flex-shrink:0;width:58px;height:82px;border-radius:9px;object-fit:cover;border:1px solid rgba(255,255,255,.14);}
+.lg-log-entry{display:flex;align-items:center;gap:8px;padding:7px 0;border-bottom:1px solid rgba(255,255,255,.08);}
+.lg-log-entry:last-child{border-bottom:none;}
+.lg-log-dot{width:6px;height:6px;border-radius:50%;background:#f87171;flex-shrink:0;}
+.lg-log-text{font-size:11.5px;color:rgba(255,255,255,.8);flex:1;}
+.lg-log-time{font-size:10px;color:rgba(255,255,255,.45);}
+@media (prefers-reduced-motion: reduce){#addOverlay,#addOverlay.closing,.lg-page{animation:none!important;}}
+/* expandTags/expandOldCovers/expandLog gibi fonksiyonlar eski sınıf isimlerini üretmeye devam ediyor;
+   Liquid Glass sayfası kapsamında bunları görsel olarak uyumlu hale getiriyoruz. */
+.lg-page .alt-tag,.lg-page .fansub-tag{display:inline-flex;align-items:center;gap:4px;padding:4px 9px;border-radius:7px;font-size:10.5px;color:rgba(255,255,255,.85);background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.12);}
+.lg-page .fansub-card{background:rgba(255,255,255,.08);border-color:rgba(255,255,255,.14);}
+.lg-page .fansub-card:active{background:rgba(255,255,255,.16);}
+.lg-page .fansub-card-name{color:rgba(255,255,255,.9);}
+.lg-page .fansub-card-logo-ph{background:rgba(255,255,255,.1);color:rgba(255,255,255,.75);}
+.lg-page .old-cover-thumb{flex-shrink:0;width:58px;height:82px;border-radius:9px;object-fit:cover;border:1px solid rgba(255,255,255,.14);}
+.lg-page .log-entry{display:flex;align-items:center;gap:8px;padding:7px 0;border-bottom:1px solid rgba(255,255,255,.08);}
+.lg-page .log-entry:last-child{border-bottom:none;}
+.lg-page .log-dot{width:6px;height:6px;border-radius:50%;background:#f87171;flex-shrink:0;}
+.lg-page .log-text{font-size:11.5px;color:rgba(255,255,255,.8);flex:1;}
+.lg-page .log-time{font-size:10px;color:rgba(255,255,255,.45);}
+.lg-page .more-toggle{cursor:pointer;}
+.lg-page .detail-sec-title{font-size:9.5px;font-weight:700;color:rgba(255,255,255,.6);text-transform:uppercase;letter-spacing:.8px;margin-bottom:9px;display:flex;align-items:center;gap:6px;}
+.lg-page .detail-sec-title::after{display:none;}
+.lg-page .note-box{background:rgba(255,255,255,.06);border:none;border-left:3px solid rgba(220,38,38,.7);border-radius:0 8px 8px 0;padding:9px 12px;font-size:12px;color:rgba(255,255,255,.85);font-style:italic;line-height:1.6;}
+.lg-page .opinion-box{border-left-color:rgba(251,191,36,.8);}
+.lg-page .countdown-box{display:flex;align-items:center;justify-content:space-between;}.heatmap-cell{width:11px;height:11px;border-radius:3px;background:var(--black5);border:1px solid var(--line);}
+.heatmap-cell.level-1{background:rgba(220,38,38,0.28);border-color:rgba(220,38,38,0.28);}
+.heatmap-cell.level-2{background:rgba(220,38,38,0.5);border-color:rgba(220,38,38,0.5);}
+.heatmap-cell.level-3{background:rgba(239,68,68,0.75);border-color:rgba(239,68,68,0.75);}
+.heatmap-cell.level-4{background:var(--purple2);border-color:var(--purple2);box-shadow:0 0 6px rgba(239,68,68,.5);}
+.timeline-date-label{font-size:9.5px;font-weight:700;color:var(--purple3);text-transform:uppercase;letter-spacing:.6px;margin:12px 0 6px;}
+.timeline-date-label:first-child{margin-top:0;}
+.timeline-entry{display:flex;align-items:center;gap:9px;padding:7px 0;border-bottom:1px solid var(--line);cursor:pointer;}
+.timeline-entry:last-child{border-bottom:none;}
+.timeline-dot{width:7px;height:7px;border-radius:50%;background:var(--purple2);flex-shrink:0;box-shadow:0 0 0 3px var(--purpleG);}
+.timeline-content{flex:1;min-width:0;display:flex;flex-direction:column;gap:1px;}
+.timeline-series{font-size:11.5px;font-weight:600;color:var(--text);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+.timeline-text{font-size:10.5px;color:var(--text3);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+.timeline-time{font-size:9.5px;color:var(--text3);flex-shrink:0;}
+.list-tabs-row{display:flex;gap:6px;overflow-x:auto;padding-bottom:4px;scrollbar-width:none;}
+.list-tabs-row::-webkit-scrollbar{display:none;}
+.list-tab{flex-shrink:0;display:flex;align-items:center;gap:5px;padding:7px 12px;border-radius:10px;border:1px solid var(--line);color:var(--text3);font-size:11.5px;font-weight:600;cursor:pointer;white-space:nowrap;transition:all .18s;}
+.list-tab.active{background:var(--purple2);border-color:var(--purple2);color:#fff;}
+.list-tab-count{font-size:9px;opacity:.7;background:rgba(255,255,255,.12);border-radius:8px;padding:1px 5px;margin-left:1px;}
+.list-tab.active .list-tab-count{background:rgba(255,255,255,.25);}
+.list-row{display:flex;gap:11px;align-items:center;padding:9px 4px;border-bottom:1px solid var(--line);cursor:pointer;}
+.list-row:last-child{border-bottom:none;}
+.list-row-cover{width:42px;height:58px;border-radius:6px;object-fit:cover;flex-shrink:0;background:var(--black5);}
+.list-row-cover-ph{display:flex;align-items:center;justify-content:center;color:var(--text3);}
+.list-row-info{flex:1;min-width:0;display:flex;flex-direction:column;gap:4px;}
+.list-row-title{font-size:13px;font-weight:600;color:var(--text);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;display:flex;align-items:center;gap:5px;}
+.list-row-sub{display:flex;align-items:center;gap:8px;flex-wrap:wrap;}
+.list-row-cat{display:inline-flex;align-items:center;gap:3px;font-size:9.5px;font-weight:600;color:var(--text3);}
+.list-row-ch{font-size:10.5px;color:var(--text2);display:inline-flex;align-items:center;gap:3px;}
+.list-row-genre{font-size:10px;color:var(--text3);}
+.list-row-rating{font-size:10px;color:var(--gold);letter-spacing:-1px;}
+.series-link-row{display:flex;align-items:center;gap:8px;overflow-x:auto;padding:2px 2px 4px;}
+.series-link-row.side-row{gap:10px;}
+.series-link-card{flex-shrink:0;display:flex;flex-direction:column;align-items:center;gap:5px;width:64px;cursor:pointer;}
+.series-link-cover{width:52px;height:74px;border-radius:8px;object-fit:cover;border:1px solid rgba(255,255,255,.14);}
+.series-link-card.side .series-link-cover{border-style:dashed;border-color:rgba(255,255,255,.3);opacity:.9;}
+.series-link-cover-ph{display:flex;align-items:center;justify-content:center;background:rgba(255,255,255,.06);color:rgba(255,255,255,.4);}
+.series-link-name{font-size:9.5px;text-align:center;color:rgba(255,255,255,.8);line-height:1.25;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:64px;}
+.series-link-arrow{flex-shrink:0;color:rgba(248,113,113,.7);font-size:15px;font-weight:700;}
+.series-link-side-label{font-size:9.5px;font-weight:700;color:rgba(255,255,255,.45);text-transform:uppercase;letter-spacing:.6px;margin:10px 0 4px;}
+.series-link-desc{font-size:9px;color:rgba(255,255,255,.5);text-align:center;line-height:1.3;max-width:64px;margin-top:3px;}
+.series-link-side-wrap{flex-shrink:0;}
+.series-link-side-wrap .series-link-cover{border-color:rgba(52,211,153,.4);}
+.series-link-side-wrap .series-link-name{color:#6ee7b7;}
+.series-link-side-label{color:#34d399;}
+.daily-digest-card{margin:8px 12px 12px;background:linear-gradient(135deg,rgba(220,38,38,.14),rgba(248,113,113,.04));border:1px solid rgba(220,38,38,.28);border-radius:14px;padding:13px 14px 6px;animation:cardIn .3s ease;}
+.digest-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:9px;}
+.digest-title{font-size:12.5px;font-weight:700;color:var(--purple3);display:flex;align-items:center;gap:5px;}
+.digest-close{background:none;border:none;color:var(--text3);font-size:12px;cursor:pointer;padding:2px 4px;opacity:.7;}
+.digest-close:active{opacity:1;}
+.digest-section{margin-bottom:10px;}
+.digest-section-title{font-size:9.5px;font-weight:700;color:var(--text3);text-transform:uppercase;letter-spacing:.5px;margin-bottom:6px;display:flex;align-items:center;gap:4px;}
+.digest-row-list{display:flex;gap:8px;overflow-x:auto;padding-bottom:2px;}
+.digest-item{flex-shrink:0;display:flex;flex-direction:column;align-items:center;gap:4px;width:56px;cursor:pointer;}
+.digest-item-cover{width:48px;height:66px;border-radius:7px;object-fit:cover;border:1px solid var(--line2);}
+.digest-item-cover-ph{display:flex;align-items:center;justify-content:center;background:var(--black5);color:var(--text3);}
+.digest-item-name{font-size:9px;text-align:center;color:var(--text2);line-height:1.2;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:56px;}
+.digest-item-badge{font-size:8px;font-weight:700;color:var(--purple3);background:var(--purpleG);border-radius:5px;padding:1px 5px;}
+.digest-more{flex-shrink:0;display:flex;align-items:center;justify-content:center;width:56px;font-size:9.5px;font-weight:600;color:var(--purple3);cursor:pointer;text-align:center;}
+.hdr-avatar-btn{font-size:15px;display:flex;align-items:center;justify-content:center;border:1px solid rgba(255,255,255,.18)!important;background:var(--black4)!important;box-shadow:inset 0 1px 1px rgba(255,255,255,.45),inset 0 -1px 1px rgba(255,255,255,.2);}
+.notif-badge{position:absolute;top:-3px;right:-3px;min-width:15px;height:15px;padding:0 3px;border-radius:8px;background:#f87171;color:#fff;font-size:9px;font-weight:800;display:flex;align-items:center;justify-content:center;border:1.5px solid var(--black);line-height:1;}
+.profile-avatar-big{width:84px;height:84px;border-radius:50%;background:rgba(220,38,38,.16);display:flex;align-items:center;justify-content:center;font-size:38px;margin:0 auto 16px;}
+.profile-rank{font-size:11px;font-weight:700;color:var(--purple3);text-transform:uppercase;letter-spacing:.8px;}
+.profile-avatar-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-top:10px;}
+.profile-avatar-opt{aspect-ratio:1;border-radius:12px;background:var(--black5);border:1px solid rgba(255,255,255,.1);display:flex;align-items:center;justify-content:center;font-size:19px;cursor:pointer;transition:all .15s;}
+.profile-avatar-opt.active{border-color:rgba(220,38,38,.5);background:rgba(220,38,38,.14);box-shadow:0 0 0 3px rgba(220,38,38,.1);}
+.profile-stats-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:4px;}
+.profile-stat-card{background:var(--black4);border:1px solid var(--line);border-radius:11px;padding:11px;text-align:center;}
+.profile-stat-num{font-family:'Playfair Display',serif;font-size:15px;font-weight:700;color:var(--text);}
+.profile-stat-label{font-size:9.5px;color:var(--text3);font-weight:700;text-transform:uppercase;letter-spacing:.3px;margin-top:3px;}
+.profile-privacy-note{font-size:9.5px;color:var(--text3);text-align:center;line-height:1.5;margin-top:14px;}.stats-hero{display:flex;align-items:center;gap:12px;background:linear-gradient(135deg,rgba(220,38,38,.22),rgba(248,113,113,.06));border:1px solid rgba(220,38,38,.3);border-radius:18px;padding:16px 18px;margin:10px 0 18px;box-shadow:inset 0 1px 1px rgba(255,255,255,.2);}
+.stats-hero-avatar{width:52px;height:52px;border-radius:50%;background:var(--black4);border:1.5px solid rgba(255,255,255,.2);display:flex;align-items:center;justify-content:center;font-size:26px;flex-shrink:0;overflow:hidden;box-shadow:inset 0 1px 1px rgba(255,255,255,.4);}
+.stats-hero-info{flex:1;min-width:0;}
+.stats-hero-name{font-family:'Playfair Display',serif;font-size:18px;font-weight:700;color:var(--text);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+.stats-hero-rank{font-size:10px;font-weight:700;color:var(--purple3);text-transform:uppercase;letter-spacing:.6px;display:flex;align-items:center;gap:4px;margin-top:2px;}
+.stats-hero-num{text-align:center;flex-shrink:0;}
+.stats-hero-num-val{font-size:22px;font-weight:800;color:#fff;font-family:'Playfair Display',serif;line-height:1;}
+.stats-hero-num-lbl{font-size:8.5px;color:var(--text3);text-transform:uppercase;letter-spacing:.5px;margin-top:2px;}
+.genre-cloud{display:flex;flex-wrap:wrap;gap:9px 11px;align-items:baseline;}
+.genre-cloud-item{color:var(--purple3);font-weight:700;white-space:nowrap;}
+.genre-cloud-item b{color:var(--text3);font-weight:600;font-size:9px;}
+.stats-highlight-card{display:flex;align-items:center;gap:11px;background:linear-gradient(135deg,rgba(220,38,38,.12),rgba(248,113,113,.04));border:1px solid rgba(220,38,38,.25);border-radius:12px;padding:12px;margin-bottom:14px;}
+.detail-htree{position:relative;overflow-x:auto;padding-bottom:2px;}
+.detail-htree-row{position:relative;display:flex;gap:13px;width:max-content;}
+.detail-htree-row::before{content:'';position:absolute;left:12px;right:12px;top:17px;height:1.5px;background:rgba(255,255,255,.18);}
+.detail-htree-col{display:flex;flex-direction:column;align-items:center;width:40px;flex-shrink:0;cursor:pointer;}
+.detail-htree-cover{width:24px;height:34px;border-radius:6px;background:var(--black5);border:2px solid rgba(255,255,255,.22);position:relative;z-index:1;flex-shrink:0;display:flex;align-items:center;justify-content:center;color:rgba(255,255,255,.28);overflow:hidden;}
+.detail-htree-cover.current{border-color:var(--purple3);box-shadow:0 0 0 4px rgba(220,38,38,.16);}
+.detail-htree-cover-img{width:100%;height:100%;object-fit:cover;}
+.detail-htree-label{font-size:8.5px;font-weight:700;color:var(--text2);text-align:center;margin-top:7px;line-height:1.25;max-width:52px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
+.detail-htree-tag{font-size:6.5px;font-weight:700;color:var(--text3);text-transform:uppercase;letter-spacing:.2px;margin-top:1px;}
+.detail-htree-branch{position:absolute;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;width:64px;cursor:pointer;}
+.detail-htree-branch .detail-htree-cover{border-color:rgba(52,211,153,.4);}
+.detail-htree-branch-connector{width:0;height:13px;border-left:1.5px dashed rgba(52,211,153,.5);margin-top:5px;}
+.preview-modal-sheet{width:100%;max-width:310px;margin:auto;background:var(--black4);border:1px solid rgba(255,255,255,.12);border-radius:26px;padding:22px 20px 18px;box-shadow:0 30px 80px rgba(0,0,0,.65),inset 0 1px 1px rgba(255,255,255,.14);position:relative;max-height:88vh;overflow-y:auto;}
+.preview-cover-row{display:flex;gap:15px;margin-bottom:2px;padding-right:18px;}.preview-close{position:absolute;top:14px;right:14px;width:26px;height:26px;border-radius:50%;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.1);display:flex;align-items:center;justify-content:center;color:rgba(255,255,255,.65);z-index:1;}
+.preview-cover{width:80px;aspect-ratio:2/3;border-radius:13px;flex-shrink:0;background:var(--black5);display:flex;align-items:center;justify-content:center;color:rgba(255,255,255,.3);overflow:hidden;box-shadow:0 14px 30px rgba(0,0,0,.45),0 0 0 1px rgba(255,255,255,.08);}
+.preview-title{font-family:'Playfair Display',serif;font-size:23px;font-weight:700;color:#fff;line-height:1.18;margin-top:4px;}
+.preview-original{font-size:14.5px;color:rgba(255,255,255,.5);font-style:italic;margin-top:3px;}
+.preview-meta-row{display:flex;gap:6px;margin-top:10px;flex-wrap:wrap;}.preview-genre-row{display:flex;align-items:center;gap:6px;margin-top:10px;flex-wrap:wrap;}
+.preview-progress-track{height:5px;border-radius:3px;background:rgba(255,255,255,.1);overflow:hidden;margin-top:16px;}
+.preview-progress-fill{height:100%;border-radius:3px;background:linear-gradient(90deg,var(--purple2),var(--purple3));}
+.preview-progress-label{display:flex;justify-content:space-between;font-size:10px;color:rgba(255,255,255,.5);margin-top:6px;font-weight:600;}
+.preview-row1{display:flex;align-items:center;gap:10px;margin-top:18px;}
+.preview-icon-btn{width:44px;height:44px;border-radius:50%;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);display:flex;align-items:center;justify-content:center;color:var(--text2);flex-shrink:0;box-shadow:0 0 0 4px rgba(255,255,255,.04);}
+.preview-icon-btn.active{background:rgba(244,114,182,.18);border-color:rgba(244,114,182,.4);color:#f472b6;}
+.preview-icon-btn.pinned{background:rgba(220,38,38,.18);border-color:rgba(220,38,38,.4);color:var(--purple3);}
+.preview-read-btn{flex:1;display:flex;align-items:center;justify-content:center;gap:7px;height:44px;border-radius:22px;background:linear-gradient(135deg,var(--purple2),var(--purple));color:#fff;font-size:14px;font-weight:700;box-shadow:0 10px 24px rgba(220,38,38,.4),inset 0 1px 0 rgba(255,255,255,.25),0 0 0 4px rgba(220,38,38,.14);}
+.preview-stepper-row{display:flex;align-items:center;gap:7px;margin-top:9px;}
+.preview-step-btn{width:44px;height:40px;flex-shrink:0;border-radius:13px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.09);display:flex;align-items:center;justify-content:center;color:rgba(255,255,255,.8);font-size:14px;font-weight:800;}
+.preview-zstep{flex:1;height:40px;display:flex;align-items:center;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.09);border-radius:13px;overflow:hidden;}
+.preview-zstep button{width:32px;height:100%;flex-shrink:0;background:transparent;border:none;color:var(--text2);display:flex;align-items:center;justify-content:center;font-size:15px;}
+.preview-zstep input{flex:1;min-width:0;height:100%;background:transparent;border:none;border-left:1px solid rgba(255,255,255,.08);border-right:1px solid rgba(255,255,255,.08);color:var(--text);font-weight:700;font-size:13px;text-align:center;}
+.preview-bottom-row{display:flex;gap:8px;margin-top:9px;}
+.preview-share-btn{width:44px;height:44px;flex-shrink:0;border-radius:14px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.09);display:flex;align-items:center;justify-content:center;color:rgba(255,255,255,.7);}
+.preview-detail-link{flex:1;display:flex;align-items:center;justify-content:center;gap:6px;padding:11px;border-radius:14px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.07);font-size:11.5px;font-weight:700;color:#fca5a5;}
+.lrow{display:flex;gap:11px;align-items:center;background:var(--black4);border:1px solid rgba(255,255,255,.1);border-radius:14px;padding:9px;box-shadow:inset 0 1px 1px rgba(255,255,255,.1);margin-bottom:9px;}
+.lrow-cover{width:80px;height:112px;flex-shrink:0;border-radius:11px;overflow:hidden;background:var(--black5);display:flex;align-items:center;justify-content:center;color:rgba(255,255,255,.28);}
+.lrow-cover img{width:100%;height:100%;object-fit:cover;}
+.lrow-body{flex:1;min-width:0;display:flex;flex-direction:column;justify-content:space-between;gap:0;padding:2px 0;}
+.lrow-top{display:flex;align-items:flex-start;justify-content:space-between;gap:6px;}
+.lrow-title-row{display:flex;align-items:baseline;gap:6px;flex-wrap:wrap;min-width:0;}
+.lrow-title{font-size:13px;font-weight:700;color:var(--text);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+.lrow-original{font-size:10px;color:var(--text3);font-weight:500;opacity:.75;}
+.lrow-pinfav{flex-shrink:0;margin-top:1px;display:flex;gap:4px;}
+.lrow-cat-pill{display:inline-flex;align-items:center;gap:4px;font-size:8.5px;font-weight:700;text-transform:uppercase;letter-spacing:.3px;padding:3px 8px 3px 7px;border-radius:20px;width:fit-content;margin-top:6px;}
+.lrow-ch-row{display:flex;align-items:center;gap:8px;margin-top:8px;}
+.lrow-ch{font-size:10px;color:var(--text3);font-weight:600;flex-shrink:0;}
+.lrow-progress-track{flex:1;height:4px;background:rgba(255,255,255,.08);border-radius:3px;overflow:hidden;max-width:88px;}
+.lrow-progress-fill{height:100%;border-radius:3px;}
+.lrow-bottom{display:flex;align-items:center;justify-content:space-between;gap:8px;margin-top:12px;}
+.lrow-genres{display:flex;gap:4px;flex-wrap:wrap;}
+.lrow-genre-pill{font-size:8px;font-weight:600;color:var(--text3);background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.08);padding:2px 7px;border-radius:20px;}
+.lrow-rating{font-size:9.5px;color:#f0b95e;letter-spacing:-1px;flex-shrink:0;}
+.lrow-check{width:0;overflow:hidden;flex-shrink:0;display:flex;align-items:center;justify-content:center;color:#fff;transition:width .18s ease;}
+.list-rows.select-mode .lrow-check{width:22px;}
+.lrow-check svg{width:18px;height:18px;border-radius:50%;border:1.5px solid var(--line2);padding:3px;box-sizing:border-box;}
+.lrow.checked .lrow-check svg{background:var(--purple2);border-color:var(--purple2);}
+.lrow-swipe-wrap{position:relative;overflow:hidden;margin-bottom:9px;}
+.lrow-swipe-wrap .lrow{margin-bottom:0;transition:transform .22s cubic-bezier(.22,.9,.4,1);position:relative;z-index:1;touch-action:pan-y;}
+.lrow-swipe-actions{position:absolute;right:0;top:0;bottom:0;width:104px;display:flex;}
+.lrow-action{flex:1;display:flex;align-items:center;justify-content:center;color:#fff;border:none;background:none;cursor:pointer;}
+.lrow-action svg{width:22px;height:22px;}
+.lrow-action.fav{background:#ec4899;border-radius:14px 0 0 14px;}
+.lrow-action.edit{background:#ef4444;border-radius:0 14px 14px 0;}
+.swipe-hint{font-size:10px;color:var(--text3);text-align:center;padding-top:8px;font-style:italic;opacity:.8;}
+</style></head><body><div id="app"><div class="aurora"><div class="orb orb1"></div><div class="orb orb2"></div><div class="orb orb3"></div></div><div class="header" id="header"><div class="logo"><div class="logo-mark" id="logoMark" onclick="logoTap()"><svg width="15" height="15" viewBox="0 0 24 24"><g fill="currentColor"><path d="M12,12 C8.3,10.4 7.8,5 10.5,1.8 C11,1.2 11.5,1.6 12,2.4 C12.5,1.6 13,1.2 13.5,1.8 C16.2,5 15.7,10.4 12,12 Z"/><path d="M12,12 C8.3,10.4 7.8,5 10.5,1.8 C11,1.2 11.5,1.6 12,2.4 C12.5,1.6 13,1.2 13.5,1.8 C16.2,5 15.7,10.4 12,12 Z" transform="rotate(72 12 12)"/><path d="M12,12 C8.3,10.4 7.8,5 10.5,1.8 C11,1.2 11.5,1.6 12,2.4 C12.5,1.6 13,1.2 13.5,1.8 C16.2,5 15.7,10.4 12,12 Z" transform="rotate(144 12 12)"/><path d="M12,12 C8.3,10.4 7.8,5 10.5,1.8 C11,1.2 11.5,1.6 12,2.4 C12.5,1.6 13,1.2 13.5,1.8 C16.2,5 15.7,10.4 12,12 Z" transform="rotate(216 12 12)"/><path d="M12,12 C8.3,10.4 7.8,5 10.5,1.8 C11,1.2 11.5,1.6 12,2.4 C12.5,1.6 13,1.2 13.5,1.8 C16.2,5 15.7,10.4 12,12 Z" transform="rotate(288 12 12)"/><circle cx="12" cy="12" r="1.5"/></g></svg></div><span id="logoWord">Reika</span><span id="logoSubWrap"></span>
+</div><div class="hdr-right" id="hdrRightHome"><div class="hdr-btn hdr-avatar-btn" id="profileAvatarBtn" onclick="openProfileSheet()" title="Profilim">✨</div><div class="hdr-btn" id="notifBtn" onclick="openNotificationsSheet()" title="Bildirimler" style="position:relative;"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg><span class="notif-badge hidden" id="notifBadge">0</span></div><div class="streak-badge" id="streakBadge" onclick="showStreak()"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg><span id="streakNum">0</span></div><div class="more-wrap"><div class="hdr-btn" onclick="document.getElementById('homeMoreMenu').classList.toggle('open')" title="Diğer"><svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><circle cx="5" cy="12" r="1.7"/><circle cx="12" cy="12" r="1.7"/><circle cx="19" cy="12" r="1.7"/></svg></div><div class="more-menu" id="homeMoreMenu"><div class="more-item" id="themeToggleBtn" onclick="toggleTheme();document.getElementById('homeMoreMenu').classList.remove('open')"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.2" y1="4.2" x2="5.6" y2="5.6"/><line x1="18.4" y1="18.4" x2="19.8" y2="19.8"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.2" y1="19.8" x2="5.6" y2="18.4"/><line x1="18.4" y1="5.6" x2="19.8" y2="4.2"/></svg>Tema Değiştir</div><div class="more-item" onclick="updateBackupInfo();openSheet('backupOverlay');document.getElementById('homeMoreMenu').classList.remove('open')"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>Yedekle / Geri Yükle</div><div class="more-item" onclick="openInstallPrompt();document.getElementById('homeMoreMenu').classList.remove('open')"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12"/><polyline points="7 10 12 15 17 10"/><path d="M5 21h14"/></svg>Uygulamayı Yükle</div></div></div></div><div class="hdr-right" id="hdrRightSub" style="display:none;"><div class="hdr-btn hdr-avatar-btn" onclick="openProfileSheet()" title="Profilim">✨</div><div class="hdr-btn" onclick="switchPage('home')" title="Geri"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg></div></div></div><div id="heroSection" style="display:none;"></div><div class="search-wrap" id="searchWrap"><div class="search-box"><span class="s-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg></span><input class="search-input" type="text" id="searchInput" placeholder="Seri, alternatif ad, fansub ara…" oninput="handleSearch()"/></div></div><div class="cat-tabs-row" id="catTabsRow"><div class="cat-tabs" id="catTabs"></div><div class="cat-tabs-actions" id="catTabsActions" style="display:none;"><button class="cat-tab-filter-btn" id="genreFilterBtn" onclick="openGenreFilter()" title="Türe göre filtrele"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.59 13.41L13.42 20.58a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"/><circle cx="7" cy="7" r="1.4" fill="currentColor" stroke="none"/></svg></button><button class="cat-tab-filter-btn" onclick="openFansubList()" title="Çeviri Ekipleri"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></button><button class="btn-secondary" onclick="toggleSelectionMode()"><span id="selBtnLabel"></span></button></div></div><div class="content" id="mainContent"></div><div class="radial-backdrop" id="radialBackdrop" onclick="closeRadial()"></div>
+<div id="radialMenu"></div>
+<div class="radial-trigger" id="radialTrigger">
+  <div class="bar"></div><div class="bar"></div><div class="bar"></div>
+</div></div><div class="overlay hidden overlay-fullpage" id="addOverlay" onclick="closeOnOverlay(event,'addOverlay')"><div class="sheet sheet-fullpage" onclick="event.stopPropagation()"><div class="fullpage-header"><div class="hdr-btn" onclick="closeSheet('addOverlay')"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></div><span class="fullpage-header-title" id="addSheetTitle">Yeni Seri</span><div class="hdr-btn" onclick="saveSeries()" title="Kaydet"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div></div><div class="form-body"><div class="form-tabs" style="display:flex;gap:7px;overflow-x:auto;margin-bottom:16px;padding-bottom:2px;">
+  <div class="form-tab active" data-tab="temel" onclick="showFormTab('temel',this)" style="flex-shrink:0;display:flex;align-items:center;gap:6px;padding:9px 14px;border-radius:12px;background:rgba(220,38,38,.16);border:1px solid rgba(220,38,38,.35);color:var(--purple3);font-size:11.5px;font-weight:700;">Temel</div>
+  <div class="form-tab" data-tab="takip" onclick="showFormTab('takip',this)" style="flex-shrink:0;display:flex;align-items:center;gap:6px;padding:9px 14px;border-radius:12px;background:var(--black4);border:1px solid var(--line);color:var(--text2);font-size:11.5px;font-weight:700;">Takip</div>
+  <div class="form-tab" data-tab="kunye" onclick="showFormTab('kunye',this)" style="flex-shrink:0;display:flex;align-items:center;gap:6px;padding:9px 14px;border-radius:12px;background:var(--black4);border:1px solid var(--line);color:var(--text2);font-size:11.5px;font-weight:700;">Künye</div>
+  <div class="form-tab" data-tab="baglanti" onclick="showFormTab('baglanti',this)" style="flex-shrink:0;display:flex;align-items:center;gap:6px;padding:9px 14px;border-radius:12px;background:var(--black4);border:1px solid var(--line);color:var(--text2);font-size:11.5px;font-weight:700;">Bağlantı</div>
+  <div class="form-tab" data-tab="kisisel" onclick="showFormTab('kisisel',this)" style="flex-shrink:0;display:flex;align-items:center;gap:6px;padding:9px 14px;border-radius:12px;background:var(--black4);border:1px solid var(--line);color:var(--text2);font-size:11.5px;font-weight:700;">Kişisel</div>
+</div><div class="form-tab-panel" data-tab="temel"><div class="btn-row"><button class="btn-secondary" id="favToggle" onclick="toggleFormFav()"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg> Favori
+</button><button class="btn-secondary" id="pinToggle" onclick="toggleFormPin()"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="17" x2="12" y2="22"/><path d="M5 17h14v-1.76a2 2 0 0 0-1.11-1.79l-1.78-.9A2 2 0 0 1 15 10.76V6h1a2 2 0 0 0 0-4H8a2 2 0 0 0 0 4h1v4.76a2 2 0 0 1-1.11 1.79l-1.78.9A2 2 0 0 0 5 15.24z"/></svg> Sabitle
+</button></div><div><label class="form-label">Kapak Görseli</label><div class="cover-row"><div id="coverPreviewWrap"><div class="cover-preview-ph" id="coverPlaceholder"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg></div></div><div class="cover-inputs"><input class="form-input" type="text" id="coverUrlInput" placeholder="URL gir (JPG, PNG, GIF, WebP…)" oninput="previewCoverUrl()"/><label class="file-btn"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg> Dosyadan Seç (GIF dahil)<input type="file" accept="image/*,.gif" id="coverFileInput" onchange="handleCoverFile()"/></label></div></div></div><div><label class="form-label">Eski Kapaklar</label><label class="file-btn"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg> Eski Kapak Ekle<input type="file" accept="image/*" id="oldCoverFileInput" onchange="handleOldCoverFile()" multiple/></label><div style="display:flex;gap:7px;margin-top:7px;overflow-x:auto;padding-bottom:4px;" id="oldCoversPreviews"></div></div><div><label class="form-label">Seri Adı *</label><input class="form-input" type="text" id="seriesName" placeholder="Seri adını girin…"/></div><div><label class="form-label">Orijinal Ad <span style="font-weight:400;color:var(--text3);">(opsiyonel — detay sayfasında Türkçe adın yanında küçük gösterilir, ör. 日本語タイトル)</span></label><input class="form-input" type="text" id="originalNameInput" placeholder="Orijinal dildeki adı…"/></div><div><label class="form-label">Alternatif Adlar</label><div class="add-row"><input class="form-input" type="text" id="altNameInput" placeholder="Alternatif ad ekle…"/><div class="add-icon-btn" onclick="addAltName()"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div></div><div class="alt-tags-wrap" id="altTagsWrap" style="margin-top:7px;"></div></div></div><div class="form-tab-panel" data-tab="kunye" style="display:none;"><div><label class="form-label">Fansub / Çeviri Ekibi</label><div class="add-row" style="position:relative;"><input class="form-input" type="text" id="fansubInput" placeholder="Ekip adı ekle…" autocomplete="off" oninput="renderFansubSuggestions()" onfocus="renderFansubSuggestions()"/><div class="add-icon-btn" onclick="addFansub()"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div><div id="fansubSuggestWrap" class="autocomplete-dropdown hidden"></div></div><div class="alt-tags-wrap" id="fansubTagsWrap" style="margin-top:7px;"></div></div><div><label class="form-label">Tür</label><div class="genre-preset-grid" id="genrePresetWrap"></div><div class="add-row" style="margin-top:8px;"><input class="form-input" type="text" id="customGenreInput" placeholder="Listede yok mu? Kendi türünü yaz…" onkeydown="if(event.key==='Enter'){event.preventDefault();addCustomGenre();}"/><div class="add-icon-btn" onclick="addCustomGenre()"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div></div><div class="alt-tags-wrap" id="customGenreTagsWrap" style="margin-top:7px;"></div></div><div><label class="form-label">İzleme Linki <span style="font-weight:400;color:var(--text3);">(opsiyonel — detay sayfasındaki "İzle" butonu buraya götürür)</span></label><input class="form-input" type="text" id="readUrlInput" placeholder="https://…"/></div></div><div class="form-tab-panel" data-tab="baglanti" style="display:none;"><div><label class="form-label">Bağlantılı Seriler <span style="font-weight:400;color:var(--text3);">(ör. devam serisi, spin-off, alternatif versiyon)</span></label><div style="position:relative;"><input class="form-input" type="text" id="linkSearchInput" placeholder="Bağlı olduğu seriyi ara…" autocomplete="off" oninput="searchLinkableSeries()" onfocus="searchLinkableSeries()"/><div id="linkSuggestions" class="autocomplete-dropdown hidden"></div></div><div class="alt-tags-wrap" id="linkChipsWrap" style="margin-top:7px;"></div><div style="margin-top:9px;"><label class="form-label">Bu Serinin Ana Seri Sırası <span style="font-weight:400;color:var(--text3);">(opsiyonel — zincirin doğru sırada gösterilmesi için, ör. Mirai Nikki=1, Redial=2)</span></label><input class="form-input" type="number" id="mainOrderInput" placeholder="ör. 1" style="max-width:120px;"/></div></div></div><div class="form-tab-panel" data-tab="takip" style="display:none;"><div style="background:var(--black4);border:1px solid var(--line);border-radius:11px;padding:13px;display:flex;flex-direction:column;gap:10px;"><div style="font-size:10px;font-weight:700;color:var(--text3);text-transform:uppercase;letter-spacing:.9px;display:flex;align-items:center;gap:5px;"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+Yayınlanma & Otomatik Artırma
+</div><div class="form-row"><div><label class="form-label" style="margin-bottom:4px;">Sıklık</label><select class="form-select" id="autoIncrFreq" onchange="updateIncrExtra()"><option value="">— Belirtilmemiş —</option><option value="daily">Her gün</option><option value="weekly">Her hafta</option><option value="monthly">Her ay</option><option value="irregular">Düzensiz</option><option value="completed">Tamamlandı</option></select></div><div id="incrAmtWrap"><label class="form-label" style="margin-bottom:4px;">Miktar</label><input class="form-input" type="number" id="autoIncrAmt" placeholder="1" min="0" oninput="updateIncrSummary()"/></div></div><div id="incrDayWrap" style="display:none;"><label class="form-label" style="margin-bottom:4px;">Haftanın Günü <span style="color:var(--text3);font-size:8.5px;">(yayınlanma = artırma günü)</span></label><select class="form-select" id="autoIncrDay" onchange="updateIncrSummary()"><option value="1">Pazartesi</option><option value="2">Salı</option><option value="3">Çarşamba</option><option value="4">Perşembe</option><option value="5">Cuma</option><option value="6">Cumartesi</option><option value="0">Pazar</option></select></div><div id="incrDateWrap" style="display:none;"><label class="form-label" style="margin-bottom:4px;">Ayın Günü <span style="color:var(--text3);font-size:8.5px;">(yayınlanma = artırma tarihi)</span></label><select class="form-select" id="autoIncrDate" onchange="updateIncrSummary()"><option value="1">1. gün</option><option value="2">2. gün</option><option value="3">3. gün</option><option value="4">4. gün</option><option value="5">5. gün</option><option value="6">6. gün</option><option value="7">7. gün</option><option value="8">8. gün</option><option value="9">9. gün</option><option value="10">10. gün</option><option value="11">11. gün</option><option value="12">12. gün</option><option value="13">13. gün</option><option value="14">14. gün</option><option value="15">15. gün</option><option value="16">16. gün</option><option value="17">17. gün</option><option value="18">18. gün</option><option value="19">19. gün</option><option value="20">20. gün</option><option value="21">21. gün</option><option value="22">22. gün</option><option value="23">23. gün</option><option value="24">24. gün</option><option value="25">25. gün</option><option value="26">26. gün</option><option value="27">27. gün</option><option value="28">28. gün</option></select></div><div id="incrIrregularWrap" style="display:none;"><label class="form-label" style="margin-bottom:4px;">Yayınlanma Notu</label><input class="form-input" type="text" id="releaseDayNote" placeholder="Örn: Genellikle ayın 25'inde, bazen 2 haftada bir…"/></div><div id="incrSummary" style="display:none;font-size:11px;color:var(--purple3);background:var(--purpleG);border-radius:8px;padding:8px 10px;line-height:1.5;"></div><div style="font-size:11px;color:var(--text3);display:flex;align-items:flex-start;gap:6px;"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0;margin-top:1px;"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg><span>Haftalık/Aylık seçilince bölüm o gün otomatik eklenir. <b style="color:var(--text2);">Sezon Arası</b>'nda durur.</span></div></div><div class="form-row"><div><label class="form-label">Stüdyo</label><input class="form-input" type="text" id="studioInput" placeholder="Örn: MAPPA, Wit Studio…"/></div><div><label class="form-label">Sezon</label><input class="form-input" type="number" id="seasonInput" placeholder="Örn: 2" min="0"/></div></div><div><label class="form-label">Yayın Durumu</label><select class="form-select" id="airingStatusInput"><option value="">— Belirtilmemiş —</option><option value="airing">Yayınlanıyor</option><option value="finished">Tamamlandı</option><option value="upcoming">Yayınlanacak</option><option value="cancelled">İptal Edildi</option></select></div><div><label class="form-label">Kategori *</label><select class="form-select" id="seriesCategory" onchange="toggleReturnDate()"><option value="reading">İzliyorum</option><option value="current">TR Güncel</option><option value="current_en">EN Güncel</option><option value="current_both">TR+EN Güncel</option><option value="stockpile">Bölüm Biriktiriyorum</option><option value="paused">Ara Verdim</option><option value="dropped">Bıraktım</option><option value="completed">Bitti</option><option value="planned">Planlıyorum</option><option value="season">Sezon Arası</option></select></div><div><label class="form-label">Bölüm Takibi</label><div class="form-row"><div><label class="form-label" style="margin-bottom:4px;">Türkçe</label><input class="form-input" type="number" id="chapterTR" placeholder="0" min="0"/></div><div><label class="form-label" style="margin-bottom:4px;">İngilizce</label><input class="form-input" type="number" id="chapterEN" placeholder="—" min="0"/></div></div></div><div><label class="form-label">Toplam Bölüm <span style="color:var(--text3);font-size:8.5px;">(ilerleme çubuğu için)</span></label><input class="form-input" type="number" id="chapterTotal" placeholder="Örn: 200" min="0"/></div></div><div class="form-tab-panel" data-tab="kisisel" style="display:none;"><div><label class="form-label">Puan</label><div class="star-row" id="ratingStars"></div></div><div><label class="form-label">Kişisel Düşüncem <span style="font-weight:400;color:var(--text3);">(bu seri hakkında gerçekten ne düşünüyorsun)</span></label><textarea class="form-textarea" id="seriesOpinion" placeholder="Yazım tarzı, karakterler, seni ne bağladı…"></textarea><div style="font-size:10px;color:var(--text3);margin-top:4px;">**kalın**, *italik* ve linkler otomatik biçimlenir.</div></div><div><label class="form-label">Not <span style="font-weight:400;color:var(--text3);">(pratik hatırlatmalar — nerede bıraktın, ne bekliyorsun vb.)</span></label><textarea class="form-textarea" id="seriesNote" placeholder="Örn: 45. bölümde bıraktım, ana karakter dönünce devam et…"></textarea><div style="font-size:10px;color:var(--text3);margin-top:4px;">**kalın**, *italik* ve linkler otomatik biçimlenir.</div></div></div><div class="form-tab-panel" data-tab="takip" style="display:none;"><div id="returnDateWrap" style="display:none;"><label class="form-label">Geri Dönüş Tarihi <span style="color:var(--text3);font-size:8.5px;">(sezon arası için)</span></label><input class="form-input" type="date" id="returnDate"/></div></div><button class="btn-primary" onclick="saveSeries()"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"/><polyline points="17 21 17 13 7 13 7 21"/><polyline points="7 3 7 8 15 8"/></svg> Kaydet</button><button class="btn-danger hidden" id="deleteBtn" onclick="deleteSeries()"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="3 6 5 6 21 6"/><path d="M19 6l-1 14a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2L5 6"/><path d="M10 11v6"/><path d="M14 11v6"/><path d="M9 6V4h6v2"/></svg> Seriyi Sil</button></div></div></div><div class="overlay hidden" id="quickOverlay" onclick="closeOnOverlay(event,'quickOverlay')"><div class="quick-sheet" onclick="event.stopPropagation()"><div class="sheet-handle"></div><div class="quick-header"><div class="quick-title" id="quickTitle">Hızlı Menü</div><div class="quick-sub" id="quickSub"></div></div><div class="quick-body"><div class="stepper-box"><div class="stepper-label"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="5" width="20" height="14" rx="2"/><line x1="2" y1="12" x2="22" y2="12"/></svg> Türkçe Bölüm</div><div class="stepper-row"><div class="stepper-btn" onclick="stepCh('TR',-1)">−</div><input class="stepper-input" type="number" id="quickTR" min="0"/><div class="stepper-btn" onclick="stepCh('TR',1)">+</div></div><div class="preset-row"><div class="preset-btn" onclick="stepCh('TR',5)">+5</div><div class="preset-btn" onclick="stepCh('TR',10)">+10</div><div class="preset-btn" onclick="stepCh('TR',25)">+25</div><div class="preset-btn" onclick="stepCh('TR',50)">+50</div></div></div><div class="stepper-box"><div class="stepper-label"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><line x1="3" y1="12" x2="21" y2="12"/><path d="M12 3a15 15 0 0 1 4 9 15 15 0 0 1-4 9 15 15 0 0 1-4-9 15 15 0 0 1 4-9z"/></svg> İngilizce Bölüm</div><div class="stepper-row"><div class="stepper-btn" onclick="stepCh('EN',-1)">−</div><input class="stepper-input" type="number" id="quickEN" min="0"/><div class="stepper-btn" onclick="stepCh('EN',1)">+</div></div><div class="preset-row"><div class="preset-btn" onclick="stepCh('EN',5)">+5</div><div class="preset-btn" onclick="stepCh('EN',10)">+10</div><div class="preset-btn" onclick="stepCh('EN',25)">+25</div><div class="preset-btn" onclick="stepCh('EN',50)">+50</div></div></div><div><div style="font-size:9.5px;font-weight:600;color:var(--text3);text-transform:uppercase;letter-spacing:.8px;margin-bottom:7px;">Durum Değiştir</div><div class="status-grid" id="statusGrid"></div></div></div><div class="quick-footer"><div id="skipWrap" style="display:none;margin-bottom:8px;"><button id="skipBtn" onclick="toggleSkip()" style="width:100%;padding:10px;border-radius:11px;background:var(--black5);border:1px solid var(--line2);color:var(--text2);font-size:12px;font-weight:600;font-family:'Outfit',sans-serif;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:6px;transition:all .18s;"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="6" y="4" width="4" height="16"/><rect x="14" y="4" width="4" height="16"/></svg>
+Bu Periyodu Atla
+</button></div><button class="quick-save-btn" onclick="saveQuick()"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"/><polyline points="17 21 17 13 7 13 7 21"/><polyline points="7 3 7 8 15 8"/></svg> Kaydet</button></div></div></div><div class="overlay hidden" id="lightboxOverlay" onclick="closeLightboxIfBg(event)"><div style="position:fixed;inset:0;display:flex;align-items:center;justify-content:center;z-index:300;overflow:hidden;" id="lightboxStage"><div id="lightboxImgWrap" style="position:relative;max-width:95vw;max-height:90dvh;touch-action:none;"><img id="lightboxImg" src="" style="max-width:95vw;max-height:88dvh;border-radius:12px;object-fit:contain;box-shadow:0 8px 40px rgba(0,0,0,.9);cursor:zoom-in;user-select:none;-webkit-user-drag:none;"/><button onclick="closeLightbox()" style="position:absolute;top:-12px;right:-12px;width:30px;height:30px;border-radius:50%;background:var(--black4);border:1px solid var(--line2);color:var(--text2);font-size:16px;cursor:pointer;display:flex;align-items:center;justify-content:center;z-index:5;">&#x2715;</button><div id="lightboxZoomBar" style="position:absolute;bottom:-46px;left:50%;transform:translateX(-50%);display:flex;gap:6px;background:var(--black4);border:1px solid var(--line2);border-radius:10px;padding:5px;">
+  <button onclick="lightboxZoomOut()" style="width:32px;height:32px;border-radius:7px;background:var(--black5);border:none;color:var(--text2);cursor:pointer;font-size:16px;display:flex;align-items:center;justify-content:center;">−</button>
+  <button onclick="lightboxZoomReset()" id="lightboxZoomPct" style="min-width:48px;padding:0 8px;border-radius:7px;background:var(--black5);border:none;color:var(--text2);cursor:pointer;font-size:11px;font-weight:600;display:flex;align-items:center;justify-content:center;">100%</button>
+  <button onclick="lightboxZoomIn()" style="width:32px;height:32px;border-radius:7px;background:var(--black5);border:none;color:var(--text2);cursor:pointer;font-size:16px;display:flex;align-items:center;justify-content:center;">+</button>
+</div></div></div></div><div class="overlay hidden" id="backupOverlay" onclick="closeOnOverlay(event,'backupOverlay')"><div class="fmeta-modal" style="max-width:310px;" onclick="event.stopPropagation()"><div class="fmeta-close" onclick="closeSheet('backupOverlay')"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></div><div class="fmeta-title" style="margin-bottom:14px;">Yedekle / Geri Yükle</div><div class="form-body" style="padding:0;"><div class="backup-card"><div class="backup-card-title"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+Yedek Al
+</div><div class="backup-card-desc">Tüm serilerini ve kapak görsellerini bir dosyaya kaydeder. Telefon değiştirince geri yükleyebilirsin.</div><button class="backup-btn primary" onclick="exportBackup()"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+Yedek Dosyası İndir
+</button></div><div class="backup-card"><div class="backup-card-title"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 15v4a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+Geri Yükle
+</div><div class="backup-card-desc">Daha önce aldığın yedek dosyasını seç. Mevcut verilerinin üzerine yazar (tekli seri paylaşım dosyaları eklenir, üzerine yazmaz).</div><label class="backup-btn secondary" style="cursor:pointer;"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 15v4a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+Yedek Dosyası Seç
+<input type="file" accept=".json" onchange="importBackup(event)" style="display:none;"/></label></div><div id="backupInfoPanel"></div></div></div></div><div class="toast hidden" id="toast"><span class="toast-icon" id="toastIcon"></span><span id="toastMsg"></span></div><div class="overlay hidden" id="confirmOverlay" onclick="closeOnOverlay(event,'confirmOverlay')"><div class="sheet" style="max-width:340px;margin:auto;border-radius:20px;" onclick="event.stopPropagation()"><div class="sheet-header" style="border-bottom:none;padding-bottom:0;"><span class="sheet-title">Emin misin?</span></div><div class="form-body" style="padding-top:8px;"><p id="confirmMsg" style="font-size:13px;color:var(--text2);line-height:1.6;"></p><div class="btn-row"><button class="btn-ghost" onclick="resolveConfirm(false)">Vazgeç</button><button class="btn-danger" id="confirmOkBtn" onclick="resolveConfirm(true)">Evet, Sil</button></div></div></div></div><div class="overlay hidden" id="genreFilterOverlay" onclick="closeOnOverlay(event,'genreFilterOverlay')"><div class="fmeta-modal" style="max-width:300px;" onclick="event.stopPropagation()"><div class="fmeta-close" onclick="closeGenreFilter()"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></div><div class="fmeta-title" style="text-align:center;margin-bottom:2px;">Türe Göre Filtrele</div><div class="fmeta-sub" style="margin-bottom:18px;">Bir tür seç, o türdeki seriler listelensin</div><div class="form-body" style="padding:0;"><div id="genreFilterList"></div><div class="genre-filter-clear" onclick="clearGenreFilter()"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>Filtreyi Temizle</div></div></div></div><div class="overlay hidden" id="fansubMetaOverlay" onclick="closeOnOverlay(event,'fansubMetaOverlay')"><div class="fmeta-modal" onclick="event.stopPropagation()"><div class="fmeta-close" onclick="closeFansubMetaEditor()"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></div><div class="form-body" style="padding:0;"><div class="fmeta-head"><div class="fmeta-logo-preview" id="fansubMetaLogoPreviewWrap"></div><div class="fmeta-title" id="fansubMetaName" style="font-size:15px;"></div><div class="fmeta-sub">Logo ve site linkini ekle</div></div><label class="fmeta-upload-btn"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 5 17 10"/><line x1="12" y1="5" x2="12" y2="15"/></svg>Cihazdan Görsel Yükle<input type="file" accept="image/*" id="fansubMetaLogoFileInput" onchange="handleFansubMetaLogoFile()" style="display:none;"/></label><div style="display:flex;align-items:center;gap:10px;margin:16px 0;"><div style="flex:1;height:1px;background:rgba(255,255,255,.08);"></div><span style="font-size:10px;color:var(--text3);font-weight:700;">VEYA</span><div style="flex:1;height:1px;background:rgba(255,255,255,.08);"></div></div><div><label class="form-label">Logo URL</label><input class="form-input" type="text" id="fansubMetaLogoInput" placeholder="https://…/logo.png" oninput="previewFansubMetaLogo()"/></div><div style="margin-bottom:16px;"><label class="form-label">Site Linki</label><input class="form-input" type="text" id="fansubMetaUrlInput" placeholder="https://sadscans.com"/></div><button class="form-save-btn" onclick="saveFansubMetaFromForm()"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Kaydet</button><p style="font-size:10.5px;color:var(--text3);line-height:1.5;margin-top:12px;">Bu bilgi bu ekip adını kullandığın tüm serilerde otomatik görünür.</p><button class="btn-primary" onclick="saveFansubMetaFromForm()">Kaydet</button></div></div></div><div class="overlay hidden" id="previewOverlay" onclick="closeOnOverlay(event,'previewOverlay')"><div class="preview-modal-sheet" onclick="event.stopPropagation()" id="previewBody"></div></div><div class="overlay hidden" id="fansubListOverlay" onclick="closeOnOverlay(event,'fansubListOverlay')"><div class="sheet" style="max-width:400px;margin:auto;border-radius:20px;max-height:74vh;" onclick="event.stopPropagation()"><div class="sheet-header"><span class="sheet-title">Çeviri Ekipleri</span><button class="close-btn" onclick="closeSheet('fansubListOverlay')">&#x2715;</button></div><div class="form-body" id="fansubListBody" style="overflow-y:auto;"></div></div></div><div class="overlay hidden" id="notifOverlay" onclick="closeOnOverlay(event,'notifOverlay')"><div class="sheet-panel" onclick="event.stopPropagation()"><div class="sheet-panel-header"><div class="sheet-panel-title"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg>Bildirimler</div><div class="hdr-btn" onclick="closeSheet('notifOverlay')"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></div></div><div class="sheet-panel-body" id="notifSheetBody"></div></div></div><div class="overlay hidden" id="forecastOverlay" onclick="closeOnOverlay(event,'forecastOverlay')"><div class="sheet-panel" onclick="event.stopPropagation()"><div class="sheet-panel-header"><div class="sheet-panel-title"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>Önümüzdeki 7 Gün</div><div class="hdr-btn" onclick="closeSheet('forecastOverlay')"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></div></div><div class="sheet-panel-body" id="forecastSheetBody"></div></div></div><div class="overlay hidden" id="profileOverlay" onclick="closeOnOverlay(event,'profileOverlay')"><div class="fmeta-modal" style="max-width:300px;" onclick="event.stopPropagation()"><div class="fmeta-close" onclick="closeSheet('profileOverlay')"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></div><div class="fmeta-title" style="text-align:center;margin-bottom:16px;">Profilim</div><div class="form-body" style="padding:0;">
+  <div style="display:flex;flex-direction:column;align-items:center;gap:10px;padding:6px 0 4px;">
+    <div class="profile-avatar-big" id="profileAvatarBig">✨</div>
+  </div>
+  <div>
+    <label class="form-label">Avatar</label>
+    <div class="profile-avatar-grid" id="profileAvatarGrid"></div>
+    <label class="fmeta-upload-btn" style="margin-top:8px;"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg> Kendi Fotoğrafını Yükle<input type="file" accept="image/*" id="profileAvatarFileInput" onchange="handleProfileAvatarFile()" style="display:none;"/></label>
+  </div>
+  <div><label class="form-label">Kullanıcı Adı</label><input class="form-input" type="text" id="profileNameInput" placeholder="Adını yaz…" oninput="previewProfileName()"/></div>
+  <div><label class="form-label">Durum / Bio <span style="font-weight:400;color:var(--text3);">(opsiyonel)</span></label><input class="form-input" type="text" id="profileBioInput" placeholder="ör. Yandere karakterlere zaafı olan biri…"/></div>
+  <button class="form-save-btn" style="margin-top:16px;" onclick="saveProfile()"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Kaydet</button>
+  <div class="profile-stats-grid" id="profileStatsGrid"></div>
+  <p style="font-size:10px;color:var(--text3);text-align:center;line-height:1.5;">Bu profil sadece bu cihazda, senin için — hiçbir yere gönderilmiyor.</p>
+</div></div></div><script src="app.js"></script>
+<script>
+TAB_PRIORITY_COUNT_OVERRIDE=0; // Mobile: sadece "Tümü" sabit, geri kalan hepsi "Diğer" içinde
+async function init(){
+  await load();
+  await loadActivityLog();
+  await runAutoIncrement();
+  updateStreak();
+  updateProfileAvatarBtn();
+  updateNotificationBadge();
+  checkMidnightEgg();
+  renderTabs();
+  renderContent();
+  renderRatingStars(0);
+  updateThemeToggleIcon();
+  lbInitEvents();
+  const params=new URLSearchParams(location.search);
+  const seriId=params.get('seri');
+  const editId=params.get('edit');
+  if(seriId&&series.find(x=>x.id===seriId)){
+    openDetail(seriId,true);
+  } else if(editId&&series.find(x=>x.id===editId)){
+    openEditSheet(editId);
+  } else if(params.has('form')&&params.get('form')==='add'){
+    openAddSheet();
+  }
+}
+init();
+function renderContent(){
+  if(currentPage==='home')renderHome();
+  else if(currentPage==='stats')renderStats();
+  else if(currentPage==='list')renderListPage();
+  else if(currentPage==='fansubs')renderFansubListPage();
+  // currentPage==='detail' ise içerik zaten openDetail() tarafından #mainContent'e yazıldı,
+  // diğer sekmelerde olduğu gibi burada tekrar render etmeye gerek yok.
+}
+
+// ===== Seri detay sayfası (mobile'a özel Liquid Glass görünüm) =====
+// Not: Artık Ana Sayfa/İstatistik ile birebir aynı mekanizmayla çalışıyor — içerik doğrudan
+// #mainContent'e yazılıyor, ayrı bir sabit katman/pencere ve giriş-çıkış animasyonu yok.
+function openDetail(id,skipHistoryOrEvent){
+  const s=series.find(x=>x.id===id); if(!s) return;
+  if(s.newChapter){ s.newChapter=false; save(); }
+  const skipHistory=skipHistoryOrEvent===true;
+
+  // Sayfa zaten bu seri için açıksa (favorileme/sabitleme gibi küçük bir aksiyon sonrası
+  // çağrıldıysak), tüm sayfayı sıfırdan inşa etmek yerine sadece değişen kısımları güncelliyoruz.
+  const existingPage=document.getElementById('lgPage');
+  if(skipHistory&&existingPage&&currentDetailId===id){
+    updateDetailPageInPlace(s);
+    return;
+  }
+  if(currentPage!=='detail'){
+    _detailReturnState={page:currentPage};
+  }
+  currentPage='detail';
+  currentDetailId=id;
+  document.getElementById('header').style.display='none';
+  const cat=CATS[s.category]||CATS.reading;
+  const {chTR,total,pct,altH,fanH,genreH,linksH,oldCH,noteH,opinionH,ratingH,logH,countdownH}=getSeriesDetailSections(s);
+
+  const coverBlock=s.cover
+    ?`<img src="${esc(s.cover)}" onerror="this.style.display='none'" onclick="openLightbox('${esc(s.cover)}')">`
+    :ic('img',30);
+
+  const el=document.getElementById('mainContent');
+  el.innerHTML=`
+    <div class="lg-page" id="lgPage">
+      <div class="detail-hero">
+        <div class="detail-topbar">
+          <div class="detail-iconbtn" onclick="closeDetail()">${ic('chevronLeft',16)}</div>
+          <div style="display:flex;gap:8px;">
+            <div class="detail-iconbtn" onclick="shareSeriesCard('${s.id}')" title="Görsel Kart Paylaş">${ic('share',15)}</div>
+            <div class="detail-iconbtn" onclick="shareSeriesData('${s.id}')" title="Seri Verisini Aktar (arkadaşın kütüphanesine ekleyebilir)">${ic('box',15)}</div>
+            <div class="detail-iconbtn" onclick="openQuick('${s.id}')" title="Hızlı Düzenle">${ic('bolt',15)}</div>
+          </div>
+        </div>
+        <div class="detail-cover-hero">
+          <div class="detail-cover">${coverBlock}</div>
+          <div style="flex:1;min-width:0;padding-bottom:2px;">
+            <div class="detail-badges-row">
+              ${s.pinned?`<div class="detail-badge" style="color:#fca5a5;">${ic('pin',9)} Sabitli</div>`:''}
+              ${s.favorited?`<div class="detail-badge" style="color:#f9a8d4;">${ic('heartFill',9)} Favori</div>`:''}
+            </div>
+            <div class="detail-title">${esc(s.name)}</div>
+            ${s.originalName?`<div class="detail-original">${esc(s.originalName)}</div>`:''}
+            <div class="detail-meta-row">
+              <span class="detail-meta-chip">${ic(cat.icon,9)} ${cat.label}</span>
+              ${s.chapterTR?`<span class="detail-meta-chip">${ic('tr',9)} ${s.chapterTR}${total>0?'/'+total:''}</span>`:''}
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="detail-body">
+        ${s.readUrl
+          ?`<div class="detail-read-btn" onclick="window.open('${esc(s.readUrl)}','_blank')">${ic('bolt',15)} İzle</div>`
+          :`<div class="detail-read-btn detail-read-btn-empty" onclick="openEditSheet('${s.id}')">${ic('edit',14)} İzleme Linki Ekle</div>`}
+        ${countdownH?`<div class="stat-card-wrap">${countdownH}</div>`:''}
+        ${pct>0?`<div class="stat-card-wrap">
+          <div class="detail-progress-title">İlerleme<b>%${pct}</b></div>
+          <div class="preview-progress-track" style="margin-top:0;"><div class="preview-progress-fill" style="width:${pct}%;background:linear-gradient(90deg,#34d399,#6ee7b7);"></div></div>
+        </div>`:''}
+        <div class="detail-action-row">
+          <div class="detail-action-btn ${s.pinned?'pinned':''}" onclick="togglePin('${s.id}')">${s.pinned?ic('pinFill',18):ic('pin',18)}<span>${s.pinned?'Sabitli':'Sabitle'}</span></div>
+          <div class="detail-action-btn ${s.favorited?'active':''}" onclick="toggleFav('${s.id}')">${s.favorited?ic('heartFill',18):ic('heart',18)}<span>${s.favorited?'Favoride':'Favorile'}</span></div>
+          <div class="detail-action-btn" onclick="openEditSheet('${s.id}')">${ic('edit',18)}<span>Düzenle</span></div>
+        </div>
+        ${genreH?`<div class="stat-card-wrap">${genreH}</div>`:''}
+        ${ratingH?`<div class="stat-card-wrap"><div class="detail-sec-title">${ic('sparkle',10)} Puanın</div>${ratingH}</div>`:''}
+        ${altH?`<div class="stat-card-wrap">${altH}</div>`:''}
+        ${fanH?`<div class="stat-card-wrap">${fanH}</div>`:''}
+        ${linksH?`<div class="stat-card-wrap">${linksH}</div>`:''}
+        ${opinionH?`<div class="stat-card-wrap">${opinionH}</div>`:''}
+        ${noteH?`<div class="stat-card-wrap">${noteH}</div>`:''}
+        ${oldCH?`<div class="stat-card-wrap">${oldCH}</div>`:''}
+        ${logH?`<div class="stat-card-wrap">${logH}</div>`:''}
+        <div style="height:16px;"></div>
+      </div>
+    </div>`;
+  el.scrollTop=0;
+  document.getElementById('searchWrap').style.display='none';
+  document.getElementById('catTabsRow').style.display='none';
+  { const heroSecEl=document.getElementById('heroSection'); if(heroSecEl)heroSecEl.style.display='none'; }
+
+  // Bulanıklık katmanlarını, sayfa giriş animasyonu (lgPageIn) bitene kadar erteliyoruz —
+  // aksi halde transform animasyonu + çoklu backdrop-filter aynı anda render edilip donmaya yol açıyor.
+  const lgPageEl=document.getElementById('lgPage');
+  if(lgPageEl){
+    const reduceMotion=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if(reduceMotion){
+      lgPageEl.classList.add('lg-settled');
+    } else {
+      const settle=()=>lgPageEl.classList.add('lg-settled');
+      lgPageEl.addEventListener('animationend',settle,{once:true});
+      setTimeout(settle,420); // animationend kaçarsa güvenlik ağı
+    }
+  }
+
+  // Kapaktan renk çıkarıp arka plana uygula (varsa)
+  if(s.cover){
+    extractCoverColors(s.cover).then(colors=>{
+      if(!colors)return;
+      const bg=document.getElementById('lgBgFixed');
+      if(!bg)return;
+      const {avg,dark}=colors;
+      bg.style.background=`linear-gradient(165deg, rgb(${avg.r},${avg.g},${avg.b}) 0%, rgb(${dark.r},${dark.g},${dark.b}) 45%, #12081f 78%, #08050f 100%)`;
+    });
+  }
+
+  if(!skipHistory){
+    history.pushState({megamiDetail:id},'',location.pathname+'?seri='+encodeURIComponent(id));
+  }
+}
+function updateDetailPageInPlace(s){
+  // Sabitleme/favorileme rozetleri (Sabitli ve Favori aynı anda gösterilebilir)
+  const badgesRow=document.querySelector('.detail-badges-row');
+  if(badgesRow){
+    badgesRow.innerHTML=`
+      ${s.pinned?`<div class="detail-badge" style="color:#fca5a5;">${ic('pin',9)} Sabitli</div>`:''}
+      ${s.favorited?`<div class="detail-badge" style="color:#f9a8d4;">${ic('heartFill',9)} Favori</div>`:''}`;
+  }
+  // Sabitle / Favorile buton durumları
+  const pinBtn=document.querySelector('.detail-action-btn[onclick*="togglePin"]');
+  if(pinBtn){
+    pinBtn.classList.toggle('pinned',!!s.pinned);
+    pinBtn.innerHTML=(s.pinned?ic('pinFill',18):ic('pin',18))+`<span>${s.pinned?'Sabitli':'Sabitle'}</span>`;
+  }
+  const favBtn=document.querySelector('.detail-action-btn[onclick*="toggleFav"]');
+  if(favBtn){
+    favBtn.classList.toggle('active',!!s.favorited);
+    favBtn.innerHTML=(s.favorited?ic('heartFill',18):ic('heart',18))+`<span>${s.favorited?'Favoride':'Favorile'}</span>`;
+  }
+  // Bölüm sayısı / ilerleme çubuğu (Hızlı Düzenle veya form kaydından sonra değişmiş olabilir)
+  const {chTR,total,pct}=getSeriesDetailSections(s);
+  const metaChip=document.querySelector('.detail-meta-chip:nth-child(2)');
+  if(metaChip&&s.chapterTR){
+    metaChip.innerHTML=`${ic('tr',9)} ${s.chapterTR}${total>0?'/'+total:''}`;
+  }
+  const progressFill=document.querySelector('.preview-progress-fill');
+  const progressLabel=document.querySelector('.detail-progress-title b');
+  if(progressFill&&pct>0){
+    progressFill.style.width=pct+'%';
+    if(progressLabel)progressLabel.textContent='%'+pct;
+  }
+}
+function closeDetail(){
+  // Artık Ana Sayfa/İstatistik sekmeleri arasında geçiş (switchPage) ile birebir aynı
+  // mekanizma: anında içerik değişimi, ayrı bir kapanış animasyonu/katmanı yok.
+  const returnPage=(_detailReturnState&&_detailReturnState.page)||'home';
+  _detailReturnState=null;
+  currentDetailId=null;
+  currentPage=returnPage;
+  history.pushState({},'',location.pathname);
+  document.getElementById('header').style.display='';
+  document.getElementById('searchWrap').style.display=returnPage==='home'?'':'none';
+  document.getElementById('catTabsRow').style.display=returnPage==='home'?'':'none';
+  { const heroSecEl=document.getElementById('heroSection'); if(heroSecEl&&returnPage!=='home')heroSecEl.style.display='none'; }
+  if(typeof updateHeaderMode==='function')updateHeaderMode(returnPage);
+  renderContent();
+  if(typeof updateRadialActive==='function') updateRadialActive();
+}
+// ===== Seri paylaşım kartı — canvas ile kapak+isim+ilerleme+puan içeren görsel kart üretip
+// mümkünse görsel olarak (navigator.share ile dosya), değilse indirme linki olarak sunar. =====
+function _shareCardRoundRect(ctx,x,y,w,h,r){
+  ctx.beginPath();
+  ctx.moveTo(x+r,y);
+  ctx.arcTo(x+w,y,x+w,y+h,r);
+  ctx.arcTo(x+w,y+h,x,y+h,r);
+  ctx.arcTo(x,y+h,x,y,r);
+  ctx.arcTo(x,y,x+w,y,r);
+  ctx.closePath();
+}
+function _shareCardLoadImg(src){
+  return new Promise(resolve=>{
+    if(!src){resolve(null);return;}
+    const img=new Image();
+    if(!src.startsWith('data:'))img.crossOrigin='anonymous';
+    img.onload=()=>resolve(img);
+    img.onerror=()=>resolve(null);
+    img.src=src;
+  });
+}
+function _shareCardWrapText(ctx,text,maxWidth,maxLines){
+  const words=text.split(' ');
+  const lines=[]; let cur='';
+  for(const w of words){
+    const test=cur?cur+' '+w:w;
+    if(ctx.measureText(test).width>maxWidth&&cur){ lines.push(cur); cur=w; if(lines.length===maxLines-1){cur=w;break;} }
+    else cur=test;
+  }
+  if(cur)lines.push(cur);
+  if(lines.length>maxLines){
+    lines.length=maxLines;
+    let last=lines[maxLines-1];
+    while(ctx.measureText(last+'…').width>maxWidth&&last.length>1) last=last.slice(0,-1);
+    lines[maxLines-1]=last+'…';
+  }
+  return lines;
+}
+async function buildShareCardBlob(s){
+  const W=1080;
+
+  // ÖNEMLİ: Sayfa Google Fonts'tan Playfair Display'in SADECE 700 ağırlığını yüklüyor
+  // (bkz. <link ...family=Playfair+Display:wght@700>). Önceki sürümde başlık için 800
+  // isteniyordu — yüklü olmayan bir ağırlık istenince tarayıcı tamamen farklı bir yedek
+  // fonta düşüyor, bu da satır yüksekliklerini bozup alt bölümlerle çakışmaya yol açıyordu.
+  // Şimdi her yerde gerçekten yüklü olan ağırlıklar kullanılıyor.
+  try{
+    await Promise.all([
+      document.fonts.load("700 54px 'Playfair Display'"),
+      document.fonts.load("700 40px 'Playfair Display'"),
+      document.fonts.load("700 34px 'Outfit'"),
+      document.fonts.load("600 30px 'Outfit'"),
+      document.fonts.load("600 26px 'Outfit'"),
+      document.fonts.load("600 24px 'Outfit'"),
+      document.fonts.load("600 22px 'Outfit'"),
+      document.fonts.load("500 26px 'Outfit'")
+    ]);
+  }catch(e){}
+
+  // ---- Ölçüm: metin genişliklerini hesaplamak için gerçek çizim yapmayan geçici context ----
+  const meas=document.createElement('canvas').getContext('2d');
+
+  // Başlık — çok uzun/tek kelimelik isimlerde bile taşmasın diye gerekirse fontu küçültüyoruz
+  let nameFontSize=54;
+  meas.font=`700 ${nameFontSize}px 'Playfair Display',serif`;
+  let nameLines=_shareCardWrapText(meas,s.name,W-180,2);
+  while(nameFontSize>34&&nameLines.some(l=>meas.measureText(l).width>W-180)){
+    nameFontSize-=4;
+    meas.font=`700 ${nameFontSize}px 'Playfair Display',serif`;
+    nameLines=_shareCardWrapText(meas,s.name,W-180,2);
+  }
+
+  const cat=CATS[s.category]||CATS.reading;
+  const catLabel=cat.label.toUpperCase();
+  meas.font="600 24px 'Outfit',sans-serif";
+  const catW=meas.measureText(catLabel).width+40;
+
+  // Orijinal ad — Türkçe başlığın hemen altında, küçük ve italik bir altyazı olarak
+  meas.font="italic 500 28px 'Outfit',sans-serif";
+  let originalName=(s.originalName||'').trim();
+  if(originalName){
+    const maxOrigW=W-180;
+    while(meas.measureText(originalName).width>maxOrigW&&originalName.length>3) originalName=originalName.slice(0,-2)+'…';
+  }
+
+  // Alternatif adlar — sığdığı kadarını göster, kalanını "+N" ile özetle
+  const altNames=(s.altNames||[]).filter(Boolean);
+  let altLine='';
+  if(altNames.length){
+    meas.font="500 26px 'Outfit',sans-serif";
+    const maxAltW=W-200;
+    for(let n=altNames.length;n>=1;n--){
+      const remaining=altNames.length-n;
+      const candidate=altNames.slice(0,n).join(' · ')+(remaining>0?`  +${remaining}`:'');
+      if(meas.measureText(candidate).width<=maxAltW||n===1){ altLine=candidate; break; }
+    }
+    while(meas.measureText(altLine).width>maxAltW&&altLine.length>3) altLine=altLine.slice(0,-2)+'…';
+  }
+
+  // Çeviri/fansub ekibi — küçük rozet çipleri (en fazla 3 + "+N")
+  const fansubs=(s.fansubList||[]).filter(Boolean);
+  const fansubChips=fansubs.slice(0,3);
+  const fansubExtra=fansubs.length-fansubChips.length;
+  meas.font="600 22px 'Outfit',sans-serif";
+  const chipPadX=16,chipGap=10,chipH=40;
+  const chipLabels=fansubChips.slice();
+  if(fansubExtra>0)chipLabels.push('+'+fansubExtra);
+  const chipWidths=chipLabels.map(t=>meas.measureText(t).width+chipPadX*2);
+  const chipsRowW=chipWidths.reduce((a,b)=>a+b,0)+chipGap*Math.max(0,chipWidths.length-1);
+
+  const chTR=parseInt(s.chapterTR)||0, total=parseInt(s.chapterTotal)||0;
+  const pct=total>0&&chTR>0?Math.min(100,Math.round((chTR/total)*100)):0;
+  meas.font="600 30px 'Outfit',sans-serif";
+  const chapterText=`Bölüm ${chTR}${total>0?' / '+total:''}`;
+  let chapterFontSize=30;
+  if(chTR>0&&meas.measureText(chapterText).width>W-140){
+    // Çok büyük bölüm numaralarında (ör. 4 haneli) taşmayı önlemek için otomatik küçült
+    chapterFontSize=26;
+    meas.font=`600 ${chapterFontSize}px 'Outfit',sans-serif`;
+  }
+
+  // ---- Dikey yerleşim planı: her blok kendi konumunu belirliyor, kart yüksekliği tamamen
+  // buradan çıkıyor — hiçbir blok sabit bir sınıra göre değil, bir öncekinin bittiği yere
+  // göre konumlanıyor, bu yüzden hiçbir kombinasyonda üst üste binme oluşamaz. ----
+  const coverW=612,coverH=864,coverX=(W-coverW)/2,coverY=88;
+  let y=coverY+coverH+58;
+  const nameY=y; const nameLineH=nameFontSize+16; y+=nameFontSize+(nameLines.length-1)*nameLineH;
+  let originalNameY=null;
+  if(originalName){ y+=26; originalNameY=y; y+=26; }
+  let altY=null;
+  if(altLine){ y+=30; altY=y; y+=28; }
+  let chipsY=null;
+  if(chipLabels.length){ y+=26; chipsY=y; y+=chipH; }
+  let ratingY=null;
+  if(s.rating){ y+=36; ratingY=y; y+=30; }
+  let chapterY=null,barY=null; const barW=560,barH=14;
+  if(chTR>0){
+    y+=36; chapterY=y; y+=chapterFontSize;
+    if(total>0){ y+=24; barY=y; y+=barH; }
+  }
+  const contentBottom=y;
+  const brandY=contentBottom+64;
+  const taglineY=brandY+34;
+  const H=Math.round(taglineY+58);
+
+  const canvas=document.createElement('canvas');
+  canvas.width=W;canvas.height=H;
+  const ctx=canvas.getContext('2d');
+
+  // Arka plan — kapaktan renk çıkarılabiliyorsa onu, olmazsa varsayılan mor gradyanı kullan
+  let bgColors=null;
+  if(s.cover){ try{ bgColors=await extractCoverColors(s.cover); }catch(e){} }
+  const grad=ctx.createLinearGradient(0,0,W*0.3,H);
+  if(bgColors){
+    const {avg,dark}=bgColors;
+    grad.addColorStop(0,`rgb(${avg.r},${avg.g},${avg.b})`);
+    grad.addColorStop(0.45,`rgb(${dark.r},${dark.g},${dark.b})`);
+    grad.addColorStop(1,'#08050f');
+  } else {
+    grad.addColorStop(0,'#4a1454'); grad.addColorStop(0.45,'#2a1040'); grad.addColorStop(1,'#08050f');
+  }
+  ctx.fillStyle=grad; ctx.fillRect(0,0,W,H);
+  const vig=ctx.createRadialGradient(W/2,H*0.32,W*0.2,W/2,H*0.5,W*0.9);
+  vig.addColorStop(0,'rgba(0,0,0,0)'); vig.addColorStop(1,'rgba(0,0,0,0.4)');
+  ctx.fillStyle=vig; ctx.fillRect(0,0,W,H);
+  const bottomFade=ctx.createLinearGradient(0,brandY-90,0,H);
+  bottomFade.addColorStop(0,'rgba(5,3,10,0)'); bottomFade.addColorStop(1,'rgba(5,3,10,0.55)');
+  ctx.fillStyle=bottomFade; ctx.fillRect(0,brandY-90,W,H-(brandY-90));
+
+  // İnce dış çerçeve — kartın tek başına bir görsel obje hissini güçlendiriyor
+  ctx.strokeStyle='rgba(255,255,255,0.08)'; ctx.lineWidth=2;
+  _shareCardRoundRect(ctx,10,10,W-20,H-20,32); ctx.stroke();
+
+  // Kapak görseli
+  const coverImg=await _shareCardLoadImg(s.cover);
+  ctx.save();
+  ctx.shadowColor='rgba(0,0,0,0.55)'; ctx.shadowBlur=50; ctx.shadowOffsetY=22;
+  _shareCardRoundRect(ctx,coverX,coverY,coverW,coverH,26);
+  ctx.fillStyle='#1a1028'; ctx.fill();
+  ctx.restore();
+  ctx.save();
+  _shareCardRoundRect(ctx,coverX,coverY,coverW,coverH,26);
+  ctx.clip();
+  if(coverImg){
+    const ir=coverImg.width/coverImg.height, cr=coverW/coverH;
+    let dw=coverW,dh=coverH,dx=coverX,dy=coverY;
+    if(ir>cr){ dh=coverH; dw=dh*ir; dx=coverX-(dw-coverW)/2; }
+    else{ dw=coverW; dh=dw/ir; dy=coverY-(dh-coverH)/2; }
+    ctx.drawImage(coverImg,dx,dy,dw,dh);
+  } else {
+    ctx.fillStyle='#241533'; ctx.fillRect(coverX,coverY,coverW,coverH);
+  }
+  // Kapağın üst kısmına hafif bir gölge — üzerine bindirilen rozetin okunurluğu için
+  const coverShade=ctx.createLinearGradient(0,coverY,0,coverY+coverH);
+  coverShade.addColorStop(0,'rgba(0,0,0,0.35)'); coverShade.addColorStop(0.18,'rgba(0,0,0,0)');
+  ctx.fillStyle=coverShade; ctx.fillRect(coverX,coverY,coverW,coverH);
+  ctx.restore();
+  ctx.strokeStyle='rgba(255,255,255,0.14)'; ctx.lineWidth=2;
+  _shareCardRoundRect(ctx,coverX+1,coverY+1,coverW-2,coverH-2,25); ctx.stroke();
+
+  // Kategori rozeti — artık ayrı bir satır değil, kapağın sol üst köşesine bindirilmiş
+  const badgeX=coverX+18,badgeY=coverY+18,badgeH=44;
+  ctx.save();
+  ctx.shadowColor='rgba(0,0,0,0.4)'; ctx.shadowBlur=14;
+  _shareCardRoundRect(ctx,badgeX,badgeY,catW,badgeH,22);
+  ctx.fillStyle='rgba(10,6,18,0.72)'; ctx.fill();
+  ctx.restore();
+  ctx.strokeStyle='rgba(255,255,255,0.28)'; ctx.lineWidth=1.5;
+  _shareCardRoundRect(ctx,badgeX,badgeY,catW,badgeH,22); ctx.stroke();
+  ctx.font="600 24px 'Outfit',sans-serif";
+  ctx.fillStyle='#e9d8ff'; ctx.textAlign='center'; ctx.textBaseline='middle';
+  ctx.fillText(catLabel,badgeX+catW/2,badgeY+badgeH/2+1);
+
+  // Seri adı
+  ctx.font=`700 ${nameFontSize}px 'Playfair Display',serif`;
+  ctx.fillStyle='#ffffff'; ctx.textAlign='center'; ctx.textBaseline='alphabetic';
+  nameLines.forEach((line,i)=>{ ctx.fillText(line,W/2,nameY+nameFontSize+i*nameLineH); });
+
+  // Orijinal ad
+  if(originalNameY!==null){
+    ctx.font="italic 500 28px 'Outfit',sans-serif";
+    ctx.fillStyle='rgba(255,255,255,0.6)';
+    ctx.fillText(originalName,W/2,originalNameY+20);
+  }
+
+  // Alternatif adlar
+  if(altY!==null){
+    ctx.font="500 26px 'Outfit',sans-serif";
+    ctx.fillStyle='rgba(255,255,255,0.55)';
+    ctx.fillText(altLine,W/2,altY+22);
+  }
+
+  // Çeviri ekibi rozetleri
+  if(chipsY!==null){
+    let cx=(W-chipsRowW)/2;
+    ctx.font="600 22px 'Outfit',sans-serif";
+    chipLabels.forEach((label,i)=>{
+      const cw=chipWidths[i];
+      _shareCardRoundRect(ctx,cx,chipsY,cw,chipH,20);
+      ctx.fillStyle='rgba(239,68,68,0.18)'; ctx.fill();
+      ctx.strokeStyle='rgba(252,165,165,0.35)'; ctx.lineWidth=1.3;
+      _shareCardRoundRect(ctx,cx,chipsY,cw,chipH,20); ctx.stroke();
+      ctx.fillStyle='#dcd0fb'; ctx.textAlign='center'; ctx.textBaseline='middle';
+      ctx.fillText(label,cx+cw/2,chipsY+chipH/2+1);
+      cx+=cw+chipGap;
+    });
+  }
+
+  // Puan (varsa)
+  if(ratingY!==null){
+    ctx.font="34px sans-serif";
+    const stars='★★★★★'.slice(0,s.rating)+'☆☆☆☆☆'.slice(0,5-s.rating);
+    ctx.fillStyle='#fbbf24'; ctx.textAlign='center'; ctx.textBaseline='alphabetic';
+    ctx.fillText(stars,W/2,ratingY+30);
+  }
+
+  // Bölüm / ilerleme
+  if(chapterY!==null){
+    ctx.font=`600 ${chapterFontSize}px 'Outfit',sans-serif`;
+    ctx.fillStyle='rgba(255,255,255,0.9)'; ctx.textAlign='center'; ctx.textBaseline='alphabetic';
+    ctx.fillText(chapterText,W/2,chapterY+chapterFontSize*0.78);
+  }
+  if(barY!==null){
+    const barX=(W-barW)/2;
+    _shareCardRoundRect(ctx,barX,barY,barW,barH,7);
+    ctx.fillStyle='rgba(255,255,255,0.15)'; ctx.fill();
+    _shareCardRoundRect(ctx,barX,barY,barW*(pct/100),barH,7);
+    const barGrad=ctx.createLinearGradient(barX,0,barX+barW,0);
+    barGrad.addColorStop(0,'#ef4444'); barGrad.addColorStop(1,'#fca5a5');
+    ctx.fillStyle=barGrad; ctx.fill();
+    ctx.font="600 22px 'Outfit',sans-serif";
+    ctx.fillStyle='rgba(255,255,255,0.7)'; ctx.textAlign='left'; ctx.textBaseline='middle';
+    ctx.fillText(`%${pct}`,barX+barW+18,barY+barH/2+1);
+  }
+
+  // Alt marka — Reika
+  ctx.font="700 40px 'Playfair Display',serif";
+  ctx.fillStyle='#ffffff';
+  const brandText='Reika';
+  const sparkW=30;
+  const brandW=ctx.measureText(brandText).width;
+  const totalBrandW=sparkW+14+brandW;
+  const bx=(W-totalBrandW)/2;
+  ctx.save();
+  ctx.translate(bx+sparkW/2,brandY-13);
+  ctx.fillStyle='#f87171';
+  for(let i=0;i<5;i++){
+    ctx.save();
+    ctx.rotate(i*(Math.PI*2/5));
+    ctx.beginPath();
+    ctx.moveTo(0,0);
+    ctx.bezierCurveTo(-5.18,-2.24,-5.88,-9.8,-2.1,-14.28);
+    ctx.bezierCurveTo(-1.4,-15.12,-0.7,-14.56,0,-13.44);
+    ctx.bezierCurveTo(0.7,-14.56,1.4,-15.12,2.1,-14.28);
+    ctx.bezierCurveTo(5.88,-9.8,5.18,-2.24,0,0);
+    ctx.closePath();
+    ctx.fill();
+    ctx.restore();
+  }
+  ctx.restore();
+  ctx.textAlign='left'; ctx.textBaseline='alphabetic';
+  ctx.fillStyle='#ffffff';
+  ctx.fillText(brandText,bx+sparkW+14,brandY);
+  ctx.font="600 22px 'Outfit',sans-serif";
+  ctx.fillStyle='rgba(255,255,255,0.55)';
+  ctx.textAlign='center';
+  ctx.fillText('Anime & Fansub Takip Kütüphanem',W/2,taglineY);
+
+  return new Promise(resolve=>{
+    try{ canvas.toBlob(blob=>resolve(blob),'image/png',0.95); }
+    catch(e){ resolve(null); }
+  });
+}
+// ===== Seri verisini paylaş — arkadaşın kendi Reika'sına DOĞRUDAN EKLEYEBİLECEĞİ bir .json
+// dosyası üretir. Kişisel alanlar (not, puan, favori, sabitli) bilerek dışarıda bırakılıyor;
+// bunlar sana özel, arkadaşının kütüphanesine taşınması anlamlı değil. =====
+function _buildSeriesShareData(s){
+  // İlgili çeviri ekiplerinin logo/link bilgisini de (varsa) ekliyoruz ki arkadaşın kendi
+  // kütüphanesine bunları tekrar tek tek girmek zorunda kalmasın.
+  const fansubMetaSnapshot={};
+  (s.fansubList||[]).forEach(f=>{
+    const meta=getFansubMeta(f);
+    if(meta.logo||meta.url) fansubMetaSnapshot[f]={logo:meta.logo,url:meta.url};
+  });
+  return {
+    type:'megami-series-share',
+    version:1,
+    series:{
+      name:s.name,
+      originalName:s.originalName||'',
+      altNames:[...(s.altNames||[])],
+      fansubList:[...(s.fansubList||[])],
+      genres:[...(s.genres||[])],
+      cover:s.cover||'',
+      oldCovers:[...(s.oldCovers||[])],
+      category:s.category||'reading',
+      chapterTR:s.chapterTR||'',
+      chapterEN:s.chapterEN||'',
+      chapterTotal:s.chapterTotal||'',
+      readUrl:s.readUrl||'',
+      releaseDay:s.releaseDay||'',
+      releaseDayNote:s.releaseDayNote||'',
+      returnDate:s.returnDate||'',
+      autoIncrAmt:s.autoIncrAmt||0,
+      autoIncrFreq:s.autoIncrFreq||'',
+      autoIncrDay:s.autoIncrDay||1,
+      autoIncrDate:s.autoIncrDate||1,
+    },
+    ...(Object.keys(fansubMetaSnapshot).length?{fansubMetaSnapshot}:{})
+  };
+}
+async function shareSeriesData(id){
+  const s=series.find(x=>x.id===id); if(!s)return;
+  const payload=_buildSeriesShareData(s);
+  const blob=new Blob([JSON.stringify(payload,null,2)],{type:'application/json'});
+  const slug=(s.name||'seri').toLowerCase().replace(/[^a-z0-9ğüşıöç]+/gi,'_').slice(0,40);
+  const filename=`megami-seri-${slug}.json`;
+  const text=`${s.name} — Reika'dan bir seri. Bu dosyayı Reika'da Ayarlar → Yedekleme → İçe Aktar ile açarsan kütüphanene doğrudan eklenir.`;
+
+  const file=new File([blob],filename,{type:'application/json'});
+  if(navigator.canShare&&navigator.canShare({files:[file]})){
+    try{ await navigator.share({files:[file],title:s.name,text}); return; }
+    catch(e){ if(e&&e.name==='AbortError')return; }
+  }
+  const url=URL.createObjectURL(blob);
+  const a=document.createElement('a');
+  a.href=url; a.download=filename;
+  document.body.appendChild(a); a.click(); a.remove();
+  setTimeout(()=>URL.revokeObjectURL(url),4000);
+  showToast('check','Seri dosyası indirildi — arkadaşına gönderebilirsin!');
+}
+async function shareSeriesCard(id){
+  const s=series.find(x=>x.id===id); if(!s)return;
+  // Görsele sığmayan/sığdırılması can sıkıcı olacak bilgiler (tam alt ad listesi, tam çeviri
+  // ekibi listesi, kişisel not özeti) buraya, paylaşım metnine (WhatsApp/Mesajlar'da görselle
+  // birlikte giden yazı) ekleniyor — görsel kart sade kalıyor, detay burada taşınıyor.
+  const lines=[`${s.name}${s.originalName?' ('+s.originalName+')':''} — Reika'da takip ediyorum`];
+  if(s.genres&&s.genres.length) lines.push(`🎭 ${s.genres.join(', ')}`);
+  if(s.chapterTR) lines.push(`📖 Bölüm ${s.chapterTR}${s.chapterTotal?' / '+s.chapterTotal:''}`);
+  if(s.rating) lines.push(`⭐ ${s.rating}/5`);
+  if(s.altNames&&s.altNames.length) lines.push(`🏷️ Alternatif adlar: ${s.altNames.join(', ')}`);
+  if(s.fansubList&&s.fansubList.length) lines.push(`👥 Çeviri: ${s.fansubList.join(', ')}`);
+  if(s.opinion){
+    const opinionExcerpt=s.opinion.length>140?s.opinion.slice(0,140).trim()+'…':s.opinion;
+    lines.push(`💭 "${opinionExcerpt}"`);
+  }
+  const text=lines.join('\n');
+  showToast('bolt','Kart hazırlanıyor…');
+  let blob=null;
+  try{ blob=await buildShareCardBlob(s); }catch(e){ blob=null; }
+  const slug=(s.name||'megami').toLowerCase().replace(/[^a-z0-9ğüşıöç]+/gi,'_').slice(0,40);
+
+  if(blob){
+    const file=new File([blob],`${slug}.png`,{type:'image/png'});
+    if(navigator.canShare&&navigator.canShare({files:[file]})){
+      try{ await navigator.share({files:[file],title:s.name,text}); return; }
+      catch(e){ if(e&&e.name==='AbortError')return; /* paylaşım başarısızsa indirmeye düş */ }
+    }
+    const url=URL.createObjectURL(blob);
+    const a=document.createElement('a');
+    a.href=url; a.download=`${slug}.png`;
+    document.body.appendChild(a); a.click(); a.remove();
+    setTimeout(()=>URL.revokeObjectURL(url),4000);
+    showToast('check','Kart indirildi — paylaşabilirsin!');
+    return;
+  }
+
+  // Kart üretilemedi (ör. kapak görseli CORS nedeniyle canvas'a çizilemedi) — düz metin paylaşımına düş
+  if(navigator.share){
+    navigator.share({title:s.name,text}).catch(()=>{});
+  } else {
+    showToast('check','Paylaşım bu tarayıcıda desteklenmiyor.');
+  }
+}
+
+// ===== Seri Ekle/Düzenle: tam sayfa geçişi (mobile'a özel) =====
+let _formPageWasOpen=false;
+function onAddOverlayShown(){
+  const wasAlreadyOpen=_formPageWasOpen;
+  _formPageWasOpen=true;
+  const el=document.getElementById('addOverlay');
+  el.classList.remove('closing');
+  // Bulanıklık katmanlarını (close-btn/btn-ghost/btn-secondary), sayfa giriş animasyonu
+  // (lgPageIn) bitene kadar erteliyoruz — aksi halde transform animasyonu + çoklu
+  // backdrop-filter aynı anda render edilip "Düzenle"ye basınca birkaç saniyelik donmaya yol açıyordu.
+  el.classList.remove('settled');
+  const reduceMotion=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if(reduceMotion){
+    el.classList.add('settled');
+  } else {
+    const settle=()=>el.classList.add('settled');
+    el.addEventListener('animationend',settle,{once:true});
+    setTimeout(settle,420); // animationend kaçarsa güvenlik ağı
+  }
+  if(!wasAlreadyOpen){
+    const qs=editingId?('edit='+encodeURIComponent(editingId)):'form=add';
+    const targetUrl=location.pathname+'?'+qs;
+    if(location.pathname+location.search!==targetUrl){
+      history.pushState({megamiForm:true},'',targetUrl);
+    }
+  }
+}
+function onAddOverlayHide(){
+  const el=document.getElementById('addOverlay');
+  if(!el||el.classList.contains('hidden')){_formPageWasOpen=false;return;}
+  _formPageWasOpen=false;
+  // Kapanış animasyonu başlamadan bulanıklığı kaldırıyoruz — zaten tamamen bulanıklaşmış
+  // bir sayfayı transformla dışarı kaydırmak da aynı donma sorununu tersten yaratıyordu.
+  el.classList.remove('settled');
+  el.classList.add('closing');
+  setTimeout(()=>{
+    el.classList.add('hidden');
+    el.classList.remove('closing');
+  },260);
+  // Eğer geçmişte "form" state'i varsa geri git, yoksa (örn. direkt URL ile açıldıysa) sadece URL'i temizle
+  if(location.search.includes('form=add')||location.search.includes('edit=')){
+    history.pushState({},'',location.pathname);
+  }
+}
+
+// ===== Isı haritası — GitHub tarzı, hangi günler bölüm güncellediğini gösterir. Sınırsız
+// aktivite arşivindeki (activityLog) tüm kayıtları günlere göre topluyor. =====
+function buildActivityCounts(){
+  const counts={};
+  activityLog.forEach(l=>{
+    const d=new Date(l.ts);
+    const key=d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0');
+    counts[key]=(counts[key]||0)+1;
+  });
+  return counts;
+}
+function renderHeatmapHTML(){
+  const counts=buildActivityCounts();
+  const WEEKS=16;
+  const today=new Date(); today.setHours(0,0,0,0);
+  const todayDow=(today.getDay()+6)%7; // Pazartesi=0 ... Pazar=6
+  const gridStart=new Date(today); gridStart.setDate(today.getDate()-todayDow-(WEEKS-1)*7);
+  let maxCount=0;
+  Object.values(counts).forEach(c=>{if(c>maxCount)maxCount=c;});
+  let cells='',monthLabels='';
+  let lastMonth=-1;
+  for(let w=0;w<WEEKS;w++){
+    for(let d=0;d<7;d++){
+      const cellDate=new Date(gridStart); cellDate.setDate(gridStart.getDate()+w*7+d);
+      if(d===0){
+        const m=cellDate.getMonth();
+        if(m!==lastMonth){
+          monthLabels+=`<span style="grid-column:${w+1};font-size:8.5px;color:var(--text3);">${cellDate.toLocaleDateString('tr-TR',{month:'short'})}</span>`;
+          lastMonth=m;
+        }
+      }
+      if(cellDate>today){ cells+=`<div style="grid-column:${w+1};grid-row:${d+1};width:11px;height:11px;"></div>`; continue; }
+      const key=cellDate.getFullYear()+'-'+String(cellDate.getMonth()+1).padStart(2,'0')+'-'+String(cellDate.getDate()).padStart(2,'0');
+      const c=counts[key]||0;
+      let level=0;
+      if(c>0&&maxCount>0){ const ratio=c/maxCount; level=ratio>=0.75?4:ratio>=0.5?3:ratio>=0.25?2:1; }
+      const dateLabel=cellDate.toLocaleDateString('tr-TR',{day:'numeric',month:'long'});
+      cells+=`<div class="heatmap-cell level-${level}" style="grid-column:${w+1};grid-row:${d+1};" title="${dateLabel} — ${c} güncelleme"></div>`;
+    }
+  }
+  return `<div style="overflow-x:auto;padding-bottom:2px;">
+    <div style="display:grid;grid-template-columns:repeat(${WEEKS},11px);gap:3px;height:12px;margin-bottom:3px;position:relative;">${monthLabels}</div>
+    <div style="display:grid;grid-template-columns:repeat(${WEEKS},11px);grid-template-rows:repeat(7,11px);gap:3px;">${cells}</div>
+  </div>
+  <div style="display:flex;align-items:center;gap:4px;justify-content:flex-end;margin-top:8px;font-size:9px;color:var(--text3);">
+    Az <div class="heatmap-cell level-0" style="width:9px;height:9px;"></div><div class="heatmap-cell level-1" style="width:9px;height:9px;"></div><div class="heatmap-cell level-2" style="width:9px;height:9px;"></div><div class="heatmap-cell level-3" style="width:9px;height:9px;"></div><div class="heatmap-cell level-4" style="width:9px;height:9px;"></div> Çok
+  </div>`;
+}
+
+// ===== Genel zaman çizelgesi — kütüphanedeki tüm hareketleri (eklenme, bitirme, bölüm
+// güncellemeleri) tarih sırasına göre birleştirip gösterir. =====
+function getGlobalTimelineEntries(limit){
+  const seriesById={}; series.forEach(s=>{seriesById[s.id]=s;});
+  const all=activityLog
+    .filter(l=>seriesById[l.seriesId])
+    .map(l=>{const s=seriesById[l.seriesId];return {text:l.text,ts:l.ts,seriesId:s.id,seriesName:s.name,seriesCover:s.cover};});
+  all.sort((a,b)=>b.ts-a.ts);
+  return all.slice(0,limit||60);
+}
+function renderTimelineHTML(){
+  const entries=getGlobalTimelineEntries(60);
+  if(!entries.length) return '';
+  const groups=[]; const byKey={};
+  entries.forEach(e=>{
+    const key=new Date(e.ts).toLocaleDateString('tr-TR',{day:'numeric',month:'long',year:'numeric'});
+    if(!byKey[key]){ byKey[key]=[]; groups.push(key); }
+    byKey[key].push(e);
+  });
+  return groups.map(key=>`
+    <div class="timeline-date-label">${key}</div>
+    ${byKey[key].map(e=>`
+      <div class="timeline-entry" onclick="openDetail('${e.seriesId}')">
+        <div class="timeline-dot"></div>
+        <div class="timeline-content">
+          <span class="timeline-series">${esc(e.seriesName)}</span>
+          <span class="timeline-text">${esc(e.text)}</span>
+        </div>
+        <div class="timeline-time">${new Date(e.ts).toLocaleTimeString('tr-TR',{hour:'2-digit',minute:'2-digit'})}</div>
+      </div>`).join('')}
+  `).join('');
+}
+// ===== Liste Sayfası — MyAnimeList tarzı: durum sekmeleri + kapak yerine satır satır,
+// daha detaylı bilgili görünüm. Ana Sayfa'nın kart/carousel görünümünden bağımsız kendi
+// filtre durumunu (listCat) tutar. =====
+let listCat='all';
+function setListCat(c){ listCat=c; renderListPage(); }
+function renderListPage(){
+  const el=document.getElementById('mainContent');
+  const statusKeys=Object.keys(CATS).filter(k=>k!=='all');
+  const tabsHTML=['all',...statusKeys].map(k=>{
+    const count=k==='all'?series.length:series.filter(s=>s.category===k).length;
+    if(k!=='all'&&count===0) return '';
+    const label=k==='all'?'Tümü':CATS[k].label;
+    const icon=k==='all'?'grid4':CATS[k].icon;
+    return `<div class="list-tab ${listCat===k?'active':''}" onclick="setListCat('${k}')">${ic(icon,11)} ${label} <span class="list-tab-count">${count}</span></div>`;
+  }).join('');
+
+  const filtered=sortSeries(series.filter(s=>listCat==='all'||s.category===listCat));
+
+  const rowsHTML=filtered.length?filtered.map(s=>{
+    const cat=CATS[s.category]||CATS.reading;
+    const total=parseInt(s.chapterTotal)||0;
+    const chTR=parseInt(s.chapterTR)||0;
+    const pct=total>0?Math.min(100,Math.round(chTR/total*100)):0;
+    const chStr=s.chapterTR?`Böl. ${esc(s.chapterTR)}${total>0?'/'+total:''}`:'—';
+    const ratingStr=s.rating?`<span class="lrow-rating">${'★'.repeat(s.rating)}${'☆'.repeat(5-s.rating)}</span>`:'';
+    const genresH=(s.genres&&s.genres.length)?`<div class="lrow-genres">${s.genres.slice(0,2).map(g=>`<span class="lrow-genre-pill">${esc(g)}</span>`).join('')}</div>`:'<div></div>';
+    const coverEl=s.cover?`<img src="${esc(s.cover)}" loading="lazy" onerror="this.style.visibility='hidden'">`:ic('img',18);
+    const pinIco=s.pinned?`<span style="color:var(--purple3);">${ic('pinFill',12)}</span>`:'';
+    const favIco=s.favorited?`<span style="color:#f472b6;">${ic('heartFill',12)}</span>`:'';
+    return `<div class="lrow-swipe-wrap">
+      <div class="lrow-swipe-actions">
+        <button class="lrow-action fav" onclick="toggleFav('${s.id}');event.stopPropagation();">${ic(s.favorited?'heartFill':'heart',20)}</button>
+        <button class="lrow-action edit" onclick="openEditSheet('${s.id}');event.stopPropagation();">${ic('edit',18)}</button>
+      </div>
+      <div class="lrow" onclick="${selectionMode?`toggleSelect('${s.id}')`:`openPreview('${s.id}',event)`}" ontouchstart="lrowSwipeStart(event,this)" ontouchmove="lrowSwipeMove(event,this)" ontouchend="lrowSwipeEnd(event,this)">
+        <div class="lrow-check">${ic('check',12)}</div>
+        <div class="lrow-cover">${coverEl}</div>
+        <div class="lrow-body">
+          <div>
+            <div class="lrow-top">
+              <div class="lrow-title-row"><span class="lrow-title">${esc(s.name)}</span>${s.originalName?`<span class="lrow-original">${esc(s.originalName)}</span>`:''}</div>
+              <div class="lrow-pinfav">${pinIco}${favIco}</div>
+            </div>
+            <div class="lrow-cat-pill ${cat.badge}">${ic(cat.icon,9)} ${cat.label}</div>
+            <div class="lrow-ch-row"><span class="lrow-ch">${chStr}</span>${total>0?`<div class="lrow-progress-track"><div class="lrow-progress-fill" style="width:${pct}%;background:${pct>=100?'#34d399':'var(--purple2)'};"></div></div>`:''}</div>
+          </div>
+          <div class="lrow-bottom">${genresH}${ratingStr}</div>
+        </div>
+      </div>
+    </div>`;
+  }).join(''):`<div class="empty" style="padding:50px 24px;"><div class="empty-icon">${ic('layers',34)}</div><h3>Bu durumda seri yok</h3><p>Farklı bir sekme dene.</p></div>`;
+
+  el.innerHTML=`<div style="padding:14px 16px 0;">
+    <div class="list-tabs-row">${tabsHTML}</div>
+  </div>
+  <div class="list-rows${selectionMode?' select-mode':''}" style="padding:2px 14px 4px;">${rowsHTML}</div>
+  ${filtered.length?'<div class="swipe-hint">← Bir satırı sola kaydırınca hızlı aksiyonlar (favori / düzenle) açılır</div>':''}
+  <div style="height:16px;"></div>`;
+  document.getElementById('searchWrap').style.display='none';
+  document.getElementById('catTabsRow').style.display='none';
+  { const heroSecEl=document.getElementById('heroSection'); if(heroSecEl)heroSecEl.style.display='none'; }
+}
+function lrowSwipeStart(e,el){
+  el._sx=e.touches[0].clientX;
+  el._startTx=el.classList.contains('open')?-104:0;
+  el.style.transition='none';
+}
+function lrowSwipeMove(e,el){
+  if(el._sx==null)return;
+  const dx=e.touches[0].clientX-el._sx;
+  let tx=el._startTx+dx;
+  tx=Math.max(-104,Math.min(0,tx));
+  el.style.transform=`translateX(${tx}px)`;
+}
+function lrowSwipeEnd(e,el){
+  if(el._sx==null)return;
+  el.style.transition='';
+  const m=/translateX\((-?\d+)/.exec(el.style.transform);
+  const cur=m?parseInt(m[1]):0;
+  const open=cur<-52;
+  el.style.transform=open?'translateX(-104px)':'translateX(0)';
+  el.classList.toggle('open',open);
+  el._sx=null;
+}
+function renderStats(){
+  const el=document.getElementById('mainContent');
+  const tot=series.length,totTR=series.reduce((a,s)=>a+(parseInt(s.chapterTR)||0),0);
+  const cats=Object.keys(CATS).filter(k=>k!=='all').map(k=>({key:k,label:CATS[k].label,icon:CATS[k].icon,count:series.filter(s=>s.category===k).length})).filter(c=>c.count>0).sort((a,b)=>b.count-a.count);
+  const mx=cats[0]?.count||1;
+  const pins=series.filter(s=>s.pinned).length,favs=series.filter(s=>s.favorited).length;
+  const streak=JSON.parse(localStorage.getItem('ma_streak')||'{}').count||1;
+  const profile=getProfile();
+  el.innerHTML=`<div style="padding:0 14px;">
+    <div class="stats-hero">
+      <div class="stats-hero-avatar">${avatarHTML(profile.avatar)}</div>
+      <div class="stats-hero-info">
+        <div class="stats-hero-name">${esc(profile.name||'İzleyici')}</div>
+      </div>
+      <div class="stats-hero-num"><div class="stats-hero-num-val">${tot}</div><div class="stats-hero-num-lbl">Seri</div></div>
+    </div>
+    ${(()=>{
+      const favSeries=series.filter(s=>s.favorited);
+      if(!favSeries.length) return '';
+      return `<div style="margin:14px 0 10px;display:flex;align-items:center;gap:7px;"><span style="font-size:9.5px;font-weight:600;color:var(--text3);text-transform:uppercase;letter-spacing:1px;">${ic('heartFill',10)} Favori Serilerin</span><div style="flex:1;height:1px;background:var(--line);"></div></div><div class="carousel-wrap"><div class="carousel">${favSeries.map((s,i)=>carouselCard(s,i,false)).join('')}</div></div>`;
+    })()}
+    ${(()=>{
+      const recent=[...series].filter(s=>s.updatedAt).sort((a,b)=>b.updatedAt-a.updatedAt).slice(0,10);
+      if(!recent.length) return '';
+      return `<div style="margin:6px 0 10px;display:flex;align-items:center;gap:7px;"><span style="font-size:9.5px;font-weight:600;color:var(--text3);text-transform:uppercase;letter-spacing:1px;">${ic('edit',10)} Son Düzenlenenler</span><div style="flex:1;height:1px;background:var(--line);"></div></div><div class="carousel-wrap"><div class="carousel">${recent.map((s,i)=>carouselCard(s,i,false)).join('')}</div></div>`;
+    })()}
+    <div style="margin:8px 0 10px;display:flex;align-items:center;gap:7px;"><span style="font-size:9.5px;font-weight:600;color:var(--text3);text-transform:uppercase;letter-spacing:1px;">${ic('layers',10)} Genel</span><div style="flex:1;height:1px;background:var(--line);"></div></div><div class="stats-grid" style="margin-bottom:12px;"><div class="stat-card hi" style="animation-delay:0s"><div class="stat-icon">${ic('book',17)}</div><span class="stat-value">${tot}</span><span class="stat-label">Toplam Seri</span></div><div class="stat-card" style="animation-delay:.06s"><div class="stat-icon">${ic('tr',17)}</div><span class="stat-value">${totTR}</span><span class="stat-label">TR Bölüm</span></div><div class="stat-card" style="animation-delay:.12s"><div class="stat-icon">${ic('starFill',17)}</div><span class="stat-value">${favs}</span><span class="stat-label">Favoriler</span></div><div class="stat-card" style="animation-delay:.18s"><div class="stat-icon">${ic('fire',17)}</div><span class="stat-value">${streak}</span><span class="stat-label">Gün Serisi</span></div></div>
+    ${cats.length?`
+    ${(()=>{
+      const xs=computeExtraStats();
+      const tempo=computeMonthlyTempo();
+      const thisMonth=tempo.counts[5]||0,lastMonth=tempo.counts[4]||0;
+      let insight='';
+      if(lastMonth>0){
+        const diff=Math.round((thisMonth-lastMonth)/lastMonth*100);
+        if(diff>0)insight=`Geçen aya göre <b>%${diff} daha fazla</b> bölüm izledin 🎉`;
+        else if(diff<0)insight=`Geçen aya göre <b>%${Math.abs(diff)} daha az</b> bölüm izledin`;
+        else insight=`Geçen ayla aynı tempodasın`;
+      }else if(thisMonth>0)insight=`Bu ay <b>${thisMonth} bölüm</b> izledin`;
+      return `<div style="margin:0 0 10px;display:flex;align-items:center;gap:7px;"><span style="font-size:9.5px;font-weight:600;color:var(--text3);text-transform:uppercase;letter-spacing:1px;">${ic('grid4',10)} Genel Bakış</span><div style="flex:1;height:1px;background:var(--line);"></div></div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:9px;margin-bottom:10px;">
+        <div class="stat-card" style="animation:none;"><div class="stat-icon">${ic('starFill',16)}</div><span class="stat-value">${xs.ratedCount>0?xs.avgRating.toFixed(1):'—'}</span><span class="stat-label">Ortalama Puan</span></div>
+        <div class="stat-card" style="animation:none;"><div class="stat-icon">${ic('checkcirc',16)}</div><span class="stat-value">${xs.ratedCount}</span><span class="stat-label">Puanladığın Seri</span></div>
+        <div class="stat-card" style="animation:none;"><div class="stat-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div><span class="stat-value">${xs.addedThisMonth>0?'+'+xs.addedThisMonth:'0'}</span><span class="stat-label">Bu Ay Eklenen</span></div>
+        <div class="stat-card" style="animation:none;"><div class="stat-icon">${ic('pinFill',16)}</div><span class="stat-value">${xs.pinnedCount}</span><span class="stat-label">Sabitlenen Seri</span></div>
+      </div>
+      ${insight?`<div style="display:flex;align-items:center;gap:9px;background:linear-gradient(135deg,rgba(220,38,38,.14),rgba(248,113,113,.03));border:1px solid rgba(220,38,38,.22);border-radius:14px;padding:11px 13px;margin-bottom:14px;"><span style="color:var(--purple3);flex-shrink:0;">${ic('bolt',17)}</span><span style="font-size:11.5px;color:var(--text2);line-height:1.4;">${insight}</span></div>`:''}
+      `;
+    })()}
+    <div style="margin:0 0 10px;display:flex;align-items:center;gap:7px;"><span style="font-size:9.5px;font-weight:600;color:var(--text3);text-transform:uppercase;letter-spacing:1px;">${ic('grid4',10)} Kütüphanenin Nabzı</span><div style="flex:1;height:1px;background:var(--line);"></div></div><div style="background:var(--black4);border:1px solid var(--line);border-radius:12px;padding:13px;margin-bottom:12px;">${(()=>{
+      const RING_COLORS={reading:'#f87171',current:'#34d399',current_en:'#38bdf8',current_both:'#f87171',stockpile:'#f59e0b',paused:'#94a3b8',planned:'#f472b6',season:'#fca5a5'};
+      const active=cats.filter(c=>c.key!=='completed'&&c.key!=='dropped');
+      const activeTotal=active.reduce((a,c)=>a+c.count,0);
+      if(!activeTotal)return '';
+      let acc=0;
+      const stops=active.map(c=>{
+        const from=acc/activeTotal*360;acc+=c.count;const to=acc/activeTotal*360;
+        return `${RING_COLORS[c.key]||'#f87171'} ${from}deg ${to}deg`;
+      }).join(',');
+      return `<div style="display:flex;align-items:center;gap:16px;margin-bottom:14px;">
+        <div style="width:88px;height:88px;border-radius:50%;background:conic-gradient(${stops});display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+          <div style="width:56px;height:56px;border-radius:50%;background:var(--black4);display:flex;flex-direction:column;align-items:center;justify-content:center;">
+            <span style="font-family:'Playfair Display',serif;font-size:17px;font-weight:700;color:var(--text);">${activeTotal}</span>
+            <span style="font-size:7.5px;color:var(--text3);font-weight:700;text-transform:uppercase;">Aktif</span>
+          </div>
+        </div>
+        <div style="flex:1;display:flex;flex-direction:column;gap:5px;">${active.slice(0,4).map(c=>`<div style="display:flex;align-items:center;gap:6px;font-size:10px;color:var(--text2);"><span style="width:7px;height:7px;border-radius:50%;background:${RING_COLORS[c.key]||'#f87171'};flex-shrink:0;"></span>${c.label}<b style="margin-left:auto;color:var(--text);">${c.count}</b></div>`).join('')}</div>
+      </div>`;
+    })()}<div class="cat-stat-list">${cats.map(c=>'<div class="cat-stat-row"><span class="cat-stat-name">'+ic(c.icon)+' '+c.label+'</span><div class="cat-stat-bar-wrap"><div class="cat-stat-bar" style="width:'+(c.count/mx*100)+'%"></div></div><span class="cat-stat-count">'+c.count+'</span></div>').join('')}</div></div>`:''}
+    <div style="margin:0 0 10px;display:flex;align-items:center;gap:7px;"><span style="font-size:9.5px;font-weight:600;color:var(--text3);text-transform:uppercase;letter-spacing:1px;">${ic('checkcirc',10)} Durum</span><div style="flex:1;height:1px;background:var(--line);"></div></div><div class="summary-grid" style="margin-bottom:14px;"><div class="summary-card"><div class="summary-val" style="color:var(--purple3);">${series.filter(s=>s.category==='reading'||s.category==='current'||s.category==='current_en'||s.category==='current_both').length}</div><div class="summary-lbl">Aktif</div></div><div class="summary-card"><div class="summary-val" style="color:var(--green);">${series.filter(s=>s.category==='completed').length}</div><div class="summary-lbl">Tamamlandı</div></div><div class="summary-card"><div class="summary-val" style="color:var(--gold);">${series.filter(s=>s.category==='paused'||s.category==='season').length}</div><div class="summary-lbl">Beklemede</div></div><div class="summary-card"><div class="summary-val" style="color:#f87171;">${series.filter(s=>s.category==='dropped').length}</div><div class="summary-lbl">Bırakıldı</div></div></div>
+    ${(()=>{
+      const ps=computePersonalizedStats();
+      if(!ps.genreDist.length) return '';
+      const maxG=ps.genreDist[0][1];
+      return `<div style="margin:0 0 10px;display:flex;align-items:center;gap:7px;"><span style="font-size:9.5px;font-weight:600;color:var(--text3);text-transform:uppercase;letter-spacing:1px;">${ic('sparkle',10)} Tür Dağılımı</span><div style="flex:1;height:1px;background:var(--line);"></div></div>
+      <div style="background:var(--black4);border:1px solid var(--line);border-radius:12px;padding:13px;margin-bottom:12px;"><div class="genre-cloud">${ps.genreDist.slice(0,12).map(([g,c])=>{
+        const ratio=c/maxG;
+        const fontSize=(11+ratio*7).toFixed(1);
+        const opacity=(0.55+ratio*0.45).toFixed(2);
+        return `<span class="genre-cloud-item" style="font-size:${fontSize}px;opacity:${opacity};">${esc(g)} <b>${c}</b></span>`;
+      }).join('')}</div></div>`;
+    })()}
+    ${(()=>{
+      const ps=computePersonalizedStats();
+      if(!ps.fansubLeaderboard.length) return '';
+      const medals=['🥇','🥈','🥉','','']; 
+      return `<div style="margin:0 0 10px;display:flex;align-items:center;gap:7px;"><span style="font-size:9.5px;font-weight:600;color:var(--text3);text-transform:uppercase;letter-spacing:1px;">${ic('users',10)} Fansub Liderlik Tablosu</span><div style="flex:1;height:1px;background:var(--line);"></div></div>
+      <div style="background:var(--black4);border:1px solid var(--line);border-radius:12px;padding:13px;margin-bottom:12px;display:flex;flex-direction:column;gap:9px;">${ps.fansubLeaderboard.map(([f,c],i)=>{
+        const meta=getFansubMeta(f);
+        const logo=meta.logo?`<img src="${esc(meta.logo)}" style="width:26px;height:26px;border-radius:7px;object-fit:cover;" onerror="this.style.display='none'">`:`<div style="width:26px;height:26px;border-radius:7px;background:var(--purpleG);display:flex;align-items:center;justify-content:center;color:var(--purple3);">${ic('bolt',13)}</div>`;
+        return `<div style="display:flex;align-items:center;gap:10px;"><span style="font-size:15px;width:20px;text-align:center;flex-shrink:0;">${medals[i]||('#'+(i+1))}</span>${logo}<span style="flex:1;font-size:12px;font-weight:600;color:var(--text);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">${esc(f)}</span><span style="font-size:11px;color:var(--text3);">${c} seri</span></div>`;
+      }).join('')}</div>`;
+    })()}
+    ${(()=>{
+      const ps=computePersonalizedStats();
+      const hasAny=ps.ratingDist.slice(1).some(c=>c>0);
+      if(!hasAny) return '';
+      return `<div style="margin:0 0 10px;display:flex;align-items:center;gap:7px;"><span style="font-size:9.5px;font-weight:600;color:var(--text3);text-transform:uppercase;letter-spacing:1px;">${ic('star',10)} Puan Dağılımı</span><div style="flex:1;height:1px;background:var(--line);"></div></div>
+      <div style="background:var(--black4);border:1px solid var(--line);border-radius:12px;padding:13px;margin-bottom:12px;display:flex;flex-direction:column;gap:7px;">${[5,4,3,2,1].map(n=>{
+        const c=ps.ratingDist[n];
+        return `<div style="display:flex;align-items:center;gap:8px;"><span style="font-size:10.5px;color:var(--gold);width:46px;flex-shrink:0;">${'★'.repeat(n)}</span><div style="flex:1;height:8px;background:var(--black3);border-radius:4px;overflow:hidden;"><div style="height:100%;width:${(c/ps.maxRatingCount*100)}%;background:linear-gradient(90deg,var(--gold),#fbbf24);border-radius:4px;transition:width .8s cubic-bezier(.34,1.2,.64,1);"></div></div><span style="font-size:11px;color:var(--text3);min-width:16px;text-align:right;">${c}</span></div>`;
+      }).join('')}</div>`;
+    })()}
+    ${(()=>{
+      const ps=computePersonalizedStats();
+      if(!ps.oldestSeries) return '';
+      const days=Math.max(0,Math.floor((Date.now()-ps.oldestTs)/86400000));
+      const timeLabel=days<1?'bugün':days<30?`${days} gün önce`:days<365?`${Math.floor(days/30)} ay önce`:`${Math.floor(days/365)} yıl önce`;
+      return `<div class="stats-highlight-card">
+        ${ps.oldestSeries.cover?`<img src="${esc(ps.oldestSeries.cover)}" style="width:38px;height:53px;border-radius:6px;object-fit:cover;flex-shrink:0;">`:`<div style="width:38px;height:53px;border-radius:6px;background:var(--black5);flex-shrink:0;display:flex;align-items:center;justify-content:center;color:var(--text3);">${ic('img',15)}</div>`}
+        <div style="flex:1;min-width:0;">
+          <div style="font-size:9.5px;color:var(--text3);text-transform:uppercase;letter-spacing:.6px;font-weight:600;">${ic('clock',9)} Yolculuğunun Başlangıcı</div>
+          <div style="font-size:13px;font-weight:600;color:var(--text);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;margin-top:2px;">${esc(ps.oldestSeries.name)}</div>
+          <div style="font-size:10.5px;color:var(--purple3);margin-top:1px;">Kütüphanene ${timeLabel} eklendi</div>
+        </div>
+      </div>`;
+    })()}
+    ${(()=>{
+      const rec=computeRecords();
+      const ps=computePersonalizedStats();
+      const fiveStar=ps.ratingDist[5]||0;
+      const cards=[];
+      if(rec.thickest)cards.push({icon:'layers',title:'En Kalın Serin',val:esc(rec.thickest.name),sub:rec.thickest.chapterTotal+' bölüm',color:'#38bdf8'});
+      if(rec.fastest)cards.push({icon:'bolt',title:'En Hızlı Bitirdiğin',val:esc(rec.fastest.name),sub:rec.fastestDays+' günde',color:'#34d399'});
+      if(rec.mostStockpiled&&parseInt(rec.mostStockpiled.chapterTR)>0)cards.push({icon:'box',title:'En Çok Biriktirdiğin',val:esc(rec.mostStockpiled.name),sub:rec.mostStockpiled.chapterTR+' bölüm bekliyor',color:'#f59e0b'});
+      if(fiveStar>0)cards.push({icon:'starFill',title:'5 Yıldız Verdiklerin',val:fiveStar+' seri',sub:ps.ratingDist.slice(1).reduce((a,b)=>a+b,0)+' puanladığının bir kısmı',color:'#c9a227'});
+      if(!cards.length)return '';
+      return `<div style="margin:0 0 10px;display:flex;align-items:center;gap:7px;"><span style="font-size:9.5px;font-weight:600;color:var(--text3);text-transform:uppercase;letter-spacing:1px;">${ic('zap',10)} Rekorların</span><div style="flex:1;height:1px;background:var(--line);"></div></div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:9px;margin-bottom:12px;">${cards.map(c=>`
+        <div style="background:var(--black4);border:1px solid var(--line);border-radius:12px;padding:12px;">
+          <div style="color:${c.color};margin-bottom:6px;">${ic(c.icon,17)}</div>
+          <div style="font-size:9px;color:var(--text3);text-transform:uppercase;letter-spacing:.4px;font-weight:700;">${c.title}</div>
+          <div style="font-size:12px;font-weight:700;color:var(--text);margin-top:3px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">${c.val}</div>
+          <div style="font-size:10px;color:var(--text3);margin-top:1px;">${c.sub}</div>
+        </div>`).join('')}</div>`;
+    })()}
+    ${(()=>{
+      const xs=computeExtraStats();
+      const rows=[];
+      rows.push(['Toplam İzlenen Bölüm (TR+EN)',xs.totAll]);
+      if(xs.ratedCount>0)rows.push(['Ortalama Puanın',xs.avgRating.toFixed(1)+' / 5 ★ ('+xs.ratedCount+' seri)']);
+      if(xs.topFansub)rows.push(['En Çok Kullandığın Ekip',esc(xs.topFansub[0])+' ('+xs.topFansub[1]+' seri)']);
+      if(xs.addedThisMonth>0)rows.push(['Bu Ay Eklenen',xs.addedThisMonth+' seri']);
+      if(xs.pinnedCount>0)rows.push(['Sabitlenen',xs.pinnedCount+' seri']);
+      if(xs.longest)rows.push(['En Uzun Seri',esc(xs.longest.name)+' ('+xs.longest.chapterTotal+' bölüm)']);
+      if(xs.mostRead&&parseInt(xs.mostRead.chapterTR)>0)rows.push(['En Çok İzlediğin',esc(xs.mostRead.name)+' ('+xs.mostRead.chapterTR+' bölüm)']);
+      if(!rows.length)return '';
+      return `<div style="margin:0 0 10px;display:flex;align-items:center;gap:7px;"><span style="font-size:9.5px;font-weight:600;color:var(--text3);text-transform:uppercase;letter-spacing:1px;">${ic('bolt',10)} Detaylı</span><div style="flex:1;height:1px;background:var(--line);"></div></div>
+      <div style="background:var(--black4);border:1px solid var(--line);border-radius:12px;padding:13px;margin-bottom:12px;display:flex;flex-direction:column;gap:9px;">${rows.map(r=>`<div style="display:flex;align-items:center;justify-content:space-between;gap:10px;"><span style="font-size:11.5px;color:var(--text2);">${r[0]}</span><span style="font-size:11.5px;font-weight:600;color:var(--text);text-align:right;">${r[1]}</span></div>`).join('')}</div>`;
+    })()}
+    ${(()=>{
+    const upcoming=series.filter(s=>s.autoIncrFreq&&s.autoIncrFreq!=='irregular'&&s.autoIncrFreq!=='completed'&&s.autoIncrNext).sort((a,b)=>a.autoIncrNext-b.autoIncrNext);
+    if(!upcoming.length) return '';
+    const extra=upcoming.length-3;
+    const rows=upcoming.map((s,i)=>{
+      const diff=Math.ceil((s.autoIncrNext-Date.now())/(1000*60*60*24));
+      const diffStr=diff<=0?'<span style="color:var(--green);font-weight:700;">Bugün!</span>':diff===1?'<span style="color:var(--gold);font-weight:600;">Yarın</span>':`<span style="color:var(--text2);">${diff} gün</span>`;
+      return '<div style="display:'+(i<3?'flex':'none')+';align-items:center;gap:9px;padding:7px 0;border-bottom:1px solid var(--line);" class="upcoming-row">'
+        +(s.cover?'<img src="'+esc(s.cover)+'" style="width:30px;height:42px;border-radius:5px;object-fit:cover;flex-shrink:0;">':'<div style="width:30px;height:42px;border-radius:5px;background:var(--black5);flex-shrink:0;display:flex;align-items:center;justify-content:center;color:var(--text3);">'+ic('img',12)+'</div>')
+        +'<div style="flex:1;overflow:hidden;"><div style="font-size:12px;font-weight:600;color:var(--text);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">'+esc(s.name)+'</div><div style="font-size:10px;color:var(--text3);">'+(s.releaseDay||'')+'</div></div>'
+        +'<div style="flex-shrink:0;">'+diffStr+'</div></div>';
+    }).join('');
+    const moreBtn=extra>0?'<div onclick="expandUpcoming()" id="upcomingMoreBtn" style="text-align:center;padding:8px 0 2px;font-size:11px;color:var(--purple3);cursor:pointer;">+'+extra+' daha göster</div>':'';
+    return `<div style="margin:0 0 10px;display:flex;align-items:center;gap:7px;"><span style="font-size:9.5px;font-weight:600;color:var(--text3);text-transform:uppercase;letter-spacing:1px;">${ic('clock',10)} Yakında Yeni Bölüm</span><div style="flex:1;height:1px;background:var(--line);"></div></div><div style="background:var(--black4);border:1px solid var(--line);border-radius:12px;padding:13px;margin-bottom:14px;">${rows}${moreBtn}</div>`;
+  })()}
+    ${(()=>{
+      const hm=renderHeatmapHTML();
+      return `<div style="margin:0 0 10px;display:flex;align-items:center;gap:7px;"><span style="font-size:9.5px;font-weight:600;color:var(--text3);text-transform:uppercase;letter-spacing:1px;">${ic('fire',10)} Etkinlik (Son ~4 Ay)</span><div style="flex:1;height:1px;background:var(--line);"></div></div>
+      <div style="background:var(--black4);border:1px solid var(--line);border-radius:12px;padding:13px;margin-bottom:12px;">${hm}</div>`;
+    })()}
+    ${(()=>{
+      const t=computeMonthlyTempo();
+      const maxV=Math.max(...t.counts,1);
+      const pts=t.counts.map((v,i)=>{
+        const x=15+i*(270/5);
+        const y=78-(v/maxV)*60;
+        return x.toFixed(1)+','+y.toFixed(1);
+      });
+      const areaPts='15,78 '+pts.join(' ')+' 285,78';
+      const lastV=t.counts[5],prevV=t.counts[4];
+      const trend=prevV>0?Math.round((lastV-prevV)/prevV*100):null;
+      const trendStr=trend===null?'':(trend>=0?`▲ %${trend}`:`▼ %${Math.abs(trend)}`);
+      return `<div style="margin:0 0 10px;display:flex;align-items:center;gap:7px;"><span style="font-size:9.5px;font-weight:600;color:var(--text3);text-transform:uppercase;letter-spacing:1px;">${ic('bolt',10)} Aylık Tempon</span><div style="flex:1;height:1px;background:var(--line);"></div></div>
+      <div style="background:var(--black4);border:1px solid var(--line);border-radius:12px;padding:13px;margin-bottom:12px;">
+        <div style="display:flex;align-items:baseline;justify-content:space-between;margin-bottom:8px;"><span style="font-family:'Playfair Display',serif;font-size:15px;font-weight:800;color:var(--green);">${lastV} bölüm</span><span style="font-size:10px;color:var(--text3);">${trendStr?trendStr+' geçen aya göre':'bu ay'}</span></div>
+        <svg viewBox="0 0 300 90" width="100%" height="90" preserveAspectRatio="none">
+          <defs><linearGradient id="tempoFillG" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#f87171" stop-opacity=".38"/><stop offset="100%" stop-color="#f87171" stop-opacity="0"/></linearGradient></defs>
+          <polygon points="${areaPts}" fill="url(#tempoFillG)"/>
+          <polyline points="${pts.join(' ')}" fill="none" stroke="#f87171" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+          <circle cx="${pts[5].split(',')[0]}" cy="${pts[5].split(',')[1]}" r="4.5" fill="var(--black4)" stroke="#f87171" stroke-width="2.5"/>
+        </svg>
+        <div style="display:flex;justify-content:space-between;margin-top:6px;font-size:9px;color:var(--text3);font-weight:600;">${t.labels.map(l=>`<span>${l}</span>`).join('')}</div>
+      </div>`;
+    })()}
+    ${(()=>{
+      const tl=renderTimelineHTML();
+      if(!tl) return '';
+      return `<div style="margin:0 0 10px;display:flex;align-items:center;gap:7px;"><span style="font-size:9.5px;font-weight:600;color:var(--text3);text-transform:uppercase;letter-spacing:1px;">${ic('clock',10)} Zaman Çizelgesi</span><div style="flex:1;height:1px;background:var(--line);"></div></div>
+      <div style="background:var(--black4);border:1px solid var(--line);border-radius:12px;padding:13px 14px;margin-bottom:14px;max-height:340px;overflow-y:auto;">${tl}</div>`;
+    })()}
+    <button onclick="luckyPick()" style="width:100%;padding:12px;border-radius:11px;background:var(--black4);border:1px solid var(--line2);color:var(--text2);font-size:13px;font-weight:600;font-family:'Outfit',sans-serif;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:8px;transition:all .18s;margin-bottom:28px;" onmouseenter="this.style.borderColor='var(--purple2)';this.style.color='var(--purple3)'" onmouseleave="this.style.borderColor='var(--line2)';this.style.color='var(--text2)'"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="3"/><circle cx="8" cy="8" r="1.5" fill="currentColor"/><circle cx="16" cy="16" r="1.5" fill="currentColor"/><circle cx="16" cy="8" r="1.5" fill="currentColor"/><circle cx="8" cy="16" r="1.5" fill="currentColor"/><circle cx="12" cy="12" r="1.5" fill="currentColor"/></svg>
+      Bugün Ne İzlesem? (Şanslı Çekiliş)
+    </button></div>`;
+}
+
+</script></body></html>
