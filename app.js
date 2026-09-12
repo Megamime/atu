@@ -19,7 +19,7 @@
     const body=document.getElementById('debugPanelBody');
     if(!body)return;
     body.innerHTML=_debugLines.map(l=>{
-      const color=l.kind==='error'?'#f87171':l.kind==='warn'?'#fbbf24':'#a7f3d0';
+      const color=l.kind==='error'?'#fb7185':l.kind==='warn'?'#fbbf24':'#a7f3d0';
       return `<div style="padding:4px 8px;border-bottom:1px solid rgba(255,255,255,.08);font-family:monospace;font-size:10.5px;color:${color};white-space:pre-wrap;word-break:break-all;"><span style="opacity:.5;">${l.time}</span> ${l.text.replace(/</g,'&lt;')}</div>`;
     }).join('');
     body.scrollTop=body.scrollHeight;
@@ -44,7 +44,7 @@
       <div style="display:flex;justify-content:space-between;align-items:center;padding:8px 10px;border-bottom:1px solid rgba(255,255,255,.12);">
         <span style="color:#fff;font-size:12px;font-weight:600;">Debug Konsolu</span>
         <div style="display:flex;gap:6px;">
-          <button id="debugPanelCopy" style="background:rgba(220,38,38,.3);border:1px solid rgba(220,38,38,.5);color:#fca5a5;font-size:10.5px;padding:4px 8px;border-radius:6px;">Kopyala</button>
+          <button id="debugPanelCopy" style="background:rgba(225,29,72,.3);border:1px solid rgba(225,29,72,.5);color:#fda4af;font-size:10.5px;padding:4px 8px;border-radius:6px;">Kopyala</button>
           <button id="debugPanelClear" style="background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.2);color:#fff;font-size:10.5px;padding:4px 8px;border-radius:6px;">Temizle</button>
         </div>
       </div>
@@ -140,7 +140,7 @@ function updateThemeToggleIcon(){
   btn.innerHTML=(isLight?ic('sun',15):ic('moon',15))+'Tema Değiştir';
 }
 applyTheme(getTheme());
-const IC={book:`<svg width="SZ" height="SZ" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>`,zap:`<svg width="SZ" height="SZ" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>`,box:`<svg width="SZ" height="SZ" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><polyline points="3.27 6.96 12 12.01 20.73 6.96"/><line x1="12" y1="22.08" x2="12" y2="12"/></svg>`,pause:`<svg width="SZ" height="SZ" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="6" y="4" width="4" height="16"/><rect x="14" y="4" width="4" height="16"/></svg>`,xcirc:`<svg width="SZ" height="SZ" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="15" y1="9" x2="9" y2="15"/><line x1="9" y1="9" x2="15" y2="15"/></svg>`,checkcirc:`<svg width="SZ" height="SZ" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>`,bookmark:`<svg width="SZ" height="SZ" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/></svg>`,moon:`<svg width="SZ" height="SZ" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>`,grid4:`<svg width="SZ" height="SZ" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>`,tr:`<svg width="SZ" height="SZ" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="5" width="20" height="14" rx="2"/><line x1="2" y1="12" x2="22" y2="12"/><circle cx="8" cy="10" r="1.5" fill="currentColor" stroke="none"/></svg>`,globe:`<svg width="SZ" height="SZ" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><line x1="3.6" y1="9" x2="20.4" y2="9"/><line x1="3.6" y1="15" x2="20.4" y2="15"/><path d="M11.5 3a17 17 0 0 0 0 18"/><path d="M12.5 3a17 17 0 0 1 0 18"/></svg>`,edit:`<svg width="SZ" height="SZ" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 3a2.828 2.828 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5L17 3z"/></svg>`,pin:`<svg width="SZ" height="SZ" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="17" x2="12" y2="22"/><path d="M5 17h14v-1.76a2 2 0 0 0-1.11-1.79l-1.78-.9A2 2 0 0 1 15 10.76V6h1a2 2 0 0 0 0-4H8a2 2 0 0 0 0 4h1v4.76a2 2 0 0 1-1.11 1.79l-1.78.9A2 2 0 0 0 5 15.24z"/></svg>`,pinFill:`<svg width="SZ" height="SZ" viewBox="0 0 24 24" fill="#ef4444" stroke="#ef4444" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="17" x2="12" y2="22" stroke="#ef4444" stroke-width="2"/><path d="M5 17h14v-1.76a2 2 0 0 0-1.11-1.79l-1.78-.9A2 2 0 0 1 15 10.76V6h1a2 2 0 0 0 0-4H8a2 2 0 0 0 0 4h1v4.76a2 2 0 0 1-1.11 1.79l-1.78.9A2 2 0 0 0 5 15.24z"/></svg>`,heart:`<svg width="SZ" height="SZ" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>`,heartFill:`<svg width="SZ" height="SZ" viewBox="0 0 24 24" fill="#f472b6" stroke="#f472b6" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>`,star:`<svg width="SZ" height="SZ" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>`,starFill:`<svg width="SZ" height="SZ" viewBox="0 0 24 24" fill="#c9a227" stroke="#c9a227" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>`,check:`<svg width="SZ" height="SZ" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>`,warn:`<svg width="SZ" height="SZ" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>`,layers:`<svg width="SZ" height="SZ" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg>`,users:`<svg width="SZ" height="SZ" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>`,bolt:`<svg width="SZ" height="SZ" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>`,img:`<svg width="SZ" height="SZ" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>`,chevron:`<svg width="SZ" height="SZ" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="9 18 15 12 9 6"/></svg>`,chevronLeft:`<svg width="SZ" height="SZ" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="15 18 9 12 15 6"/></svg>`,more:`<svg width="SZ" height="SZ" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="5" r="1.2"/><circle cx="12" cy="12" r="1.2"/><circle cx="12" cy="19" r="1.2"/></svg>`,clock:`<svg width="SZ" height="SZ" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>`,fire:`<svg width="SZ" height="SZ" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8.5 14.5A2.5 2.5 0 0 0 11 12c0-1.38-.5-2-1-3-1.072-2.143-.224-4.054 2-6 .5 2.5 2 4.9 4 6.5 2 1.6 3 3.5 3 5.5a7 7 0 1 1-14 0c0-1.153.433-2.294 1-3a2.5 2.5 0 0 0 2.5 2.5z"/></svg>`,close:`<svg width="SZ" height="SZ" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>`,trash:`<svg width="SZ" height="SZ" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="3 6 5 6 21 6"/><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/></svg>`,sun:`<svg width="SZ" height="SZ" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4.5"/><line x1="12" y1="1.5" x2="12" y2="4"/><line x1="12" y1="20" x2="12" y2="22.5"/><line x1="4.2" y1="4.2" x2="5.9" y2="5.9"/><line x1="18.1" y1="18.1" x2="19.8" y2="19.8"/><line x1="1.5" y1="12" x2="4" y2="12"/><line x1="20" y1="12" x2="22.5" y2="12"/><line x1="4.2" y1="19.8" x2="5.9" y2="18.1"/><line x1="18.1" y1="5.9" x2="19.8" y2="4.2"/></svg>`,sparkle:`<svg width="SZ" height="SZ" viewBox="0 0 24 24" fill="#c9a227"><path d="M12 1 C10.2 7 7 10 1 12 C7 14 10.2 17 12 23 C13.8 17 17 14 23 12 C17 10 13.8 7 12 1 Z"/></svg>`,share:`<svg width="SZ" height="SZ" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.6" y1="13.5" x2="15.4" y2="17.5"/><line x1="15.4" y1="6.5" x2="8.6" y2="10.5"/></svg>`,};
+const IC={book:`<svg width="SZ" height="SZ" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>`,zap:`<svg width="SZ" height="SZ" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>`,box:`<svg width="SZ" height="SZ" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><polyline points="3.27 6.96 12 12.01 20.73 6.96"/><line x1="12" y1="22.08" x2="12" y2="12"/></svg>`,pause:`<svg width="SZ" height="SZ" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="6" y="4" width="4" height="16"/><rect x="14" y="4" width="4" height="16"/></svg>`,xcirc:`<svg width="SZ" height="SZ" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="15" y1="9" x2="9" y2="15"/><line x1="9" y1="9" x2="15" y2="15"/></svg>`,checkcirc:`<svg width="SZ" height="SZ" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>`,bookmark:`<svg width="SZ" height="SZ" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/></svg>`,moon:`<svg width="SZ" height="SZ" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>`,grid4:`<svg width="SZ" height="SZ" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>`,tr:`<svg width="SZ" height="SZ" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="5" width="20" height="14" rx="2"/><line x1="2" y1="12" x2="22" y2="12"/><circle cx="8" cy="10" r="1.5" fill="currentColor" stroke="none"/></svg>`,globe:`<svg width="SZ" height="SZ" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><line x1="3.6" y1="9" x2="20.4" y2="9"/><line x1="3.6" y1="15" x2="20.4" y2="15"/><path d="M11.5 3a17 17 0 0 0 0 18"/><path d="M12.5 3a17 17 0 0 1 0 18"/></svg>`,edit:`<svg width="SZ" height="SZ" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 3a2.828 2.828 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5L17 3z"/></svg>`,pin:`<svg width="SZ" height="SZ" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="17" x2="12" y2="22"/><path d="M5 17h14v-1.76a2 2 0 0 0-1.11-1.79l-1.78-.9A2 2 0 0 1 15 10.76V6h1a2 2 0 0 0 0-4H8a2 2 0 0 0 0 4h1v4.76a2 2 0 0 1-1.11 1.79l-1.78.9A2 2 0 0 0 5 15.24z"/></svg>`,pinFill:`<svg width="SZ" height="SZ" viewBox="0 0 24 24" fill="#f43f5e" stroke="#f43f5e" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="17" x2="12" y2="22" stroke="#f43f5e" stroke-width="2"/><path d="M5 17h14v-1.76a2 2 0 0 0-1.11-1.79l-1.78-.9A2 2 0 0 1 15 10.76V6h1a2 2 0 0 0 0-4H8a2 2 0 0 0 0 4h1v4.76a2 2 0 0 1-1.11 1.79l-1.78.9A2 2 0 0 0 5 15.24z"/></svg>`,heart:`<svg width="SZ" height="SZ" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>`,heartFill:`<svg width="SZ" height="SZ" viewBox="0 0 24 24" fill="#f472b6" stroke="#f472b6" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>`,star:`<svg width="SZ" height="SZ" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>`,starFill:`<svg width="SZ" height="SZ" viewBox="0 0 24 24" fill="#c9a227" stroke="#c9a227" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>`,check:`<svg width="SZ" height="SZ" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>`,warn:`<svg width="SZ" height="SZ" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>`,layers:`<svg width="SZ" height="SZ" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg>`,users:`<svg width="SZ" height="SZ" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>`,bolt:`<svg width="SZ" height="SZ" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>`,img:`<svg width="SZ" height="SZ" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>`,chevron:`<svg width="SZ" height="SZ" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="9 18 15 12 9 6"/></svg>`,chevronLeft:`<svg width="SZ" height="SZ" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="15 18 9 12 15 6"/></svg>`,more:`<svg width="SZ" height="SZ" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="5" r="1.2"/><circle cx="12" cy="12" r="1.2"/><circle cx="12" cy="19" r="1.2"/></svg>`,clock:`<svg width="SZ" height="SZ" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>`,fire:`<svg width="SZ" height="SZ" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8.5 14.5A2.5 2.5 0 0 0 11 12c0-1.38-.5-2-1-3-1.072-2.143-.224-4.054 2-6 .5 2.5 2 4.9 4 6.5 2 1.6 3 3.5 3 5.5a7 7 0 1 1-14 0c0-1.153.433-2.294 1-3a2.5 2.5 0 0 0 2.5 2.5z"/></svg>`,close:`<svg width="SZ" height="SZ" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>`,trash:`<svg width="SZ" height="SZ" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="3 6 5 6 21 6"/><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/></svg>`,sun:`<svg width="SZ" height="SZ" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4.5"/><line x1="12" y1="1.5" x2="12" y2="4"/><line x1="12" y1="20" x2="12" y2="22.5"/><line x1="4.2" y1="4.2" x2="5.9" y2="5.9"/><line x1="18.1" y1="18.1" x2="19.8" y2="19.8"/><line x1="1.5" y1="12" x2="4" y2="12"/><line x1="20" y1="12" x2="22.5" y2="12"/><line x1="4.2" y1="19.8" x2="5.9" y2="18.1"/><line x1="18.1" y1="5.9" x2="19.8" y2="4.2"/></svg>`,sparkle:`<svg width="SZ" height="SZ" viewBox="0 0 24 24" fill="#c9a227"><path d="M12 1 C10.2 7 7 10 1 12 C7 14 10.2 17 12 23 C13.8 17 17 14 23 12 C17 10 13.8 7 12 1 Z"/></svg>`,share:`<svg width="SZ" height="SZ" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.6" y1="13.5" x2="15.4" y2="17.5"/><line x1="15.4" y1="6.5" x2="8.6" y2="10.5"/></svg>`,};
 const _icCache={};
 function ic(n,s=13){
   const k=n+'_'+s;
@@ -259,7 +259,7 @@ let quickId=null,quickCat=null;
 const SECTIONS=[
   {key:'hero',    label:'Yeni Bölüm & Favorilerim',          icon:'sparkle',  heroOnly:true},
   {key:'pinned',  label:'Sabitlenenler',                      icon:'pin',      cats:null, pinnedOnly:true},
-  {key:'active',  label:'İzlemeye Devam Ettiklerim',         icon:'book',     cats:['reading','current','current_en','current_both']},
+  {key:'active',  label:'İzlemeye Devam Ettiklerim',         icon:'book',     cats:['reading','current']},
   {key:'stale',   label:'Uzun Süredir Bakmadıklarım',        icon:'clock',    staleOnly:true},
   {key:'stock',   label:'Bölüm Biriktirdiklerim',            icon:'box',      cats:['stockpile']},
   {key:'planned', label:'İzlemediklerim',                     icon:'bookmark', cats:['planned']},
@@ -279,12 +279,22 @@ function getStaleThresholdMs(s){
   return 90*day; // düzensiz veya elle takip edilen seriler
 }
 function isStaleSeries(s){
-  if(!['reading','current','current_en','current_both','stockpile','paused'].includes(s.category)) return false;
+  if(!['reading','current','stockpile','paused'].includes(s.category)) return false;
   const last=s.updatedAt||0;
   return (Date.now()-last)>getStaleThresholdMs(s);
 }
 // Tür (genre) — sabit ön tanımlı liste, ama kullanıcı forma serbestçe kendi türünü de ekleyebilir.
 const GENRES_PRESET=['Aksiyon','Macera','Komedi','Dram','Fantastik','Isekai','Romantizm','Bilim Kurgu','Korku','Gizem','Doğaüstü','Dilim Hayat','Psikolojik','Tarihi','Askeri','Spor','Ecchi','Harem','Gerilim','Trajedi','Mecha','Müzik'];
+// Bağlantılı Seriler'de "Yan Seri" için ilişki alt-türü — Evangelion gibi karmaşık
+// franchise'larda (orijinal dizi + Rebuild filmleri + özet filmi + alternatif son) sadece
+// "yan seri" demek yetersiz kalıyordu; artık her dal kendi ilişki etiketini taşıyor.
+const RELATION_TYPES={
+  spinoff:  {label:'Yan Hikaye',           color:'#34d399'},
+  recap:    {label:'Özet / Derleme',       color:'#f59e0b'},
+  alternate:{label:'Alternatif Versiyon',  color:'#fb7185'},
+  universe: {label:'Aynı Evren',           color:'#60a5fa'},
+  other:    {label:'İlişkili',             color:'#94a3b8'},
+};
 let currentGenre=null;
 
 // Fansub (çeviri ekibi) logo/website bilgisi — seri başına değil, İSİM başına global bir
@@ -304,9 +314,7 @@ function setFansubMeta(name,logo,url){
 const CATS={
   all:      {label:'Tümü',          icon:'grid4',    badge:''},
   reading:  {label:'İzliyorum',      icon:'book',     badge:'b-reading'},
-  current:      {label:'TR Güncel',   icon:'zap',      badge:'b-current'},
-  current_en:   {label:'EN Güncel',   icon:'zap',      badge:'b-current-en'},
-  current_both: {label:'TR+EN Güncel',icon:'zap',      badge:'b-current-both'},
+  current:      {label:'Güncel',   icon:'zap',      badge:'b-current'},
   stockpile:{label:'Biriktiriyorum',icon:'box',      badge:'b-stockpile'},
   paused:   {label:'Ara Verdim',    icon:'pause',    badge:'b-paused'},
   dropped:  {label:'Bıraktım',      icon:'xcirc',    badge:'b-dropped'},
@@ -380,7 +388,7 @@ function triggerKonamiEffect(){
   showToast('star',msgs[Math.floor(Math.random()*msgs.length)]);
 }
 function spawnConfetti(){
-  const colors=['#dc2626','#f87171','#c9a227','#e85d75','#34d399','#60a5fa'];
+  const colors=['#e11d48','#fb7185','#c9a227','#e85d75','#34d399','#60a5fa'];
   for(let i=0;i<36;i++){
     const el=document.createElement('div');
     el.className='confetti-piece';
@@ -654,7 +662,7 @@ function renderBulkBar(){
     <select class="form-select" style="flex:1;font-size:12px;padding:7px 9px;min-width:0;" onchange="if(this.value){bulkSetCategory(this.value);this.value='';}"><option value="">Kategori…</option>${Object.entries(CATS).filter(([k])=>k!=='all').map(([k,v])=>`<option value="${k}">${v.label}</option>`).join('')}</select>
     <button class="hdr-btn" title="Sabitle" onclick="bulkPin()">${ic('pin',15)}</button>
     <button class="hdr-btn" title="Favorile" onclick="bulkFavorite()">${ic('heart',15)}</button>
-    <button class="hdr-btn" title="Sil" style="color:#f87171;" onclick="bulkDelete()">${ic('trash',15)}</button>
+    <button class="hdr-btn" title="Sil" style="color:#fb7185;" onclick="bulkDelete()">${ic('trash',15)}</button>
   </div>`;
 }
 function bulkPin(){
@@ -744,7 +752,7 @@ function getTodaysNewChapters(){
   const seen=new Set();
   const results=[];
   sorted.forEach(l=>{
-    if(!l.text||!l.text.startsWith('TR bölüm ')) return;
+    if(!l.text||!l.text.startsWith('Bölüm ')) return;
     if(new Date(l.ts).toDateString()!==todayStr) return;
     if(seen.has(l.seriesId)) return;
     const s=series.find(x=>x.id===l.seriesId);
@@ -790,7 +798,7 @@ function getWeeklyForecast(){
         const cd=new Date(cursor); cd.setHours(0,0,0,0);
         const key=_forecastDateKey(cd);
         if(byDay[key]) byDay[key].newCh.push(s);
-        cursor=calcNextIncr(s.autoIncrFreq,s.autoIncrDay,s.autoIncrDate,cursor);
+        cursor=calcNextIncr(s.autoIncrFreq,s.autoIncrDay,s.autoIncrDate,cursor,s.releaseTime);
       }
     }
   });
@@ -1006,10 +1014,10 @@ function initHeroRail(){
   setActive(0);
   _heroAutoTimer=setInterval(advance,AUTO_MS);
 }
-const CAT_LETTER_COLORS={reading:'#f87171',current:'#34d399',current_en:'#38bdf8',current_both:'#f87171',stockpile:'#f59e0b',paused:'#94a3b8',dropped:'#f87171',completed:'#60a5fa',planned:'#f472b6',season:'#fca5a5'};
+const CAT_LETTER_COLORS={reading:'#fb7185',current:'#34d399',stockpile:'#f59e0b',paused:'#94a3b8',dropped:'#fb7185',completed:'#60a5fa',planned:'#f472b6',season:'#fda4af'};
 function coverLetterPh(s,hidden){
   const letter=(s.name||'?').trim().charAt(0).toLocaleUpperCase('tr-TR');
-  const color=CAT_LETTER_COLORS[s.category]||'#dc2626';
+  const color=CAT_LETTER_COLORS[s.category]||'#e11d48';
   return `<div class="card-cover-ph"${hidden?' style="display:none;':' style="'}background:linear-gradient(160deg,${color}45,var(--black3) 78%)"><div class="cover-letter">${esc(letter)}</div></div>`;
 }
 const _TR_MONTH_SUFFIX={Ocak:'ta',Şubat:'ta',Mart:'ta',Nisan:'da',Mayıs:'ta',Haziran:'da',Temmuz:'da',Ağustos:'ta',Eylül:'de',Ekim:'de',Kasım:'da',Aralık:'da'};
@@ -1134,7 +1142,7 @@ function previewStep(delta){
   const s=series.find(x=>x.id===window._previewId);if(!s)return;
   const prevTR=s.chapterTR;
   s.chapterTR=Math.max(0,(parseInt(s.chapterTR)||0)+delta);
-  if(s.chapterTR!==prevTR) addLog(s.id,`TR bölüm ${prevTR||0}→${s.chapterTR}`);
+  if(s.chapterTR!==prevTR) addLog(s.id,`Bölüm ${prevTR||0}→${s.chapterTR}`);
   s.updatedAt=Date.now();
   save().then(()=>{renderTabs();renderContent();openPreview(s.id);});
 }
@@ -1149,7 +1157,6 @@ function openQuick(id){
   document.getElementById('quickSub').textContent=
     [CATS[s.category]?.label, s.releaseDay?`📅 ${s.releaseDay}`:''].filter(Boolean).join(' · ');
   document.getElementById('quickTR').value=s.chapterTR||0;
-  document.getElementById('quickEN').value=s.chapterEN||0;
   document.getElementById('statusGrid').innerHTML=Object.entries(CATS).filter(([k])=>k!=='all').map(([k,v])=>
     `<div class="status-chip ${quickCat===k?'active':''}" onclick="selectQuickCat('${k}')">${ic(v.icon,12)} ${v.label}</div>`
   ).join('');
@@ -1179,7 +1186,6 @@ async function saveQuick(){
   const prevCat=s.category;
   const prevTR=s.chapterTR;
   s.chapterTR=document.getElementById('quickTR').value||'';
-  s.chapterEN=document.getElementById('quickEN').value||'';
   s.category=quickCat;
   s.updatedAt=Date.now();
   if(quickSkipping&&s.autoIncrFreq){
@@ -1189,7 +1195,7 @@ async function saveQuick(){
     s.autoIncrSkips=s.autoIncrSkips.slice(-20);
     addLog(s.id,`Otomatik artırma bu periyot atlandı.`);
   }
-  if(s.chapterTR!==prevTR) addLog(s.id,`TR bölüm ${prevTR||0}→${s.chapterTR}`);
+  if(s.chapterTR!==prevTR) addLog(s.id,`Bölüm ${prevTR||0}→${s.chapterTR}`);
   if(quickCat==='completed'&&prevCat!=='completed'){
     setTimeout(()=>{spawnConfetti();showToast('star','Tebrikler! Seriyi bitirdin! 🎉');},300);
   }
@@ -1227,9 +1233,15 @@ function buildCountdown(s){
   if(s.autoIncrFreq&&s.autoIncrFreq!=='irregular'&&s.autoIncrFreq!=='completed'&&s.autoIncrAmt>0&&s.autoIncrNext){
     const diffMs=s.autoIncrNext-Date.now();
     const diffDays=Math.ceil(diffMs/(1000*60*60*24));
-    const dateLabel=new Date(s.autoIncrNext).toLocaleDateString('tr-TR',{weekday:'long',day:'numeric',month:'long'});
-    if(diffDays<=0) return '<div class="countdown-box"><div><div class="countdown-label">Yeni Bölüm</div><div class="countdown-days" style="color:var(--green);">Bugün!</div><div class="countdown-sub">+'+s.autoIncrAmt+' bölüm bekleniyor</div></div><div class="countdown-icon" style="color:var(--green);border-color:rgba(52,211,153,.4);">'+ic('bolt',26)+'</div></div>';
-    return '<div class="countdown-box"><div><div class="countdown-label">Sonraki Bölüme</div><div class="countdown-days">'+diffDays+'</div><div class="countdown-sub">gün kaldı · '+esc(dateLabel)+'</div></div><div class="countdown-icon">'+ic('clock',26)+'</div></div>';
+    const timeSuffix=s.releaseTime?` · ${s.releaseTime}`:'';
+    const dateLabel=new Date(s.autoIncrNext).toLocaleDateString('tr-TR',{weekday:'long',day:'numeric',month:'long'})+timeSuffix;
+    const plannedLabel=s.plannedEpisodes?` · ${parseInt(s.chapterTotal)||0}/${s.plannedEpisodes} bölüm`:'';
+    if(diffDays<=0) return '<div class="countdown-box"><div><div class="countdown-label">Yeni Bölüm</div><div class="countdown-days" style="color:var(--green);">Bugün!</div><div class="countdown-sub">+'+s.autoIncrAmt+' bölüm bekleniyor'+plannedLabel+'</div></div><div class="countdown-icon" style="color:var(--green);border-color:rgba(52,211,153,.4);">'+ic('bolt',26)+'</div></div>';
+    if(diffMs<24*60*60*1000){
+      const hrs=Math.max(1,Math.ceil(diffMs/(1000*60*60)));
+      return '<div class="countdown-box"><div><div class="countdown-label">Sonraki Bölüme</div><div class="countdown-days">'+hrs+'</div><div class="countdown-sub">saat kaldı · '+esc(dateLabel)+plannedLabel+'</div></div><div class="countdown-icon">'+ic('clock',26)+'</div></div>';
+    }
+    return '<div class="countdown-box"><div><div class="countdown-label">Sonraki Bölüme</div><div class="countdown-days">'+diffDays+'</div><div class="countdown-sub">gün kaldı · '+esc(dateLabel)+plannedLabel+'</div></div><div class="countdown-icon">'+ic('clock',26)+'</div></div>';
   }
   return '';
 }
@@ -1262,7 +1274,8 @@ function getSeriesDetailSections(s){
   // Bağlantılı Seriler — "Ana Seri" bağlantıları artık her serinin kendi mainOrder'ına göre
   // SIRALI bir zincir (→) olarak gösteriliyor (hangi seri sayfasından bakarsan bak aynı sıra
   // çıkıyor, çünkü sıra numarası linke değil serinin kendisine ait). "Yan Seri" bağlantıları
-  // ise ayrı bir sırada, varsa kısa bir açıklamayla birlikte gösteriliyor.
+  // ise ayrı bir sırada, kendi ilişki türü (Yan Hikaye/Özet/Alternatif Versiyon/Aynı Evren)
+  // ve varsa kısa bir açıklamayla birlikte gösteriliyor.
   const rawLinks=s.links||[];
   const mainLinkedSeries=rawLinks.filter(l=>l.type==='main').map(l=>series.find(x=>x.id===l.id)).filter(Boolean);
   const hasOwnSideLinks=rawLinks.some(l=>l.type==='side');
@@ -1274,7 +1287,7 @@ function getSeriesDetailSections(s){
     // kendi mainOrder'ına ve kendi links[] listesine ait.
     const chain=[s,...mainLinkedSeries].sort((a,b)=>(a.mainOrder||9999)-(b.mainOrder||9999));
     const COL=40,GAP=13,STEP=COL+GAP,BR_H=71,TRUNK_Y_IN_ROW=17;
-    const nodeBranches=chain.map(node=>(node.links||[]).filter(l=>l.type==='side').map(l=>({series:series.find(x=>x.id===l.id),desc:l.desc||''})).filter(x=>x.series));
+    const nodeBranches=chain.map(node=>(node.links||[]).filter(l=>l.type==='side').map(l=>({series:series.find(x=>x.id===l.id),desc:l.desc||'',relation:l.relation||''})).filter(x=>x.series));
     const maxBranches=Math.max(0,...nodeBranches.map(b=>b.length));
     const padTop=42+Math.max(0,maxBranches-1)*BR_H;
     const trunkY=padTop+TRUNK_Y_IN_ROW;
@@ -1282,8 +1295,9 @@ function getSeriesDetailSections(s){
     const branchesH=chain.map((node,i)=>nodeBranches[i].map((b,bi)=>{
       const cx=i*STEP+20;
       const top=trunkY-BR_H*(bi+1);
+      const relInfo=RELATION_TYPES[b.relation]||{label:'Yan Seri',color:'#34d399'};
       return `<div class="detail-htree-branch" style="left:${cx}px;top:${top}px;" onclick="openPreview('${b.series.id}',event)" title="${esc(b.desc)}">
-        <div class="detail-htree-label">${esc(b.series.name)}<div class="detail-htree-tag" style="color:#34d399;">Yan Seri</div></div>
+        <div class="detail-htree-label">${esc(b.series.name)}<div class="detail-htree-tag" style="color:${relInfo.color};">${esc(relInfo.label)}</div></div>
         <div class="detail-htree-cover">${cov(b.series)}</div>
         <div class="detail-htree-branch-connector"></div>
       </div>`;
@@ -1349,10 +1363,12 @@ function openDetail(id,skipHistory){
           <span class="card-cat-badge ${cat.badge}">${ic(cat.icon)} ${cat.label}</span>
           ${s.releaseDay?`<span style="display:inline-flex;align-items:center;gap:4px;background:rgba(0,0,0,.45);border:1px solid rgba(255,255,255,.15);border-radius:6px;padding:3px 8px;font-size:10px;color:rgba(255,255,255,.85);backdrop-filter:blur(8px);">${ic('clock',10)} ${esc(s.releaseDay)}</span>`:''}
           ${s.chapterTR?`<span style="display:inline-flex;align-items:center;gap:4px;background:rgba(0,0,0,.45);border:1px solid rgba(255,255,255,.12);border-radius:6px;padding:3px 8px;font-size:10px;color:rgba(255,255,255,.75);backdrop-filter:blur(8px);">${ic('tr',10)} ${s.chapterTR}${total>0?' / '+total:''}</span>`:''}
-          ${s.chapterEN?`<span style="display:inline-flex;align-items:center;gap:4px;background:rgba(0,0,0,.45);border:1px solid rgba(255,255,255,.12);border-radius:6px;padding:3px 8px;font-size:10px;color:rgba(255,255,255,.75);backdrop-filter:blur(8px);">${ic('globe',10)} ${s.chapterEN}</span>`:''}
+          ${s.watchFormat?`<span style="display:inline-flex;align-items:center;gap:4px;background:rgba(0,0,0,.45);border:1px solid rgba(255,255,255,.12);border-radius:6px;padding:3px 8px;font-size:10px;color:rgba(255,255,255,.75);backdrop-filter:blur(8px);">${ic('globe',10)} ${{sub:'Altyazı',dub:'Dublaj',both:'Alt.+Dub'}[s.watchFormat]||s.watchFormat}</span>`:''}
           ${s.studio?`<span style="display:inline-flex;align-items:center;gap:4px;background:rgba(0,0,0,.45);border:1px solid rgba(255,255,255,.12);border-radius:6px;padding:3px 8px;font-size:10px;color:rgba(255,255,255,.75);backdrop-filter:blur(8px);">${ic('layers',10)} ${esc(s.studio)}</span>`:''}
           ${s.season?`<span style="display:inline-flex;align-items:center;gap:4px;background:rgba(0,0,0,.45);border:1px solid rgba(255,255,255,.12);border-radius:6px;padding:3px 8px;font-size:10px;color:rgba(255,255,255,.75);backdrop-filter:blur(8px);">${ic('moon',10)} Sezon ${esc(s.season)}</span>`:''}
           ${s.airingStatus?`<span style="display:inline-flex;align-items:center;gap:4px;background:rgba(0,0,0,.45);border:1px solid rgba(255,255,255,.12);border-radius:6px;padding:3px 8px;font-size:10px;color:rgba(255,255,255,.75);backdrop-filter:blur(8px);">${ic('zap',10)} ${esc({airing:'Yayınlanıyor',finished:'Tamamlandı',upcoming:'Yayınlanacak',cancelled:'İptal Edildi'}[s.airingStatus]||s.airingStatus)}</span>`:''}
+          ${s.contentType&&s.contentType!=='series'?`<span style="display:inline-flex;align-items:center;gap:4px;background:rgba(0,0,0,.45);border:1px solid rgba(255,255,255,.12);border-radius:6px;padding:3px 8px;font-size:10px;color:rgba(255,255,255,.75);backdrop-filter:blur(8px);">${ic('bookmark',10)} ${esc({movie:'Film',extra:'Ek İçerik'}[s.contentType]||s.contentType)}</span>`:''}
+          ${s.platform?`<span style="display:inline-flex;align-items:center;gap:4px;background:rgba(0,0,0,.45);border:1px solid rgba(255,255,255,.12);border-radius:6px;padding:3px 8px;font-size:10px;color:rgba(255,255,255,.75);backdrop-filter:blur(8px);">${ic('bolt',10)} ${esc({netflix:'Netflix',primevideo:'Prime Video',appletv:'TV+',hbomax:'HBO Max',other:'Diğer'}[s.platform]||s.platform)}</span>`:''}
         </div>
       </div>
       ${coverImg}
@@ -1475,7 +1491,7 @@ function openAddSheet(){
   _pendingCoverData=null;
   document.getElementById('addSheetTitle').textContent='Yeni Seri';
   ['seriesName','altNameInput','fansubInput','coverUrlInput','seriesNote','seriesOpinion','chapterTotal','autoIncrAmt','readUrlInput','originalNameInput','mainOrderInput','studioInput','seasonInput'].forEach(id=>{const el=document.getElementById(id);if(el)el.value='';});
-  { const asEl=document.getElementById('airingStatusInput'); if(asEl)asEl.value=''; }
+  { const asEl=document.getElementById('airingStatusInput'); if(asEl)asEl.value=''; const wfEl=document.getElementById('watchFormatInput'); if(wfEl)wfEl.value=''; const atEl=document.getElementById('autoIncrTime'); if(atEl)atEl.value='09:00'; const peEl=document.getElementById('plannedEpisodesInput'); if(peEl)peEl.value=''; const ctEl=document.getElementById('contentTypeInput'); if(ctEl)ctEl.value='series'; const plEl=document.getElementById('platformInput'); if(plEl)plEl.value=''; }
   document.getElementById('autoIncrFreq').value='';
   document.getElementById('autoIncrDay').value='1';
   document.getElementById('autoIncrDate').value='1';
@@ -1491,7 +1507,7 @@ function openAddSheet(){
   document.getElementById('altTagsWrap').innerHTML='';document.getElementById('fansubTagsWrap').innerHTML='';hideFansubSuggestions();
   document.getElementById('oldCoversPreviews').innerHTML='';
   document.getElementById('seriesCategory').value='reading';
-  document.getElementById('chapterTR').value='';document.getElementById('chapterEN').value='';
+  document.getElementById('chapterTR').value='';
   resetCoverPreview();updateFormToggles();renderRatingStars(0);renderGenreUI();renderLinkChips();
   const linkSearchEl=document.getElementById('linkSearchInput'); if(linkSearchEl)linkSearchEl.value='';
   document.getElementById('deleteBtn').classList.add('hidden');
@@ -1507,7 +1523,7 @@ function openEditSheet(id){
   document.getElementById('seriesName').value=s.name||'';
   document.getElementById('seriesCategory').value=s.category||'reading';
   document.getElementById('chapterTR').value=s.chapterTR||'';
-  document.getElementById('chapterEN').value=s.chapterEN||'';
+  const watchFormatEl=document.getElementById('watchFormatInput'); if(watchFormatEl)watchFormatEl.value=s.watchFormat||'';
   document.getElementById('chapterTotal').value=s.chapterTotal||'';
   document.getElementById('seriesNote').value=s.note||'';
   const opinionEl=document.getElementById('seriesOpinion'); if(opinionEl)opinionEl.value=s.opinion||'';
@@ -1515,6 +1531,8 @@ function openEditSheet(id){
   const readUrlEl=document.getElementById('readUrlInput'); if(readUrlEl)readUrlEl.value=s.readUrl||'';
   const studioEl=document.getElementById('studioInput'); if(studioEl)studioEl.value=s.studio||'';
   const seasonEl=document.getElementById('seasonInput'); if(seasonEl)seasonEl.value=s.season||'';
+  const contentTypeEl=document.getElementById('contentTypeInput'); if(contentTypeEl)contentTypeEl.value=s.contentType||'series';
+  const platformEl=document.getElementById('platformInput'); if(platformEl)platformEl.value=s.platform||'';
   const airingStatusEl=document.getElementById('airingStatusInput'); if(airingStatusEl)airingStatusEl.value=s.airingStatus||'';
   // Safari'nin input[type=text] için 512KB kesme sorunu nedeniyle, büyük (data: ile başlayan)
   // kapak verisini input'a yazmıyoruz, _pendingCoverData'da tutuyoruz. Kısa URL'ler input'a yazılabilir.
@@ -1530,12 +1548,15 @@ function openEditSheet(id){
   document.getElementById('autoIncrFreq').value=s.autoIncrFreq||'';
   document.getElementById('autoIncrDay').value=s.autoIncrDay??1;
   document.getElementById('autoIncrDate').value=s.autoIncrDate??1;
+  { const atEl=document.getElementById('autoIncrTime'); if(atEl)atEl.value=s.releaseTime||'09:00'; }
+  { const peEl=document.getElementById('plannedEpisodesInput'); if(peEl)peEl.value=s.plannedEpisodes||''; }
   document.getElementById('releaseDayNote').value=s.releaseDayNote||'';
   document.getElementById('returnDate').value=s.returnDate||'';
   document.getElementById('returnDateWrap').style.display=s.category==='season'?'':'none';
   document.getElementById('incrDayWrap').style.display=s.autoIncrFreq==='weekly'?'':'none';
   document.getElementById('incrDateWrap').style.display=s.autoIncrFreq==='monthly'?'':'none';
   document.getElementById('incrIrregularWrap').style.display=s.autoIncrFreq==='irregular'?'':'none';
+  { const twEl=document.getElementById('incrTimeWrap'); if(twEl)twEl.style.display=(s.autoIncrFreq==='daily'||s.autoIncrFreq==='weekly'||s.autoIncrFreq==='monthly')?'':'none'; }
   const noIncr=!s.autoIncrFreq||s.autoIncrFreq==='irregular'||s.autoIncrFreq==='completed';
   document.getElementById('incrAmtWrap').style.opacity=noIncr?'0.35':'1';
   document.getElementById('incrAmtWrap').style.pointerEvents=noIncr?'none':'';
@@ -1558,8 +1579,8 @@ function showFormTab(tab,el){
   document.querySelectorAll('.form-tab').forEach(function(t){
     const active=t.getAttribute('data-tab')===tab;
     t.classList.toggle('active',active);
-    t.style.background=active?'rgba(220,38,38,.16)':'var(--black4)';
-    t.style.borderColor=active?'rgba(220,38,38,.35)':'var(--line)';
+    t.style.background=active?'rgba(225,29,72,.16)':'var(--black4)';
+    t.style.borderColor=active?'rgba(225,29,72,.35)':'var(--line)';
     t.style.color=active?'var(--purple3)':'var(--text2)';
   });
 }
@@ -1604,22 +1625,27 @@ async function saveSeries(){
     cover:normalizeCoverUrl(cover),
     oldCovers:[...oldCovers],
     category:document.getElementById('seriesCategory').value,
-    chapterTR:newTR,chapterEN:document.getElementById('chapterEN').value||'',
+    chapterTR:newTR,
     chapterTotal:document.getElementById('chapterTotal').value||'',
+    watchFormat:(document.getElementById('watchFormatInput')?.value||''),
     note:document.getElementById('seriesNote').value.trim(),
     opinion:(document.getElementById('seriesOpinion')?.value||'').trim(),
     originalName:(document.getElementById('originalNameInput')?.value||'').trim(),
     readUrl:(document.getElementById('readUrlInput')?.value||'').trim(),
     studio:(document.getElementById('studioInput')?.value||'').trim(),
     season:(document.getElementById('seasonInput')?.value||'').trim(),
+    contentType:(document.getElementById('contentTypeInput')?.value||'series'),
+    platform:(document.getElementById('platformInput')?.value||''),
     airingStatus:(document.getElementById('airingStatusInput')?.value||''),
+    plannedEpisodes:(document.getElementById('plannedEpisodesInput')?.value||''),
     favorited:formFav,pinned:formPin,rating:formRating,updatedAt:Date.now(),
     releaseDay,releaseDayNote,returnDate:document.getElementById('returnDate').value||'',
     autoIncrAmt:autoAmt||0,
     autoIncrFreq:autoFreq,
     autoIncrDay:autoDay,
     autoIncrDate:autoDate,
-    autoIncrNext:(autoFreq&&autoFreq!=='irregular'&&autoFreq!=='completed')?calcNextIncr(autoFreq,autoDay,autoDate):null,
+    releaseTime:(document.getElementById('autoIncrTime')?.value||''),
+    autoIncrNext:(autoFreq&&autoFreq!=='irregular'&&autoFreq!=='completed')?calcNextIncr(autoFreq,autoDay,autoDate,null,document.getElementById('autoIncrTime')?.value):null,
     autoIncrSkips:[],
   };
   if(editingId){
@@ -1631,7 +1657,7 @@ async function saveSeries(){
   const prevIdx=series.findIndex(x=>x.id===data.id);
   if(editingId){
     const idx=series.findIndex(x=>x.id===editingId);if(idx>=0)series[idx]=data;
-    if(newTR&&newTR!==String(prevTR)) addLog(editingId,`TR bölüm ${prevTR}→${newTR}`);
+    if(newTR&&newTR!==String(prevTR)) addLog(editingId,`Bölüm ${prevTR}→${newTR}`);
     if(prevState&&prevState.category!=='completed'&&data.category==='completed') addLog(editingId,'Bitti olarak işaretlendi 🎉');
   } else {
     series.unshift(data);
@@ -1685,6 +1711,7 @@ function updateIncrExtra(){
   document.getElementById('incrDayWrap').style.display=freq==='weekly'?'':'none';
   document.getElementById('incrDateWrap').style.display=freq==='monthly'?'':'none';
   document.getElementById('incrIrregularWrap').style.display=freq==='irregular'?'':'none';
+  const timeWrap=document.getElementById('incrTimeWrap'); if(timeWrap)timeWrap.style.display=(freq==='daily'||freq==='weekly'||freq==='monthly')?'':'none';
   document.getElementById('incrAmtWrap').style.opacity=(freq==='irregular'||freq==='completed'||freq==='')?'0.35':'1';
   document.getElementById('incrAmtWrap').style.pointerEvents=(freq==='irregular'||freq==='completed'||freq==='')?'none':'';
   updateIncrSummary();
@@ -1697,24 +1724,29 @@ function updateIncrSummary(){
   const amt=parseInt(document.getElementById('autoIncrAmt').value)||0;
   if(!freq||freq==='irregular'||freq==='completed'||amt<=0){ el.textContent=''; el.style.display='none'; return; }
   const dayNames=['Pazar','Pazartesi','Salı','Çarşamba','Perşembe','Cuma','Cumartesi'];
+  const timeEl=document.getElementById('autoIncrTime');
+  const timeVal=timeEl?timeEl.value:'';
   let when='';
   if(freq==='daily') when='her gün';
   else if(freq==='weekly') when='her hafta '+dayNames[parseInt(document.getElementById('autoIncrDay').value)||1];
   else if(freq==='monthly') when='her ayın '+(parseInt(document.getElementById('autoIncrDate').value)||1)+'. günü';
-  const next=calcNextIncr(freq,document.getElementById('autoIncrDay').value,document.getElementById('autoIncrDate').value);
+  if(timeVal) when+=' saat '+timeVal+'de';
+  const next=calcNextIncr(freq,document.getElementById('autoIncrDay').value,document.getElementById('autoIncrDate').value,null,timeVal);
   const nextLabel=next?new Date(next).toLocaleDateString('tr-TR',{weekday:'long',day:'numeric',month:'long'}):'';
   el.style.display='';
   el.innerHTML=`${ic('bolt',10)} <b>${when}</b> toplam bölüme <b>+${amt}</b> eklenecek${nextLabel?` — sıradaki: <b>${nextLabel}</b>`:''}.`;
 }
-function calcNextIncr(freq, day, date, fromTs){
+function calcNextIncr(freq, day, date, fromTs, timeStr){
   const now=fromTs?new Date(fromTs):new Date();
+  let hh=9,mm=0;
+  if(timeStr&&/^\d{1,2}:\d{2}$/.test(timeStr)){ const parts=timeStr.split(':'); hh=parseInt(parts[0])||0; mm=parseInt(parts[1])||0; }
   if(freq==='daily'){
-    const d=new Date(now); d.setDate(d.getDate()+1); d.setHours(9,0,0,0); return d.getTime();
+    const d=new Date(now); d.setDate(d.getDate()+1); d.setHours(hh,mm,0,0); return d.getTime();
   }
   if(freq==='weekly'){
     const target=parseInt(day)||1;
     const d=new Date(now);
-    d.setHours(9,0,0,0);
+    d.setHours(hh,mm,0,0);
     let diff=(target-d.getDay()+7)%7;
     if(diff===0) diff=7;
     d.setDate(d.getDate()+diff);
@@ -1723,7 +1755,7 @@ function calcNextIncr(freq, day, date, fromTs){
   if(freq==='monthly'){
     const target=parseInt(date)||1;
     const d=new Date(now);
-    d.setHours(9,0,0,0);
+    d.setHours(hh,mm,0,0);
     d.setDate(target);
     if(d<=now) d.setMonth(d.getMonth()+1);
     return d.getTime();
@@ -1758,7 +1790,7 @@ async function runAutoIncrement(){
     const guardMax=1000; // bozuk/aşırı eski veri için güvenlik sınırı
     while(cursor&&now>=cursor&&missed<guardMax){
       missed++;
-      cursor=calcNextIncr(s.autoIncrFreq,s.autoIncrDay,s.autoIncrDate,cursor);
+      cursor=calcNextIncr(s.autoIncrFreq,s.autoIncrDay,s.autoIncrDate,cursor,s.releaseTime);
     }
     if(missed===0) return;
 
@@ -1770,8 +1802,15 @@ async function runAutoIncrement(){
 
     if(effectiveMissed>0){
       const prev=parseInt(s.chapterTotal)||0;
-      const added=s.autoIncrAmt*effectiveMissed;
-      s.chapterTotal=String(prev+added);
+      const planned=parseInt(s.plannedEpisodes)||0;
+      let added=s.autoIncrAmt*effectiveMissed;
+      let newTotal=prev+added;
+      if(planned>0&&newTotal>=planned){
+        newTotal=planned;
+        s.autoIncrFreq='completed';
+        if(!s.airingStatus||s.airingStatus==='airing') s.airingStatus='finished';
+      }
+      s.chapterTotal=String(newTotal);
       addLog(s.id, effectiveMissed>1
         ? `Otomatik: Toplam bölüm ${prev}→${s.chapterTotal} (${effectiveMissed} periyot birikmiş)`
         : `Otomatik: Toplam bölüm ${prev}→${s.chapterTotal}`);
@@ -1921,9 +1960,11 @@ function saveFansubMetaFromForm(){
   if(currentPage==='fansubs'&&typeof renderFansubListPage==='function')renderFansubListPage();
   showToast('check',`"${name}" için logo/link kaydedildi.`);
 }
-// ===== Bağlantılı Seriler — "Ana Seri" (ardışık devam, ör. Mirai Nikki → Redial) ve
-// "Yan Seri" (paralel, ör. spin-off/alternatif versiyon) olarak iki türde bağlantı.
-// Bir seriye bağlantı eklendiğinde karşı taraftaki seriye de otomatik ekleniyor (senkron). =====
+// ===== Bağlantılı Seriler — "Ana Seri" (sıralı zincir, ör. Rebuild 1.0→2.0→3.0→3.0+1.0) ve
+// "Yan Seri" (bir zincir düğümünden dallanan, kendi ilişki türüyle etiketlenen bağlantı:
+// Yan Hikaye, Özet/Derleme, Alternatif Versiyon, Aynı Evren, İlişkili) olarak iki yapısal
+// türde bağlantı. Bir seriye bağlantı eklendiğinde karşı taraftaki seriye de otomatik
+// ekleniyor (senkron). =====
 function searchLinkableSeries(){
   const q=document.getElementById('linkSearchInput').value.trim().toLowerCase();
   const dd=document.getElementById('linkSuggestions');
@@ -1933,19 +1974,22 @@ function searchLinkableSeries(){
   const matches=series.filter(s=>s.id!==editingId&&!linkedIds.has(s.id)&&s.name.toLowerCase().includes(q)).slice(0,6);
   if(!matches.length){ dd.classList.add('hidden'); dd.innerHTML='<div class="autocomplete-item" style="opacity:.6;cursor:default;">Eşleşme yok</div>'; dd.classList.remove('hidden'); return; }
   dd.innerHTML=matches.map(s=>`
-    <div class="autocomplete-item" style="justify-content:space-between;gap:8px;">
-      <span style="flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;">${esc(s.name)}</span>
-      <div style="display:flex;gap:5px;flex-shrink:0;">
-        <button type="button" onclick="event.stopPropagation();addSeriesLink('${s.id}','main')" style="font-size:9.5px;font-weight:600;padding:4px 8px;border-radius:6px;background:var(--purpleG);border:1px solid var(--purple2);color:var(--purple3);cursor:pointer;">+ Ana Seri</button>
-        <button type="button" onclick="event.stopPropagation();addSeriesLink('${s.id}','side')" style="font-size:9.5px;font-weight:600;padding:4px 8px;border-radius:6px;background:var(--black5);border:1px solid var(--line2);color:var(--text2);cursor:pointer;">+ Yan Seri</button>
+    <div class="autocomplete-item" style="flex-direction:column;align-items:stretch;gap:6px;cursor:default;">
+      <span style="overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-weight:600;">${esc(s.name)}</span>
+      <div style="display:flex;gap:5px;flex-wrap:wrap;">
+        <button type="button" onclick="event.stopPropagation();addSeriesLink('${s.id}','main')" style="font-size:9.5px;font-weight:600;padding:4px 8px;border-radius:6px;background:var(--purpleG);border:1px solid var(--purple2);color:var(--purple3);cursor:pointer;">+ Ana Seri (Sıralı)</button>
+        <select onchange="if(this.value){addSeriesLink('${s.id}','side',this.value);this.value='';}" style="font-size:9.5px;font-weight:600;padding:4px 6px;border-radius:6px;background:var(--black5);border:1px solid var(--line2);color:var(--text2);cursor:pointer;">
+          <option value="">+ Yan Seri…</option>
+          ${Object.entries(RELATION_TYPES).map(([k,v])=>`<option value="${k}">${v.label}</option>`).join('')}
+        </select>
       </div>
     </div>`).join('');
   dd.classList.remove('hidden');
 }
 function hideLinkSuggestions(){ const dd=document.getElementById('linkSuggestions'); if(dd)dd.classList.add('hidden'); }
-function addSeriesLink(targetId,type){
+function addSeriesLink(targetId,type,relation){
   if(formLinks.some(l=>l.id===targetId)) return;
-  formLinks.push({id:targetId,type});
+  formLinks.push({id:targetId,type,relation:relation||''});
   const inp=document.getElementById('linkSearchInput'); if(inp)inp.value='';
   hideLinkSuggestions();
   renderLinkChips();
@@ -1961,8 +2005,11 @@ function renderLinkChips(){
     const s=series.find(x=>x.id===l.id);
     if(!s) return '';
     const isMain=l.type==='main';
-    const chip=`<span class="alt-tag" style="${isMain?'border-color:rgba(220,38,38,.5);color:var(--purple3);':''}">${esc(s.name)} <b style="font-size:8.5px;opacity:.75;font-weight:700;">${isMain?'ANA SERİ':'YAN SERİ'}</b><button onclick="removeSeriesLink('${l.id}')">&#x2715;</button></span>`;
-    const descBox=!isMain?`<textarea class="form-textarea" placeholder="Bu yan seri hakkında kısa bir not… (ör. Yuno'ya odaklanan yan seri)" oninput="updateLinkDesc('${l.id}',this.value)" style="min-height:40px;margin:4px 0 2px;font-size:11px;padding:7px 9px;">${esc(l.desc||'')}</textarea>`:'';
+    const rel=RELATION_TYPES[l.relation];
+    const tagLabel=isMain?'ANA SERİ':(rel?rel.label.toUpperCase():'YAN SERİ');
+    const tagColor=isMain?'var(--purple3)':(rel?rel.color:'#94a3b8');
+    const chip=`<span class="alt-tag" style="${isMain?'border-color:rgba(225,29,72,.5);color:var(--purple3);':`border-color:${tagColor}66;color:${tagColor};`}">${esc(s.name)} <b style="font-size:8.5px;opacity:.85;font-weight:700;">${tagLabel}</b><button onclick="removeSeriesLink('${l.id}')">&#x2715;</button></span>`;
+    const descBox=`<textarea class="form-textarea" placeholder="${isMain?'Bu seri hakkında kısa bir not… (opsiyonel)':'Bu bağlantı hakkında kısa bir not… (ör. Bölüm 25-26 yerine geçer)'}" oninput="updateLinkDesc('${l.id}',this.value)" style="min-height:36px;margin:4px 0 2px;font-size:11px;padding:7px 9px;">${esc(l.desc||'')}</textarea>`;
     return `<div style="margin-bottom:7px;">${chip}${descBox}</div>`;
   }).join('');
 }
@@ -1979,8 +2026,8 @@ function syncSeriesLinks(seriesId,newLinks,oldLinksJSON){
     const target=series.find(x=>x.id===l.id); if(!target) return;
     target.links=target.links||[];
     const existing=target.links.find(tl=>tl.id===seriesId);
-    if(existing){ existing.type=l.type; existing.desc=l.desc||''; }
-    else target.links.push({id:seriesId,type:l.type,desc:l.desc||''});
+    if(existing){ existing.type=l.type; existing.desc=l.desc||''; existing.relation=l.relation||''; }
+    else target.links.push({id:seriesId,type:l.type,desc:l.desc||'',relation:l.relation||''});
   });
   oldLinks.forEach(l=>{
     if(!newIds.has(l.id)){
@@ -2467,11 +2514,11 @@ function updateBackupInfo(){
     :'Hiç yedek alınmadı';
   el.innerHTML=`
     <div class="backup-banner${isStale?' stale':''}">
-      <div style="color:${isStale?'#f87171':'var(--purple3)'};flex-shrink:0;">${ic(isStale?'warn':'checkcirc',22)}</div>
+      <div style="color:${isStale?'#fb7185':'var(--purple3)'};flex-shrink:0;">${ic(isStale?'warn':'checkcirc',22)}</div>
       <div style="flex:1;min-width:0;">
         <div class="backup-banner-title">Son Yedek: ${lastLabel}</div>
         <div class="backup-banner-sub">Şu an kütüphanende <b style="color:var(--text2);">${series.length} seri</b> · tahmini boyut <b style="color:var(--text2);">~${formatBytes(currentSize)}</b></div>
-        ${isStale?`<div style="font-size:10px;color:#f87171;margin-top:3px;">Uzun süredir yedek almadın, bir tane almanı öneririz.</div>`:''}
+        ${isStale?`<div style="font-size:10px;color:#fb7185;margin-top:3px;">Uzun süredir yedek almadın, bir tane almanı öneririz.</div>`:''}
       </div>
     </div>`;
 }
@@ -2513,7 +2560,7 @@ async function importBackup(e){
       let newId=Date.now().toString();
       while(series.some(x=>x.id===newId)) newId=(Date.now()+Math.floor(Math.random()*1000)).toString();
       const autoIncrNext=(incoming.autoIncrFreq&&incoming.autoIncrFreq!=='irregular'&&incoming.autoIncrFreq!=='completed')
-        ?calcNextIncr(incoming.autoIncrFreq,incoming.autoIncrDay||1,incoming.autoIncrDate||1):null;
+        ?calcNextIncr(incoming.autoIncrFreq,incoming.autoIncrDay||1,incoming.autoIncrDate||1,null,incoming.releaseTime):null;
       const newSeries={
         id:newId,name,
         originalName:incoming.originalName||'',
@@ -2523,7 +2570,10 @@ async function importBackup(e){
         cover:incoming.cover||'',
         oldCovers:Array.isArray(incoming.oldCovers)?[...incoming.oldCovers]:[],
         category:incoming.category||'reading',
-        chapterTR:incoming.chapterTR||'',chapterEN:incoming.chapterEN||'',chapterTotal:incoming.chapterTotal||'',
+        chapterTR:incoming.chapterTR||'',chapterTotal:incoming.chapterTotal||'',
+        studio:incoming.studio||'',season:incoming.season||'',airingStatus:incoming.airingStatus||'',
+        contentType:incoming.contentType||'series',platform:incoming.platform||'',
+        watchFormat:incoming.watchFormat||'',plannedEpisodes:incoming.plannedEpisodes||'',
         note:'',favorited:false,pinned:false,rating:0,updatedAt:Date.now(),
         readUrl:incoming.readUrl||'',
         releaseDay:incoming.releaseDay||'',releaseDayNote:incoming.releaseDayNote||'',
@@ -2532,6 +2582,7 @@ async function importBackup(e){
         autoIncrFreq:incoming.autoIncrFreq||'',
         autoIncrDay:incoming.autoIncrDay||1,
         autoIncrDate:incoming.autoIncrDate||1,
+        releaseTime:incoming.releaseTime||'',
         autoIncrNext,
         autoIncrSkips:[],
       };
@@ -2758,8 +2809,8 @@ async function reorderPinned(draggedId,targetId){
 function computeExtraStats(){
   const rated=series.filter(s=>s.rating>0);
   const avgRating=rated.length?(rated.reduce((a,s)=>a+s.rating,0)/rated.length):0;
-  const totEN=series.reduce((a,s)=>a+(parseInt(s.chapterEN)||0),0);
   const totTR=series.reduce((a,s)=>a+(parseInt(s.chapterTR)||0),0);
+  const totalWatchMinutes=totTR*24;
   // Fansub sıklığı
   const fansubCount={};
   series.forEach(s=>(s.fansubList||[]).forEach(f=>{const key=f.trim();if(key)fansubCount[key]=(fansubCount[key]||0)+1;}));
@@ -2771,10 +2822,19 @@ function computeExtraStats(){
   // En uzun seri (toplam bölüm bilgisine göre)
   const withTotal=series.filter(s=>parseInt(s.chapterTotal)>0);
   const longest=withTotal.sort((a,b)=>(parseInt(b.chapterTotal)||0)-(parseInt(a.chapterTotal)||0))[0];
-  // En çok izlenen (TR bölüm sayısına göre)
+  // En çok izlenen (bölüm sayısına göre)
   const mostRead=[...series].sort((a,b)=>(parseInt(b.chapterTR)||0)-(parseInt(a.chapterTR)||0))[0];
   const pinnedCount=series.filter(s=>s.pinned).length;
-  return {avgRating,ratedCount:rated.length,totEN,totTR,totAll:totEN+totTR,topFansub,addedThisMonth,longest,mostRead,pinnedCount};
+  return {avgRating,ratedCount:rated.length,totTR,totalWatchMinutes,topFansub,addedThisMonth,longest,mostRead,pinnedCount};
+}
+// İzleme süresini "X gün Y sa" / "X sa Y dk" / "X dk" olarak okunaklı biçime çevirir.
+// Bölüm başına ortalama 24 dakika varsayımıyla hesaplanır (tipik bir anime bölümü uzunluğu).
+function formatWatchMinutes(mins){
+  mins=Math.max(0,Math.round(mins||0));
+  const h=Math.floor(mins/60), d=Math.floor(h/24);
+  if(d>=1) return `${d} gün ${h%24} sa`;
+  if(h>=1) return `${h} sa ${mins%60} dk`;
+  return `${mins} dk`;
 }
 // ===== Kişiselleştirilmiş istatistikler — tür dağılımı, fansub liderlik tablosu, puan
 // dağılımı, en eski seri gibi daha "kişiye özel" ve görsel açıdan zengin veriler. =====
