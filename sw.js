@@ -1,4 +1,4 @@
-const CACHE_NAME = 'megami-anime-cache-v1';
+const CACHE_NAME = 'megami-anime-cache-v2';
 const CORE_ASSETS = [
   './index.html',
   './desktop.html',
@@ -6,7 +6,8 @@ const CORE_ASSETS = [
   './app.js',
   './manifest.json',
   './icon-192.png',
-  './icon-512.png'
+  './icon-512.png',
+  './icon-maskable-512.png'
 ];
 
 self.addEventListener('install', e => {

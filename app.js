@@ -253,6 +253,7 @@ let series=[],editingId=null,currentPage='home',currentCat='all',searchQ='',curr
 // Safari'de input[type=text].value 512KB'ta sessizce kesildiği için, dosyadan yüklenen
 // büyük base64 kapak verisini input'a değil, bu değişkene yazıyoruz.
 let _pendingCoverData=null;
+let _pendingBannerData=null;
 let selectionMode=false,selectedIds=new Set();
 let altNames=[],oldCovers=[],fansubList=[],genres=[],formLinks=[],formFav=false,formPin=false,formRating=0;
 let quickId=null,quickCat=null;
@@ -1100,6 +1101,9 @@ function flatCard(s,i){
 // Sayfayı Aç" tam sayfaya götürür. =====
 function openPreview(id,ev){
   if(ev)ev.stopPropagation();
+  // Önizleme pop-up'ı sadece mobilde var; bu elemanlar yoksa (masaüstü arayüzü)
+  // doğrudan tam detay sayfasını aç — aksi halde tıklama sessizce hataya düşerdi.
+  if(!document.getElementById('previewOverlay')||!document.getElementById('previewBody')){ openDetail(id); return; }
   const s=series.find(x=>x.id===id);if(!s)return;
   window._previewId=id;
   const cat=CATS[s.category]||{};
@@ -1342,7 +1346,8 @@ function openDetail(id,skipHistory){
   currentPage='detail';
   currentDetailId=id;
   const cat=CATS[s.category]||CATS.reading;
-  const bgS=s.cover?`background-image:url('${esc(s.cover)}')`:'background:var(--black4)';
+  const bgSrc=s.banner||s.cover;
+  const bgS=bgSrc?`background-image:url('${esc(bgSrc)}')`:'background:var(--black4)';
   const coverImg=s.cover
     ?`<img class="detail-cover-img" src="${esc(s.cover)}" onerror="this.style.display='none'" onclick="openLightbox('${esc(s.cover)}')">`
     :``;
@@ -1351,7 +1356,7 @@ function openDetail(id,skipHistory){
   el.innerHTML=`
     <div class="detail-page-backbtn" onclick="closeDetail()">${ic('chevronLeft',15)} <span>Geri</span></div>
     <div class="detail-cover-wrap">
-      <div class="detail-cover-bg" style="${bgS}"></div>
+      <div class="detail-cover-bg" style="${bgS}${s.banner?';filter:brightness(.72) saturate(.85);':''}"></div>
       <div class="detail-cover-gradient"></div>
       <div class="detail-badges-row">
         ${s.pinned?`<span class="detail-pill" style="background:var(--pinG);color:var(--pin);">${ic('pin',9)} Sabitli</span>`:''}
@@ -1489,8 +1494,10 @@ function showAddOverlay(){
 function openAddSheet(){
   editingId=null;altNames=[];oldCovers=[];fansubList=[];genres=[];formLinks=[];window._originalLinksSnapshot='[]';formFav=false;formPin=false;formRating=0;
   _pendingCoverData=null;
+  _pendingBannerData=null;
   document.getElementById('addSheetTitle').textContent='Yeni Seri';
-  ['seriesName','altNameInput','fansubInput','coverUrlInput','seriesNote','seriesOpinion','chapterTotal','autoIncrAmt','readUrlInput','originalNameInput','mainOrderInput','studioInput','seasonInput'].forEach(id=>{const el=document.getElementById(id);if(el)el.value='';});
+  ['seriesName','altNameInput','fansubInput','coverUrlInput','bannerUrlInput','seriesNote','seriesOpinion','chapterTotal','avgDurationInput','autoIncrAmt','readUrlInput','originalNameInput','mainOrderInput','studioInput','seasonInput'].forEach(id=>{const el=document.getElementById(id);if(el)el.value='';});
+  resetBannerPreview();
   { const asEl=document.getElementById('airingStatusInput'); if(asEl)asEl.value=''; const wfEl=document.getElementById('watchFormatInput'); if(wfEl)wfEl.value=''; const atEl=document.getElementById('autoIncrTime'); if(atEl)atEl.value='09:00'; const peEl=document.getElementById('plannedEpisodesInput'); if(peEl)peEl.value=''; const ctEl=document.getElementById('contentTypeInput'); if(ctEl)ctEl.value='series'; const plEl=document.getElementById('platformInput'); if(plEl)plEl.value=''; }
   document.getElementById('autoIncrFreq').value='';
   document.getElementById('autoIncrDay').value='1';
@@ -1525,6 +1532,7 @@ function openEditSheet(id){
   document.getElementById('chapterTR').value=s.chapterTR||'';
   const watchFormatEl=document.getElementById('watchFormatInput'); if(watchFormatEl)watchFormatEl.value=s.watchFormat||'';
   document.getElementById('chapterTotal').value=s.chapterTotal||'';
+  { const adEl=document.getElementById('avgDurationInput'); if(adEl)adEl.value=s.avgDuration||''; }
   document.getElementById('seriesNote').value=s.note||'';
   const opinionEl=document.getElementById('seriesOpinion'); if(opinionEl)opinionEl.value=s.opinion||'';
   const originalNameEl=document.getElementById('originalNameInput'); if(originalNameEl)originalNameEl.value=s.originalName||'';
@@ -1542,6 +1550,13 @@ function openEditSheet(id){
   } else {
     _pendingCoverData=null;
     document.getElementById('coverUrlInput').value=s.cover||'';
+  }
+  if(s.banner&&s.banner.startsWith('data:')&&s.banner.length>500000){
+    _pendingBannerData=s.banner;
+    if(document.getElementById('bannerUrlInput'))document.getElementById('bannerUrlInput').value='';
+  } else {
+    _pendingBannerData=null;
+    if(document.getElementById('bannerUrlInput'))document.getElementById('bannerUrlInput').value=s.banner||'';
   }
   document.getElementById('altNameInput').value='';document.getElementById('fansubInput').value='';
   document.getElementById('autoIncrAmt').value=s.autoIncrAmt||'';
@@ -1564,6 +1579,7 @@ function openEditSheet(id){
   renderAltTags();renderFansubTags();renderOldCoverPreviews();renderGenreUI();renderLinkChips();
   const linkSearchEl2=document.getElementById('linkSearchInput'); if(linkSearchEl2)linkSearchEl2.value='';
   if(s.cover)showCoverPreview(s.cover);else resetCoverPreview();
+  if(s.banner)showBannerPreview(s.banner);else resetBannerPreview();
   updateFormToggles();renderRatingStars(formRating);
   document.getElementById('deleteBtn').classList.remove('hidden');
   showAddOverlay();
@@ -1603,6 +1619,9 @@ async function saveSeries(){
   const ci=document.getElementById('coverUrlInput').value.trim();
   const cimg=document.getElementById('coverPreviewWrap').querySelector('img');
   const cover=_pendingCoverData||ci||(cimg?cimg.src:'');
+  const bi=document.getElementById('bannerUrlInput')?.value.trim()||'';
+  const bimg=document.getElementById('bannerPreviewWrap')?.querySelector('img.banner-preview');
+  const banner=_pendingBannerData||bi||(bimg?bimg.src:'');
   console.log('[Reika] saveSeries kapak:',_pendingCoverData?'_pendingCoverData':(ci?'coverUrlInput':(cimg?'img.src':'yok')),'uzunluk:',cover.length);
   const prevTR=editingId?(series.find(x=>x.id===editingId)?.chapterTR||0):0;
   const newTR=document.getElementById('chapterTR').value||'';
@@ -1623,10 +1642,12 @@ async function saveSeries(){
     altNames:[...altNames],fansubList:[...fansubList],genres:[...genres],links:[...formLinks],
     mainOrder:parseInt(document.getElementById('mainOrderInput')?.value)||0,
     cover:normalizeCoverUrl(cover),
+    banner:banner?normalizeCoverUrl(banner):'',
     oldCovers:[...oldCovers],
     category:document.getElementById('seriesCategory').value,
     chapterTR:newTR,
     chapterTotal:document.getElementById('chapterTotal').value||'',
+    avgDuration:document.getElementById('avgDurationInput')?.value||'',
     watchFormat:(document.getElementById('watchFormatInput')?.value||''),
     note:document.getElementById('seriesNote').value.trim(),
     opinion:(document.getElementById('seriesOpinion')?.value||'').trim(),
@@ -1744,7 +1765,9 @@ function calcNextIncr(freq, day, date, fromTs, timeStr){
     const d=new Date(now); d.setDate(d.getDate()+1); d.setHours(hh,mm,0,0); return d.getTime();
   }
   if(freq==='weekly'){
-    const target=parseInt(day)||1;
+    const parsedDay=parseInt(day);
+    const target=isNaN(parsedDay)?1:parsedDay; // 0=Pazar geçerli bir değer; eski "||1" deseni
+                                                 // Pazar'ı yanlışlıkla Pazartesi'ye çeviriyordu.
     const d=new Date(now);
     d.setHours(hh,mm,0,0);
     let diff=(target-d.getDay()+7)%7;
@@ -1767,7 +1790,6 @@ function periodKey(freq, day, date){
   if(freq==='daily') return `d-${d.getFullYear()}-${d.getMonth()}-${d.getDate()}`;
   if(freq==='weekly'){
     const wd=d.getDay();
-    const diff=((parseInt(day)||1)-wd+7)%7;
     const weekStart=new Date(d); weekStart.setDate(d.getDate()-wd);
     return `w-${weekStart.getFullYear()}-${weekStart.getMonth()}-${weekStart.getDate()}-${day}`;
   }
@@ -1808,6 +1830,9 @@ async function runAutoIncrement(){
       if(planned>0&&newTotal>=planned){
         newTotal=planned;
         s.autoIncrFreq='completed';
+        cursor=null; // artık periyodik kontrol gerekmiyor — bir sonraki çalıştırmada bu seri
+                     // "autoIncrNext yok" sayesinde tamamen atlanacak, aksi halde 'completed'
+                     // durumunda bile her periyotta anlamsız "X→X" log kaydı üretmeye devam ederdi.
         if(!s.airingStatus||s.airingStatus==='airing') s.airingStatus='finished';
       }
       s.chapterTotal=String(newTotal);
@@ -1863,6 +1888,11 @@ function renderGenreUI(){
 }
 function openFansubMetaEditor(i){
   const name=fansubList[i]; if(!name)return;
+  if(!document.getElementById('fansubMetaOverlay')){
+    // Bu pop-up şu an sadece mobilde var; masaüstünde basit bir istemle devam et.
+    promptFansubMetaFallback(name,()=>renderFansubTags());
+    return;
+  }
   const meta=getFansubMeta(name);
   document.getElementById('fansubMetaName').textContent=name;
   document.getElementById('fansubMetaLogoInput').value=meta.logo||'';
@@ -1870,6 +1900,13 @@ function openFansubMetaEditor(i){
   window._fansubMetaEditingName=name;
   renderFansubMetaLogoPreview(meta.logo||'');
   document.getElementById('fansubMetaOverlay').classList.remove('hidden');
+}
+function promptFansubMetaFallback(name,onDone){
+  const meta=getFansubMeta(name);
+  const url=prompt(`"${name}" için link (opsiyonel):`,meta.url||'');
+  if(url===null) return;
+  setFansubMeta(name,meta.logo||'',url.trim());
+  if(onDone)onDone();
 }
 function renderFansubMetaLogoPreview(src){
   const wrap=document.getElementById('fansubMetaLogoPreviewWrap');
@@ -1884,6 +1921,10 @@ function renderFansubMetaLogoPreview(src){
 // doğrudan bir ekibin logo/link bilgisini düzenlemek için — openFansubMetaEditor(i) gibi
 // forma bağlı bir index yerine doğrudan ismi kullanır.
 function openFansubMetaEditorByName(name){
+  if(!document.getElementById('fansubMetaOverlay')){
+    promptFansubMetaFallback(name,()=>{ if(typeof renderFansubListPage==='function') renderFansubListPage(); });
+    return;
+  }
   const meta=getFansubMeta(name);
   document.getElementById('fansubMetaName').textContent=name;
   document.getElementById('fansubMetaLogoInput').value=meta.logo||'';
@@ -2159,12 +2200,16 @@ function handleCoverFile(){
   if(sizeMB>10){
     showToast('warn',`Görsel ${sizeMB.toFixed(1)}MB — telefonda kaydetme sorunlu olabilir. Sorun yaşarsan daha küçük bir dosya dene.`);
   }
-  readImageFileAsDataUrl(f).then(dataUrl=>{
+  const isGif=f.type==='image/gif'||/\.gif$/i.test(f.name||'');
+  readImageFileAsDataUrl(f)
+    .then(dataUrl=>isGif?dataUrl:compressImage(dataUrl,700,1050,0.85)) // GIF'ler animasyonu korumak için sıkıştırılmıyor —
+                                                                        // canvas tek kareye indirger, animasyonu yok eder.
+    .then(finalUrl=>{
     // Safari'nin input[type=text] için 512KB'ta sessizce kesme yaptığı bilinen bir sorun
     // olduğundan, büyük base64 veriyi input'a yazmıyoruz, ayrı bir değişkende tutuyoruz.
-    _pendingCoverData=dataUrl;
+    _pendingCoverData=finalUrl;
     document.getElementById('coverUrlInput').value='';
-    showCoverPreview(dataUrl);
+    showCoverPreview(finalUrl);
   }).catch(err=>{showToast('warn',err.message||'Görsel yüklenemedi.');});
 }
 function showCoverPreview(src){
@@ -2175,6 +2220,40 @@ function showCoverPreview(src){
   img.src=src;
 }
 function resetCoverPreview(){document.getElementById('coverPreviewWrap').innerHTML=`<div class="cover-preview-ph" id="coverPlaceholder">${ic('img',20)}</div>`;}
+function previewBannerUrl(){
+  const u=document.getElementById('bannerUrlInput').value.trim();
+  _pendingBannerData=null;
+  if(u)showBannerPreview(u);else resetBannerPreview();
+}
+function handleBannerFile(){
+  const f=document.getElementById('bannerFileInput').files[0];if(!f)return;
+  if(!isImageFile(f)){showToast('warn','Lütfen bir görsel dosyası seç.');return;}
+  const sizeMB=f.size/1024/1024;
+  if(sizeMB>10){
+    showToast('warn',`Görsel ${sizeMB.toFixed(1)}MB — telefonda kaydetme sorunlu olabilir. Sorun yaşarsan daha küçük bir dosya dene.`);
+  }
+  const isGif=f.type==='image/gif'||/\.gif$/i.test(f.name||'');
+  readImageFileAsDataUrl(f)
+    .then(dataUrl=>isGif?dataUrl:compressImage(dataUrl,1300,550,0.85))
+    .then(finalUrl=>{
+    _pendingBannerData=finalUrl;
+    document.getElementById('bannerUrlInput').value='';
+    showBannerPreview(finalUrl);
+  }).catch(err=>{showToast('warn',err.message||'Görsel yüklenemedi.');});
+}
+function showBannerPreview(src){
+  const w=document.getElementById('bannerPreviewWrap');
+  const p=document.getElementById('bannerPlaceholder');if(p)p.remove();
+  let img=w.querySelector('img.banner-preview');
+  if(!img){img=document.createElement('img');img.className='banner-preview';w.appendChild(img);}
+  img.src=src;
+}
+function resetBannerPreview(){const w=document.getElementById('bannerPreviewWrap');if(w)w.innerHTML=`<div class="banner-preview-ph" id="bannerPlaceholder">${ic('img',18)} <span style="font-size:10.5px;margin-left:5px;">Yatay bir görsel ekle</span></div>`;}
+function clearBanner(){
+  _pendingBannerData=null;
+  document.getElementById('bannerUrlInput').value='';
+  resetBannerPreview();
+}
 function handleOldCoverFile(){
   const files=Array.from(document.getElementById('oldCoverFileInput').files);
   const imageFiles=files.filter(isImageFile);
@@ -2568,9 +2647,10 @@ async function importBackup(e){
         fansubList:Array.isArray(incoming.fansubList)?[...incoming.fansubList]:[],
         genres:Array.isArray(incoming.genres)?[...incoming.genres]:[],
         cover:incoming.cover||'',
+        banner:incoming.banner||'',
         oldCovers:Array.isArray(incoming.oldCovers)?[...incoming.oldCovers]:[],
         category:incoming.category||'reading',
-        chapterTR:incoming.chapterTR||'',chapterTotal:incoming.chapterTotal||'',
+        chapterTR:incoming.chapterTR||'',chapterTotal:incoming.chapterTotal||'',avgDuration:incoming.avgDuration||'',
         studio:incoming.studio||'',season:incoming.season||'',airingStatus:incoming.airingStatus||'',
         contentType:incoming.contentType||'series',platform:incoming.platform||'',
         watchFormat:incoming.watchFormat||'',plannedEpisodes:incoming.plannedEpisodes||'',
@@ -2810,7 +2890,7 @@ function computeExtraStats(){
   const rated=series.filter(s=>s.rating>0);
   const avgRating=rated.length?(rated.reduce((a,s)=>a+s.rating,0)/rated.length):0;
   const totTR=series.reduce((a,s)=>a+(parseInt(s.chapterTR)||0),0);
-  const totalWatchMinutes=totTR*24;
+  const totalWatchMinutes=series.reduce((a,s)=>a+((parseInt(s.chapterTR)||0)*getAvgDuration(s)),0);
   // Fansub sıklığı
   const fansubCount={};
   series.forEach(s=>(s.fansubList||[]).forEach(f=>{const key=f.trim();if(key)fansubCount[key]=(fansubCount[key]||0)+1;}));
@@ -2829,6 +2909,14 @@ function computeExtraStats(){
 }
 // İzleme süresini "X gün Y sa" / "X sa Y dk" / "X dk" olarak okunaklı biçime çevirir.
 // Bölüm başına ortalama 24 dakika varsayımıyla hesaplanır (tipik bir anime bölümü uzunluğu).
+// Bir serinin bölüm başına ortalama süresini döndürür (dakika). Kullanıcı özel bir değer
+// girmediyse, Film türü için 100dk, diğerleri (Dizi/Ek İçerik) için tipik anime bölüm
+// uzunluğu olan 24dk varsayılır — bu sayede film süresi bölüm süresiyle karıştırılmaz.
+function getAvgDuration(s){
+  const v=parseInt(s.avgDuration);
+  if(v>0) return v;
+  return s.contentType==='movie'?100:24;
+}
 function formatWatchMinutes(mins){
   mins=Math.max(0,Math.round(mins||0));
   const h=Math.floor(mins/60), d=Math.floor(h/24);
